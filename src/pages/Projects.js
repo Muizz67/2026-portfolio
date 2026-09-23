@@ -10,30 +10,54 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Malaysia Crop Prediction Dashboard",
-      description: "ML-powered dashboard for predicting crop yields in Malaysia using historical data, weather patterns, and soil conditions. Built with Python, scikit-learn, and interactive visualizations.",
-      tech: ["Python", "Machine Learning", "Pandas", "Scikit-learn", "Dashboard"],
-      icon: <Database size={24} />,
-      category: "Machine Learning",
+      title: "n8n Internal Automation",
+      description: "Custom workflow automation system using n8n for internal processes. Streamlines repetitive tasks, data synchronization, and notification systems across multiple platforms.",
+      tech: ["n8n", "Docker", "CloudFlare R2", "Google Cloud Platform"],
+      icon: <Workflow size={24} />,
+      category: "Workflow Automation",
       status: "Completed",
-      image: "/assets/projects/crop-prediction.png",
-      github: "https://github.com/yourname/crop-prediction",
+      image: "/assets/projects/n8n-automation.png",
+      github: null,
       demo: null
     },
     {
       id: 2,
-      title: "Adaptive Task Manager",
-      description: "Intelligent task management system developed for hackathon. Features AI-powered task prioritization and adaptive scheduling based on user behavior patterns.",
-      tech: ["React", "Node.js", "AI/ML", "MongoDB"],
-      icon: <Bot size={24} />,
-      category: "Full-Stack AI",
-      status: "In Progress",
-      image: "/assets/projects/task-manager.png",
-      github: "https://github.com/yourname/adaptive-task-manager",
-      demo: "https://task-manager-demo.vercel.app"
+      title: "Media Creation - Data Collection and Research",
+      description: "Comprehensive data collection and research suite for media creation projects. Automates the process of gathering, organizing, and analyzing data from various sources.",
+      tech: ["Obsidian", "Python", "BeautifulSoup", "Selenium", "Prompt Engineering", "Web Scraping"],
+      icon: <Search size={24} />,
+      category: "Data Collection",
+      status: "Completed",
+      image: "/assets/projects/media-creation.png",
+      github: null,
+      demo: null
     },
     {
       id: 3,
+      title: "Extracting and Modelling Geographic Information of Agriculture",
+      description: "ML-powered dashboard for predicting crop yields in Malaysia using historical data, weather patterns, and soil conditions. Built with Python, scikit-learn, and interactive visualizations.",
+      tech: ["Python", "Machine Learning", "Pandas", "Scikit-learn", "Dashboard", "Power BI"],
+      icon: <Database size={24} />,
+      category: "Machine Learning",
+      status: "Completed",
+      image: "/assets/projects/fyp.png",
+      github: null,
+      demo: null
+    },
+    {
+      id: 4,
+      title: "Adaptive Task Manager",
+      description: "Intelligent task management system developed for hackathon. Features AI-powered task prioritization and adaptive scheduling based on user behavior patterns.",
+      tech: ["IBM Watson", "HTML", "CSS", "JavaScript"],
+      icon: <Bot size={24} />,
+      category: "Full-Stack AI",
+      status: "Completed",
+      image: "/assets/projects/task-manager.png",
+      github: null,
+      demo: null
+    },
+    {
+      id: 5,
       title: "Web Scraping Suite",
       description: "Comprehensive web scraping solution for multiple websites with automated data extraction, cleaning, and storage. Features anti-detection mechanisms and scheduled scraping.",
       tech: ["Python", "Beautiful Soup", "Selenium", "Pandas", "SQL"],
@@ -45,7 +69,7 @@ const Projects = () => {
       demo: null
     },
     {
-      id: 4,
+      id: 6,
       title: "Phone Finder Application",
       description: "Smart phone recommendation system that analyzes user preferences and budget to suggest optimal smartphone choices. Features comparison tools and price tracking.",
       tech: ["React", "API Integration", "Data Analysis"],
@@ -55,18 +79,6 @@ const Projects = () => {
       image: "/assets/projects/phone-finder.png",
       github: null,
       demo: "https://phone-finder-demo.vercel.app"
-    },
-    {
-      id: 5,
-      title: "n8n Internal Automation",
-      description: "Custom workflow automation system using n8n for internal processes. Streamlines repetitive tasks, data synchronization, and notification systems across multiple platforms.",
-      tech: ["n8n", "API Integration", "Workflow Automation", "JavaScript"],
-      icon: <Workflow size={24} />,
-      category: "Automation",
-      status: "Completed",
-      image: "/assets/projects/n8n-automation.png",
-      github: null,
-      demo: null
     }
   ];
 
