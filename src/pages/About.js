@@ -9,6 +9,7 @@ import {
   Calendar,
   Award,
   Sparkles,
+  Layers,
   ExternalLink
 } from 'lucide-react';
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
@@ -58,7 +59,7 @@ const passions = [
   },
   {
     title: 'Gaming',
-    note: 'What I do to switch off',
+    note: 'Mainly competitive FPS, MOBA and rhythm games',
     icon: 'FaGamepad'
   }
 ];
@@ -75,7 +76,14 @@ const stackNotes = {
 
 const About = () => {
   const [ref, inView] = useInView({ threshold: 0.03, triggerOnce: true });
+  const [activeCategory, setActiveCategory] = useState('All');
   const [showAllCerts, setShowAllCerts] = useState(false);
+
+  const categories = ['All', ...technicalStack.map((g) => g.category)];
+  const visibleStack =
+    activeCategory === 'All'
+      ? technicalStack
+      : technicalStack.filter((g) => g.category === activeCategory);
 
   const visibleCerts = showAllCerts ? certifications : certifications.slice(0, 6);
   const totalTech = technicalStack.reduce((n, g) => n + g.items.length, 0);
@@ -142,7 +150,7 @@ const About = () => {
             <motion.div variants={itemVariants} className="mb-16">
               <div className="about-split">
                 <div className="bio-col">
-                  <span className="section-eyebrow">In my own words</span>
+                  <span className="section-eyebrow">A little about me</span>
                   <div className="identity-bio">
                     {profile.bio.map((para) => (
                       <p key={para.slice(0, 32)}>{para}</p>
@@ -191,11 +199,11 @@ const About = () => {
             <motion.div variants={itemVariants} className="mb-16">
               <div className="block">
                 <div className="block-head">
-                  <h2 className="block-title">
-                    <GraduationCap size={18} />
+                  <h2 className="block-title block-title-center">
+                    <GraduationCap size={19} />
                     Education
                   </h2>
-                  <p className="block-sub">
+                  <p className="block-sub block-sub-center">
                     Where I Studied — and what I learned along the way
                   </p>
                 </div>
@@ -235,11 +243,11 @@ const About = () => {
             <motion.div variants={itemVariants} className="mb-16">
               <div className="block">
                 <div className="block-head">
-                  <h2 className="block-title">
-                    <Award size={18} />
+                  <h2 className="block-title block-title-center">
+                    <Award size={19} />
                     Certifications &amp; Courses
                   </h2>
-                  <p className="block-sub">
+                  <p className="block-sub block-sub-center">
                     Continuous learning across AI platforms, design thinking, and 5G
                   </p>
                 </div>
@@ -307,15 +315,40 @@ const About = () => {
             <motion.div variants={itemVariants}>
               <div className="block">
                 <div className="block-head">
-                  <h2 className="block-title">Technical Stack</h2>
-                  <p className="block-sub">
+                  <h2 className="block-title block-title-center">
+                    <Layers size={19} />
+                    Technical Stack
+                  </h2>
+                  <p className="block-sub block-sub-center">
                     {totalTech} technologies, grouped by what I use them for
                   </p>
                 </div>
 
+                <div className="stack-tabs">
+                  {categories.map((cat) => (
+                    <button
+                      key={cat}
+                      type="button"
+                      className={`stack-tab ${activeCategory === cat ? 'stack-tab-active' : ''}`}
+                      onClick={() => setActiveCategory(cat)}
+                    >
+                      {cat}
+                      <span className="stack-tab-count">
+                        {cat === 'All'
+                          ? totalTech
+                          : technicalStack.find((g) => g.category === cat).items.length}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+
                 <div className="block-body">
-                  <div className="stack-groups">
-                    {technicalStack.map((group) => (
+                  <div
+                    className={`stack-groups ${
+                      visibleStack.length === 1 ? 'stack-groups-single' : ''
+                    }`}
+                  >
+                    {visibleStack.map((group) => (
                       <div key={group.category} className="stack-group">
                         <div className="stack-group-head">
                           <h3 className="stack-group-title">{group.category}</h3>

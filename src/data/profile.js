@@ -81,6 +81,7 @@ export const technicalStack = [
   {
     category: 'Full-Stack',
     items: [
+      { name: 'React', icon: 'react', level: 82, description: 'Frontend library for building user interfaces' },
       { name: 'Laravel', icon: 'laravel', level: 82, description: 'PHP backend framework used in production internship' },
       { name: 'Vue.js', icon: 'vue', level: 80, description: 'Frontend work on live client applications' },
       { name: 'Node.js', icon: 'node', level: 78, description: 'Backend services and API endpoints' },
@@ -94,7 +95,8 @@ export const technicalStack = [
       { name: 'n8n', icon: 'n8n', level: 85, description: 'AI pipeline orchestration, ~70% less manual handling' },
       { name: 'Prompt Engineering', icon: 'openai', level: 82, description: 'ChatGPT, DeepSeek, Gemini, Mistral, Ollama' },
       { name: 'Cloudflare R2', icon: 'cloudflare', level: 75, description: 'Object storage for scraped and generated content' },
-      { name: 'Google Sheets API', icon: 'googlesheets', level: 70, description: 'Data in and out of spreadsheets programmatically' }
+      { name: 'Google Sheets API', icon: 'googlesheets', level: 70, description: 'Data in and out of spreadsheets programmatically' },
+      { name: 'OpenRouter API', icon: 'openrouter', level: 70, description: 'Access to various language model APIs through a unified interface' }
     ]
   },
   {
@@ -189,40 +191,39 @@ export const certifications = [
   // cert once you have them. All six currently point at the same Credly
   // profile badge you supplied as a placeholder.
   {
-    title: 'Introduction to Intelligent Virtual Agents with IBM watsonx Assistant',
-    issuer: 'IBM',
+    title: 'n8n: No-Code AI Agent Builder',
+    issuer: 'Simplilearn',
     link: 'https://www.credly.com/earner/earned/badge/7c09b9a6-1e41-4584-89ff-9b37717e852b',
-    icon: 'Brain'
   },
   {
-    title: 'IBM Watsonx Orchestrate: Build an AI Assistant',
+    title: 'Introduction to Intelligent Virtual Agents (IVAs) with IBM watsonx Assistant',
     issuer: 'IBM',
-    link: 'https://www.credly.com/earner/earned/badge/7c09b9a6-1e41-4584-89ff-9b37717e852b',
-    icon: 'Robot'
+    link: 'https://www.credly.com/badges/c5c67bad-e786-4e24-85fd-00a3ea430fa0',
   },
   {
-    title: 'IBM Watsonx.ai Technical Essentials',
+    title: 'IBM watsonx Orchestrate Build an AI Assistant',
     issuer: 'IBM',
-    link: 'https://www.credly.com/earner/earned/badge/7c09b9a6-1e41-4584-89ff-9b37717e852b',
-    icon: 'Microchip'
+    link: 'https://www.credly.com/badges/edce5c45-c4b8-437a-9771-2f6e4d1af993',
+  },
+  {
+    title: 'IBM watsonx.ai Technical Essentials',
+    issuer: 'IBM',
+    link: 'https://www.credly.com/badges/42b9416c-d91a-4741-b7e7-a9b848107b97',
   },
   {
     title: 'Enterprise Design Thinking Practitioner',
     issuer: 'IBM',
-    link: 'https://www.credly.com/earner/earned/badge/7c09b9a6-1e41-4584-89ff-9b37717e852b',
-    icon: 'Lightbulb'
+    link: 'https://www.credly.com/badges/f46259af-e2c8-4ba3-b558-a2101aec7841',
   },
   {
     title: '5G Pioneers Program',
     issuer: 'Ericsson',
-    link: 'https://www.credly.com/earner/earned/badge/7c09b9a6-1e41-4584-89ff-9b37717e852b',
-    icon: 'TowerBroadcast'
+    link: 'https://www.credly.com/badges/7c09b9a6-1e41-4584-89ff-9b37717e852b',
   },
   {
-    title: 'n8n: No-Code AI Agent Builder',
-    issuer: 'Simplilearn',
-    link: 'https://www.credly.com/earner/earned/badge/7c09b9a6-1e41-4584-89ff-9b37717e852b',
-    icon: 'SiN8N'
+    title: 'Introduction to IoT',
+    issuer: 'Cisco',
+    link: 'https://www.credly.com/badges/c3ea1292-4b90-478e-a3be-7fd1da3291b4',
   }
 ];
 

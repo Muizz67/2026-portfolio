@@ -2,12 +2,10 @@
 // names as strings so they stay plain-data. This maps a name to its icon.
 //
 // Note: react-icons components must be imported under their full exported name
-// (FaRobot, not Robot). Importing the bare name fails the production build.
+// (FaGamepad, not Gamepad). Importing the bare name fails the production build.
 
 import {
-  Award,
   Bot,
-  Brain,
   Code,
   Database,
   Search,
@@ -17,14 +15,11 @@ import {
 
 import {
   FaFileAudio,
-  FaRobot,
-  FaMicrochip,
-  FaLightbulb,
   FaTrophy,
   FaGamepad
 } from 'react-icons/fa';
 
-import { SiN8N, SiEricsson } from 'react-icons/si';
+import { SiN8N } from 'react-icons/si';
 
 const registry = {
   // projects
@@ -35,15 +30,8 @@ const registry = {
   Smartphone,
   // experience
   AudioLines: FaFileAudio,
-  Robot: FaRobot,
   Code,
   Trophy: FaTrophy,
-  // certifications
-  Award,
-  Brain,
-  Lightbulb: FaLightbulb,
-  Microchip: FaMicrochip,
-  TowerBroadcast: SiEricsson,
   SiN8N,
   FaGamepad
 };
