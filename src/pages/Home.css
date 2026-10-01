@@ -26,25 +26,42 @@
     radial-gradient(ellipse at 20% 80%, rgba(240, 180, 41, 0.06) 0%, transparent 50%);
 }
 
-.floating-particles {
+/* Faint blueprint grid. Reads as engineering/technical rather than
+   celestial, which is what a starfield implied on a navy-amber palette. */
+.hero-grid {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-image:
-    radial-gradient(2px 2px at 20px 30px, rgba(240, 180, 41, 0.3), transparent),
-    radial-gradient(2px 2px at 40px 70px, rgba(255, 209, 102, 0.3), transparent),
-    radial-gradient(1px 1px at 90px 40px, rgba(240, 180, 41, 0.4), transparent),
-    radial-gradient(1px 1px at 130px 80px, rgba(255, 209, 102, 0.4), transparent);
-  background-repeat: repeat;
-  background-size: 200px 150px;
-  animation: float 20s linear infinite;
-  opacity: 0.4;
+    linear-gradient(rgba(240, 180, 41, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240, 180, 41, 0.055) 1px, transparent 1px);
+  background-size: 64px 64px;
+  /* Fade the grid out toward the edges so it never competes with the text. */
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 30%, transparent 75%);
 }
 
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0); }
+/* Slow drifting glow behind the headline, so the hero has movement without
+   the busy-ness of particles. */
+.hero-glow {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  width: 900px;
+  height: 500px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(240, 180, 41, 0.11) 0%,
+    rgba(240, 180, 41, 0.04) 35%,
+    transparent 70%
+  );
+  animation: glow-drift 18s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes glow-drift {
+  0%, 100% { transform: translateX(-50%) translateY(0) scale(1); opacity: 0.75; }
+  50% { transform: translateX(-50%) translateY(-30px) scale(1.08); opacity: 1; }
 }
 
 .hero-content {
@@ -92,6 +109,43 @@
 .title-line {
   display: block;
   margin-bottom: 0.5rem;
+}
+
+/* Blinking caret. Uses the accent so it reads as part of the typed text,
+   and a block-level inline-block keeps its height tied to the line box
+   (an inline element with no content collapses vertically). */
+.type-caret {
+  display: inline-block;
+  width: 4px;
+  height: 0.78em;
+  margin-left: 0.08em;
+  vertical-align: -0.08em;
+  background: var(--accent);
+  border-radius: 2px;
+  animation: caret-blink 1s step-end infinite;
+}
+
+/* Once the headline is finished the caret stops blinking and fades back, so
+   the final frame reads as a settled statement rather than a live editor. */
+.type-caret-rest {
+  animation: caret-blink 1s step-end infinite, caret-fade 0.6s ease-out 1.2s forwards;
+  opacity: 0.55;
+}
+
+@keyframes caret-blink {
+  0%, 45% { opacity: 1; }
+  50%, 95% { opacity: 0.15; }
+  100% { opacity: 1; }
+}
+
+@keyframes caret-fade {
+  to { opacity: 0.28; }
+}
+
+/* Reserve the headline's height so typing does not reflow the page and
+   bounce the scrollbar on every character. */
+.hero-title {
+  min-height: 2.2em;
 }
 
 .hero-subtitle {
@@ -190,6 +244,112 @@
   text-transform: uppercase;
   color: var(--accent-light);
   margin-bottom: 0.75rem;
+}
+
+/* ---------- Hero status pill ---------- */
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.75rem auto 0;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  background: rgb(26 36 54 / 0.55);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+}
+
+.hero-status strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Expanding ring, so the open-to-work signal reads as live without
+   depending on colour alone. */
+.status-pulse {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  position: relative;
+}
+
+.status-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: status-ring 2s ease-out infinite;
+}
+
+@keyframes status-ring {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(3.2); opacity: 0; }
+}
+
+/* ---------- Tech marquee ---------- */
+.marquee-section {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+  overflow: hidden;
+}
+
+/* Edge fade so items enter and leave rather than popping at the boundary. */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 42s linear infinite;
+}
+
+/* Pause on hover so a visitor can actually read the band. */
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 2.75rem;
+  padding-right: 2.75rem;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.marquee-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid var(--border-light);
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 /* ---------- What I do ---------- */
@@ -425,6 +585,26 @@
 }
 
 /* ---------- Responsive ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .status-pulse::after,
+  .hero-glow,
+  .type-caret,
+  .type-caret-rest {
+    animation: none;
+  }
+
+  .marquee-track {
+    transform: none;
+    flex-wrap: wrap;
+    width: auto;
+  }
+
+  .marquee-section {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-actions {
     flex-direction: column;

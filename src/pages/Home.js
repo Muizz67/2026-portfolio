@@ -3,8 +3,11 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FileText, ChevronDown, ArrowRight, Eye } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
+import useTypewriter from '../hooks/useTypewriter';
 import { profile, focusAreas, stats } from '../data/profile';
 import { featuredProjects } from '../data/projects';
+import { technicalStack } from '../data/profile';
+import { techIcon } from '../data/techIcons';
 import './Home.css';
 
 const containerVariants = {
@@ -23,11 +26,34 @@ const itemVariants = {
   visible: { y: 0, opacity: 1 }
 };
 
+// Hoisted to module scope: a new array identity on every render would land in
+// the typewriter's dependency array and restart it continuously.
+const headline = ['Building Intelligent', 'AI Solutions'];
+
+// One entry per unique logo so the marquee loop repeats cleanly.
+const marqueeItems = technicalStack
+  .flatMap((group) => group.items.map((i) => ({ name: i.name, icon: i.icon })))
+  .filter((item, i, arr) => arr.findIndex((x) => x.icon === item.icon) === i);
+
 const Home = () => {
   const [heroRef, heroInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [focusRef, focusInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [workRef, workInView] = useInView({ threshold: 0.05, triggerOnce: true });
   const [statsRef, statsInView] = useInView({ threshold: 0.3, triggerOnce: true });
+
+  // The headline types itself out, then settles. No loop — a headline that
+  // keeps erasing itself reads as a demo rather than a statement.
+  const { text: typedText, done: typedDone, fullText: headlineText } = useTypewriter(
+    headline,
+    { typeSpeed: 78, append: true }
+  );
+
+  // Split the typed string so the second phrase keeps its accent gradient.
+  // The typed text is a single string, so without this the highlight would be
+  // lost the moment the animation started.
+  const splitAt = headline[0].length;
+  const lead = typedText.slice(0, splitAt);
+  const tail = typedText.slice(splitAt);
 
   return (
     <div className="home">
@@ -35,7 +61,8 @@ const Home = () => {
       <section className="hero-section" ref={heroRef}>
         <div className="hero-background">
           <div className="hero-gradient" />
-          <div className="floating-particles" />
+          <div className="hero-grid" />
+          <div className="hero-glow" />
         </div>
 
         <div className="container">
@@ -50,9 +77,21 @@ const Home = () => {
               <span className="badge-text">{profile.role}</span>
             </motion.div>
 
-            <motion.h1 variants={itemVariants} className="hero-title">
-              <span className="title-line">Building Intelligent</span>
-              <span className="title-line gradient-text">AI Solutions</span>
+            <motion.h1
+              variants={itemVariants}
+              className="hero-title"
+              aria-label={headlineText}
+            >
+              <span className="title-line" aria-hidden="true">
+                {lead}
+                {tail && (
+                  <>
+                    {' '}
+                    <span className="gradient-text">{tail}</span>
+                  </>
+                )}
+                <span className={`type-caret ${typedDone ? 'type-caret-rest' : ''}`} />
+              </span>
             </motion.h1>
 
             <motion.p variants={itemVariants} className="hero-subtitle">
@@ -69,6 +108,14 @@ const Home = () => {
                 <ArrowRight size={18} />
               </Link>
             </motion.div>
+
+            <motion.p variants={itemVariants} className="hero-status">
+              <span className="status-pulse" aria-hidden="true" />
+              <span>
+                <strong>Open to work</strong> — AI engineering, data, and full-stack
+                roles.
+              </span>
+            </motion.p>
 
             <motion.div variants={itemVariants} className="hero-social">
               <a
@@ -114,6 +161,24 @@ const Home = () => {
           <ChevronDown size={24} />
         </motion.div>
       </section>
+
+      {/* Tech marquee — a low-key band of the actual stack */}
+      <div className="marquee-section" aria-hidden="true">
+        <div className="marquee">
+          <div className="marquee-track">
+            {[0, 1].map((copy) => (
+              <div className="marquee-group" key={copy}>
+                {marqueeItems.map((item) => (
+                  <span className="marquee-item" key={`${copy}-${item}`}>
+                    <span className="marquee-logo">{techIcon(item.icon, 20)}</span>
+                    {item.name}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* What I do — replaces the duplicate skill bars */}
       <section className="focus-section section" ref={focusRef}>
