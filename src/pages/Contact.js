@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { Mail, MapPin, Phone, Copy, Check, ArrowUpRight } from 'lucide-react';
 import { BsGithub, BsLinkedin, BsWhatsapp } from 'react-icons/bs';
 import { profile } from '../data/profile';
@@ -55,8 +56,24 @@ const channels = [
   }
 ];
 
+// Same variant pair and stagger timing used by Home, About, Experience and
+// Projects, so the page reveal is identical across the site.
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { delayChildren: 0.15, staggerChildren: 0.08 }
+  }
+};
+
+const itemVariants = {
+  hidden: { y: 24, opacity: 0 },
+  visible: { y: 0, opacity: 1 }
+};
+
 const Contact = () => {
   const [copied, setCopied] = useState(false);
+  const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: true });
 
   const copyEmail = async () => {
     try {
@@ -74,9 +91,10 @@ const Contact = () => {
       <section className="section">
         <div className="container">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            ref={ref}
+            variants={containerVariants}
+            initial="hidden"
+            animate={inView ? 'visible' : 'hidden'}
           >
             <div className="section-header text-center mb-16">
               <span className="section-eyebrow">Contact</span>
@@ -88,7 +106,7 @@ const Contact = () => {
             </div>
 
             <div className="contact-channels">
-              {channels.map((channel, index) => (
+              {channels.map((channel) => (
                 <motion.a
                   key={channel.id}
                   className="channel-card"
@@ -96,9 +114,7 @@ const Contact = () => {
                   target={channel.external ? '_blank' : undefined}
                   rel={channel.external ? 'noopener noreferrer' : undefined}
                   style={{ '--channel-accent': channel.accent }}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + index * 0.07, duration: 0.45 }}
+                  variants={itemVariants}
                 >
                   <span className="channel-icon">
                     <channel.Icon size={22} />
@@ -117,12 +133,7 @@ const Contact = () => {
             </div>
 
             {/* Convenience actions + availability */}
-            <motion.div
-              className="contact-utility"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-            >
+            <motion.div className="contact-utility" variants={itemVariants}>
               <button
                 type="button"
                 className="copy-btn"
@@ -141,12 +152,7 @@ const Contact = () => {
               </span>
             </motion.div>
 
-            <motion.div
-              className="availability-panel"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-            >
+            <motion.div className="availability-panel" variants={itemVariants}>
               <span className="availability-dot" />
               <div>
                 <h3 className="availability-title">Open to new work</h3>
@@ -158,12 +164,7 @@ const Contact = () => {
               </div>
             </motion.div>
 
-            <motion.p
-              className="contact-footnote"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
-            >
+            <motion.p className="contact-footnote" variants={itemVariants}>
               Prefer a traditional email with your CV attached? The same address works —
               mention the role and I'll come back to you within a day or two.
             </motion.p>

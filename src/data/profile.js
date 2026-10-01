@@ -193,7 +193,10 @@ export const certifications = [
   {
     title: 'n8n: No-Code AI Agent Builder',
     issuer: 'Simplilearn',
-    link: 'https://www.credly.com/earner/earned/badge/7c09b9a6-1e41-4584-89ff-9b37717e852b',
+    // Held as a PDF rather than a Credly badge, so this opens the local
+    // document rather than leaving the site.
+    link: '/assets/resume/n8n certificate simplilearn.pdf',
+    local: true,
   },
   {
     title: 'Introduction to Intelligent Virtual Agents (IVAs) with IBM watsonx Assistant',

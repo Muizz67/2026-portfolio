@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import {
@@ -10,6 +10,7 @@ import {
   Award,
   Sparkles,
   Layers,
+  FileText,
   ExternalLink
 } from 'lucide-react';
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
@@ -64,26 +65,15 @@ const passions = [
   }
 ];
 
-// What each stack category is actually for. Keeps the grouped list readable
-// without reintroducing self-assessed percentage bars.
-const stackNotes = {
-  'AI & ML': 'Model development and evaluation in Python',
-  'Data & Annotation': 'Labelling and collecting the data models learn from',
-  'Full-Stack': 'Backends, frontends, and the APIs between them',
-  'Automation & Workflow': 'Pipelines that run without supervision',
-  'Tools & Languages': 'The supporting toolkit'
-};
-
 const About = () => {
   const [ref, inView] = useInView({ threshold: 0.03, triggerOnce: true });
-  const [activeCategory, setActiveCategory] = useState('All');
+  // No "All" option by request: the page opens on the first category and each
+  // tab always shows exactly one group.
+  const categories = technicalStack.map((g) => g.category);
+  const [activeCategory, setActiveCategory] = useState(categories[0]);
   const [showAllCerts, setShowAllCerts] = useState(false);
 
-  const categories = ['All', ...technicalStack.map((g) => g.category)];
-  const visibleStack =
-    activeCategory === 'All'
-      ? technicalStack
-      : technicalStack.filter((g) => g.category === activeCategory);
+  const visibleStack = technicalStack.filter((g) => g.category === activeCategory);
 
   const visibleCerts = showAllCerts ? certifications : certifications.slice(0, 6);
   const totalTech = technicalStack.reduce((n, g) => n + g.items.length, 0);
@@ -266,8 +256,12 @@ const About = () => {
                           <h3 className="cert-title">{cert.title}</h3>
                           {cert.link && (
                             <span className="cert-cta">
-                              View credential
-                              <ExternalLink size={13} />
+                              {cert.local ? 'Open certificate' : 'View credential'}
+                              {cert.local ? (
+                                <FileText size={13} />
+                              ) : (
+                                <ExternalLink size={13} />
+                              )}
                             </span>
                           )}
                         </>
@@ -278,8 +272,11 @@ const About = () => {
                           key={cert.title}
                           className="cert-card"
                           href={cert.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          // A local PDF replaces the tab, same as the resume
+                          // page; external credential pages open alongside.
+                          {...(cert.local
+                            ? {}
+                            : { target: '_blank', rel: 'noopener noreferrer' })}
                         >
                           {inner}
                         </a>
@@ -334,47 +331,52 @@ const About = () => {
                     >
                       {cat}
                       <span className="stack-tab-count">
-                        {cat === 'All'
-                          ? totalTech
-                          : technicalStack.find((g) => g.category === cat).items.length}
+                        {technicalStack.find((g) => g.category === cat).items.length}
                       </span>
                     </button>
                   ))}
                 </div>
 
                 <div className="block-body">
-                  <div
-                    className={`stack-groups ${
-                      visibleStack.length === 1 ? 'stack-groups-single' : ''
-                    }`}
-                  >
-                    {visibleStack.map((group) => (
-                      <div key={group.category} className="stack-group">
-                        <div className="stack-group-head">
-                          <h3 className="stack-group-title">{group.category}</h3>
-                          <span className="stack-group-count">
-                            {group.items.length}
-                          </span>
-                        </div>
-                        <p className="stack-group-note">{stackNotes[group.category]}</p>
-
-                        <div className="stack-items">
-                          {group.items.map((item) => (
-                            <div key={item.name} className="stack-item">
-                              <span className="stack-item-logo">
-                                {techIcon(item.icon, 22)}
+                  <div className="stack-groups stack-groups-single">
+                    {/* mode="wait" so the outgoing group finishes before the
+                        incoming one starts, rather than both overlapping. */}
+                    <AnimatePresence mode="wait" initial={false}>
+                      {visibleStack.map((group) => (
+                        <motion.div
+                          key={group.category}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -8 }}
+                          transition={{ duration: 0.22, ease: 'easeOut' }}
+                        >
+                          <div className="stack-group">
+                            <div className="stack-group-head">
+                              <h3 className="stack-group-title">{group.category}</h3>
+                              <span className="stack-group-count">
+                                {group.items.length}
                               </span>
-                              <div className="stack-item-text">
-                                <h4 className="stack-item-name">{item.name}</h4>
-                                <p className="stack-item-desc">
-                                  {item.description}
-                                </p>
-                              </div>
                             </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
+
+                            <div className="stack-items">
+                              {group.items.map((item) => (
+                                <div key={item.name} className="stack-item">
+                                  <span className="stack-item-logo">
+                                    {techIcon(item.icon, 22)}
+                                  </span>
+                                  <div className="stack-item-text">
+                                    <h4 className="stack-item-name">{item.name}</h4>
+                                    <p className="stack-item-desc">
+                                      {item.description}
+                                    </p>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
