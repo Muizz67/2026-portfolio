@@ -184,10 +184,10 @@
      so this one goes darker than the page rather than lighter. */
   background: linear-gradient(
     135deg,
-    rgb(139 124 246 / 0.12),
-    rgb(139 124 246 / 0.02)
+    rgb(240 180 41 / 0.12),
+    rgb(240 180 41 / 0.02)
   );
-  border: 1px solid rgb(139 124 246 / 0.28);
+  border: 1px solid rgb(240 180 41 / 0.28);
   border-radius: 16px;
 }
 
@@ -200,13 +200,13 @@
   margin-top: 0.5rem;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 4px rgb(139 124 246 / 0.18);
+  box-shadow: 0 0 0 4px rgb(240 180 41 / 0.18);
   animation: availability-pulse 2.4s ease-in-out infinite;
 }
 
 @keyframes availability-pulse {
-  0%, 100% { box-shadow: 0 0 0 4px rgb(139 124 246 / 0.18); }
-  50% { box-shadow: 0 0 0 7px rgb(139 124 246 / 0.06); }
+  0%, 100% { box-shadow: 0 0 0 4px rgb(240 180 41 / 0.18); }
+  50% { box-shadow: 0 0 0 7px rgb(240 180 41 / 0.06); }
 }
 
 .availability-title {

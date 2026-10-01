@@ -7,17 +7,16 @@
 }
 
 :root {
-  /* Palette borrowed in structure from safwanhakim.com: navy-slate surfaces
-     rather than pure black, which is what makes the boxes read as grey
-     panels instead of holes. His accent is gold; ours is an indigo-leaning
-     violet (#8b7cf6), chosen for 5.3:1 against --bg-secondary so the accent
-     stays legible on cards rather than only on the page. */
+  /* Navy-slate surfaces (borrowed in structure from safwanhakim.com) with an
+     amber accent. Amber is the warm complement to the cool navy, which gives
+     far more hue separation than an analogous blue would, and it measures
+     9.5:1 against --bg-secondary — the most headroom of any candidate. */
   --bg-primary: #0a0e17;
   --bg-secondary: #101828;
   --bg-tertiary: #1a2436;
-  --accent: #8b7cf6;
-  --accent-light: #b0a6f9;
-  --accent-dark: #6f5ce8;
+  --accent: #f0b429;
+  --accent-light: #ffd166;
+  --accent-dark: #c9930f;
   --text-primary: #e2e8f0;
   --text-secondary: #9aa7bd;
   --text-muted: #6b7789;
@@ -29,7 +28,7 @@
   --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5);
-  --shadow-accent: 0 10px 25px -5px rgb(139 124 246 / 0.3);
+  --shadow-accent: 0 10px 25px -5px rgb(240 180 41 / 0.3);
 
   /* Transitions */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -95,10 +94,12 @@ body {
   padding: 4rem 0;
 }
 
-/* Modern Button */
+/* Modern Button. Amber is a light accent, so filled buttons take near-black
+   text (8.0:1) rather than white (1.9:1). Purple hid this because white on a
+   dark accent passed comfortably. */
 .btn-primary {
   background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-  color: var(--text-primary);
+  color: #0a0e17;
   border: none;
   border-radius: 12px;
   padding: 1rem 2rem;
@@ -131,7 +132,7 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 20px 40px -10px rgb(139 124 246 / 0.4);
+  box-shadow: 0 20px 40px -10px rgb(240 180 41 / 0.4);
 }
 
 /* Gradient Text */

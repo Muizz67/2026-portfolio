@@ -21,9 +21,9 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at center, rgba(139, 124, 246, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(139, 124, 246, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 20% 80%, rgba(139, 124, 246, 0.06) 0%, transparent 50%);
+    radial-gradient(ellipse at center, rgba(240, 180, 41, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(240, 180, 41, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(240, 180, 41, 0.06) 0%, transparent 50%);
 }
 
 .floating-particles {
@@ -31,10 +31,10 @@
   width: 100%;
   height: 100%;
   background-image:
-    radial-gradient(2px 2px at 20px 30px, rgba(139, 124, 246, 0.3), transparent),
-    radial-gradient(2px 2px at 40px 70px, rgba(176, 166, 249, 0.3), transparent),
-    radial-gradient(1px 1px at 90px 40px, rgba(139, 124, 246, 0.4), transparent),
-    radial-gradient(1px 1px at 130px 80px, rgba(176, 166, 249, 0.4), transparent);
+    radial-gradient(2px 2px at 20px 30px, rgba(240, 180, 41, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 209, 102, 0.3), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(240, 180, 41, 0.4), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 209, 102, 0.4), transparent);
   background-repeat: repeat;
   background-size: 200px 150px;
   animation: float 20s linear infinite;
@@ -59,8 +59,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background: rgba(139, 124, 246, 0.1);
-  border: 1px solid rgba(139, 124, 246, 0.2);
+  background: rgba(240, 180, 41, 0.1);
+  border: 1px solid rgba(240, 180, 41, 0.2);
   border-radius: 50px;
   padding: 0.5rem 1.5rem;
   margin-bottom: 2rem;
@@ -231,8 +231,8 @@
   font-size: 0.78rem;
   font-weight: 500;
   color: var(--accent-light);
-  background: rgba(139, 124, 246, 0.1);
-  border: 1px solid rgba(139, 124, 246, 0.2);
+  background: rgba(240, 180, 41, 0.1);
+  border: 1px solid rgba(240, 180, 41, 0.2);
   border-radius: 6px;
   padding: 0.3rem 0.65rem;
 }
@@ -395,8 +395,8 @@
 }
 
 .cta-panel {
-  background: linear-gradient(135deg, rgba(139, 124, 246, 0.12), rgba(139, 124, 246, 0.03));
-  border: 1px solid rgba(139, 124, 246, 0.25);
+  background: linear-gradient(135deg, rgba(240, 180, 41, 0.12), rgba(240, 180, 41, 0.03));
+  border: 1px solid rgba(240, 180, 41, 0.25);
   border-radius: 20px;
   padding: 4rem 2rem;
   text-align: center;

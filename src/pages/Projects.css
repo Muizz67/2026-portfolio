@@ -58,13 +58,13 @@
 .project-icon {
   width: 48px;
   height: 48px;
-  background: rgba(139, 124, 246, 0.1);
+  background: rgba(240, 180, 41, 0.1);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent);
-  border: 1px solid rgba(139, 124, 246, 0.2);
+  border: 1px solid rgba(240, 180, 41, 0.2);
 }
 
 .project-meta {
@@ -209,7 +209,7 @@
 .btn-project:hover {
   color: var(--accent);
   border-color: var(--accent);
-  background: rgba(139, 124, 246, 0.05);
+  background: rgba(240, 180, 41, 0.05);
 }
 
 .projects-cta {
@@ -303,7 +303,7 @@
 .modal-close:hover {
   color: var(--text-primary);
   border-color: var(--accent);
-  background: rgba(139, 124, 246, 0.1);
+  background: rgba(240, 180, 41, 0.1);
 }
 
 .modal-title {
@@ -348,8 +348,8 @@
 }
 
 .modal-info-box.highlight {
-  background: rgba(139, 124, 246, 0.08);
-  border-color: rgba(139, 124, 246, 0.25);
+  background: rgba(240, 180, 41, 0.08);
+  border-color: rgba(240, 180, 41, 0.25);
 }
 
 .modal-info-box.highlight p {
@@ -399,7 +399,7 @@
 .modal-source-btn:hover {
   color: var(--accent);
   border-color: var(--accent);
-  background: rgba(139, 124, 246, 0.05);
+  background: rgba(240, 180, 41, 0.05);
 }
 
 /* Disabled state, e.g. private / unavailable source code */
