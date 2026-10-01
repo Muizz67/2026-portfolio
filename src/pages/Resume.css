@@ -1,10 +1,39 @@
 .resume-page {
   min-height: 100vh;
+  padding-top: 6rem;
+}
+
+.resume-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.resume-back:hover {
+  color: var(--accent-purple-light);
+  gap: 0.6rem;
 }
 
 .resume-header {
   text-align: center;
   margin-bottom: 2.5rem;
+}
+
+.resume-fallback {
+  margin-top: 1.25rem;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.resume-fallback a {
+  color: var(--accent-purple-light);
 }
 
 .resume-header .text-subtitle {

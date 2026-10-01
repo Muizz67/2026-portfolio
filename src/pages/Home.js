@@ -1,84 +1,79 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FileText, ChevronDown } from 'lucide-react';
+import { FileText, ChevronDown, ArrowRight, Eye } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
+import { profile, focusAreas, stats } from '../data/profile';
+import { featuredProjects } from '../data/projects';
 import './Home.css';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.2,
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { y: 30, opacity: 0 },
+  visible: { y: 0, opacity: 1 }
+};
 
 const Home = () => {
   const [heroRef, heroInView] = useInView({ threshold: 0.1, triggerOnce: true });
-  const [skillsRef, skillsInView] = useInView({ threshold: 0.1, triggerOnce: true });
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: { y: 0, opacity: 1 }
-  };
-
-  const skills = [
-    { name: 'Python & Machine Learning', level: 90 },
-    { name: 'React & JavaScript', level: 85 },
-    { name: 'Laravel & PHP', level: 80 },
-    { name: 'Docker & DevOps', level: 75 },
-    { name: 'Data Analysis & Automation', level: 88 }
-  ];
+  const [focusRef, focusInView] = useInView({ threshold: 0.1, triggerOnce: true });
+  const [workRef, workInView] = useInView({ threshold: 0.05, triggerOnce: true });
+  const [statsRef, statsInView] = useInView({ threshold: 0.3, triggerOnce: true });
 
   return (
     <div className="home">
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="hero-section" ref={heroRef}>
         <div className="hero-background">
-          <div className="hero-gradient"></div>
-          <div className="floating-particles"></div>
+          <div className="hero-gradient" />
+          <div className="floating-particles" />
         </div>
-        
+
         <div className="container">
-          <motion.div 
+          <motion.div
             className="hero-content"
             variants={containerVariants}
             initial="hidden"
-            animate={heroInView ? "visible" : "hidden"}
+            animate={heroInView ? 'visible' : 'hidden'}
           >
             <motion.div variants={itemVariants} className="hero-badge">
-              <span className="badge-text">AI Automation • Software Developer</span>
+              <span className="badge-dot" />
+              <span className="badge-text">{profile.role}</span>
             </motion.div>
 
             <motion.h1 variants={itemVariants} className="hero-title">
               <span className="title-line">Building Intelligent</span>
               <span className="title-line gradient-text">AI Solutions</span>
             </motion.h1>
-            
+
             <motion.p variants={itemVariants} className="hero-subtitle">
-              Passionate AI Engineer specializing in Python, Machine Learning, and Full-Stack Development. 
-              Creating innovative solutions that bridge the gap between AI research and practical applications.
+              {profile.tagline}
             </motion.p>
 
             <motion.div variants={itemVariants} className="hero-actions">
-              <Link
-                className="btn-primary"
-                to="/resume"
-              >
+              <Link className="btn-primary" to="/resume">
                 <FileText size={20} />
                 <span>View Resume</span>
               </Link>
               <Link className="btn-secondary" to="/projects">
                 <span>View Projects</span>
+                <ArrowRight size={18} />
               </Link>
             </motion.div>
 
             <motion.div variants={itemVariants} className="hero-social">
               <a
                 className="social-circle"
-                href="https://github.com/Muizz67"
+                href={profile.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub profile"
@@ -93,24 +88,24 @@ const Home = () => {
               </a>
               <a
                 className="social-circle"
-                href="https://www.linkedin.com/in/muizzrusdi/"
+                href={profile.links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn profile"
                 title="LinkedIn"
               >
-                <svg className="social-logo" viewBox="0 0 30 30" aria-hidden="true">
-                  <path 
+                <svg className="social-logo" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
                     fill="currentColor"
-                    xmlns="http://www.w3org/2000/svg" 
-                    d="M17.303,14.365c0.012-0.015,0.023-0.031,0.031-0.048v0.048H17.303z M32,0v32H0V0H32L32,0z M9.925,12.285H5.153v14.354   h4.772V12.285z M10.237,7.847c-0.03-1.41-1.035-2.482-2.668-2.482c-1.631,0-2.698,1.072-2.698,2.482   c0,1.375,1.035,2.479,2.636,2.479h0.031C9.202,10.326,10.237,9.222,10.237,7.847z M27.129,18.408c0-4.408-2.355-6.459-5.494-6.459   c-2.531,0-3.664,1.391-4.301,2.368v-2.032h-4.77c0.061,1.346,0,14.354,0,14.354h4.77v-8.016c0-0.434,0.031-0.855,0.157-1.164   c0.346-0.854,1.132-1.746,2.448-1.746c1.729,0,2.418,1.314,2.418,3.246v7.68h4.771L27.129,18.408L27.129,18.408z"><path d="M17.303,14.365c0.012-0.015,0.023-0.031,0.031-0.048v0.048H17.303z M32,0v32H0V0H32L32,0z M9.925,12.285H5.153v14.354   h4.772V12.285z M10.237,7.847c-0.03-1.41-1.035-2.482-2.668-2.482c-1.631,0-2.698,1.072-2.698,2.482   c0,1.375,1.035,2.479,2.636,2.479h0.031C9.202,10.326,10.237,9.222,10.237,7.847z M27.129,18.408c0-4.408-2.355-6.459-5.494-6.459   c-2.531,0-3.664,1.391-4.301,2.368v-2.032h-4.77c0.061,1.346,0,14.354,0,14.354h4.77v-8.016c0-0.434,0.031-0.855,0.157-1.164   c0.346-0.854,1.132-1.746,2.448-1.746c1.729,0,2.418,1.314,2.418,3.246v7.68h4.771L27.129,18.408L27.129,18.408z"/></path>
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  />
                 </svg>
               </a>
             </motion.div>
           </motion.div>
         </div>
 
-        <motion.div 
+        <motion.div
           className="scroll-indicator"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -120,45 +115,161 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/* Skills Section */}
-      <section className="skills-section section" ref={skillsRef}>
+      {/* What I do — replaces the duplicate skill bars */}
+      <section className="focus-section section" ref={focusRef}>
         <div className="container">
-          <motion.div 
-            className="skills-content"
+          <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={skillsInView ? "visible" : "hidden"}
+            animate={focusInView ? 'visible' : 'hidden'}
           >
-            <motion.div variants={itemVariants} className="section-header text-center mb-16">
-              <h2 className="text-title mb-4">Technical Expertise</h2>
+            <motion.div
+              variants={itemVariants}
+              className="section-header text-center mb-16"
+            >
+              <span className="section-eyebrow">What I do</span>
+              <h2 className="text-title mb-4">Four things I build with</h2>
               <p className="text-subtitle">
-                Focused on AI, Machine Learning, and Modern Web Technologies
+                From trained models to the pipelines and interfaces that make them useful.
               </p>
             </motion.div>
 
-            <div className="skills-grid">
-              {skills.map((skill, index) => (
-                <motion.div 
-                  key={skill.name}
+            <div className="focus-grid">
+              {focusAreas.map((area) => (
+                <motion.div
+                  key={area.title}
                   variants={itemVariants}
-                  className="skill-card card"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  className="focus-card card"
+                  whileHover={{ y: -6 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
                 >
-                  <div className="skill-header">
-                    <h3 className="skill-name">{skill.name}</h3>
-                    <span className="skill-percentage">{skill.level}%</span>
-                  </div>
-                  <div className="skill-bar">
-                    <motion.div 
-                      className="skill-progress"
-                      initial={{ width: 0 }}
-                      animate={skillsInView ? { width: `${skill.level}%` } : { width: 0 }}
-                      transition={{ duration: 1, delay: index * 0.1 }}
-                    />
+                  <h3 className="focus-title">{area.title}</h3>
+                  <p className="focus-description">{area.description}</p>
+                  <div className="focus-items">
+                    {area.items.map((item) => (
+                      <span key={item} className="focus-item">
+                        {item}
+                      </span>
+                    ))}
                   </div>
                 </motion.div>
               ))}
+            </div>
+
+            <motion.div variants={itemVariants} className="focus-cta">
+              <Link className="focus-cta-link" to="/about">
+                See the full technical stack and background
+                <ArrowRight size={16} />
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Featured work */}
+      <section className="work-section section" ref={workRef}>
+        <div className="container">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={workInView ? 'visible' : 'hidden'}
+          >
+            <motion.div
+              variants={itemVariants}
+              className="section-header text-center mb-16"
+            >
+              <span className="section-eyebrow">Selected work</span>
+              <h2 className="text-title mb-4">Projects I'm proud of</h2>
+              <p className="text-subtitle">
+                A few things I've built end to end — the reasoning behind each is in the
+                case study.
+              </p>
+            </motion.div>
+
+            <div className="work-grid">
+              {featuredProjects.map((project) => (
+                <motion.article
+                  key={project.id}
+                  variants={itemVariants}
+                  className="work-card card"
+                  whileHover={{ y: -6 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
+                  <Link to="/projects" className="work-card-link">
+                    <div className="work-image">
+                      <img src={project.image} alt="" loading="lazy" />
+                    </div>
+                    <div className="work-body">
+                      <span className="work-category">{project.category}</span>
+                      <h3 className="work-title">{project.title}</h3>
+                      <p className="work-description">{project.shortDescription}</p>
+                      <span className="work-cta">
+                        <Eye size={15} />
+                        Read the case study
+                      </span>
+                    </div>
+                  </Link>
+                </motion.article>
+              ))}
+            </div>
+
+            <motion.div variants={itemVariants} className="work-cta-row">
+              <Link className="btn-secondary" to="/projects">
+                <span>See all projects</span>
+                <ArrowRight size={18} />
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats strip */}
+      <section className="stats-section section-sm" ref={statsRef}>
+        <div className="container">
+          <motion.div
+            className="stats-row"
+            variants={containerVariants}
+            initial="hidden"
+            animate={statsInView ? 'visible' : 'hidden'}
+          >
+            {stats.map((stat) => (
+              <motion.div key={stat.label} variants={itemVariants} className="stat">
+                <span className="stat-value">{stat.value}</span>
+                <span className="stat-label">{stat.label}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Closing CTA */}
+      <section className="cta-section section">
+        <div className="container">
+          <motion.div
+            className="cta-panel"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="cta-title">Got something that needs building?</h2>
+            <p className="cta-subtitle">
+              I'm open to AI engineering and automation work — and happy to talk through
+              anything that fits.
+            </p>
+            <div className="cta-actions">
+              <Link className="btn-primary" to="/contact">
+                <span>Get in touch</span>
+                <ArrowRight size={18} />
+              </Link>
+              <a
+                className="btn-secondary"
+                href={profile.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>GitHub</span>
+              </a>
             </div>
           </motion.div>
         </div>

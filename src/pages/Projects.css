@@ -1,3 +1,14 @@
+/* Rebuild: shared eyebrow used by the page header. */
+.section-eyebrow {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-purple-light);
+  margin-bottom: 0.75rem;
+}
+
 .projects-page {
   padding-top: 6rem;
   background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);

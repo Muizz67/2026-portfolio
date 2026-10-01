@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, FileText } from 'lucide-react';
 import './Navbar.css';
+
+const links = [
+  { to: '/', label: 'Home' },
+  { to: '/projects', label: 'Projects' },
+  { to: '/about', label: 'About' },
+  { to: '/contact', label: 'Contact' }
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +24,14 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Navigating away should always dismiss the mobile menu, including
+  // browser back/forward, which fires no click on the link itself.
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  const isActive = (to) => location.pathname === to;
+
   return (
     <nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container">
@@ -25,55 +40,53 @@ const Navbar = () => {
             <span className="brand-text">Muizz</span>
             <span className="brand-accent">Rusdi</span>
           </Link>
-          
+
           <div className="navbar-menu">
-            <Link 
-              to="/" 
-              className={`navbar-link ${location.pathname === '/' ? 'active' : ''}`}
+            {links.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`navbar-link ${isActive(link.to) ? 'active' : ''}`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link
+              to="/resume"
+              className={`navbar-link navbar-resume ${isActive('/resume') ? 'active' : ''}`}
             >
-              Home
-            </Link>
-            <Link 
-              to="/about" 
-              className={`navbar-link ${location.pathname === '/about' ? 'active' : ''}`}
-            >
-              About
-            </Link>
-            <Link 
-              to="/projects" 
-              className={`navbar-link ${location.pathname === '/projects' ? 'active' : ''}`}
-            >
-              Projects
-            </Link>
-            <Link 
-              to="/contact" 
-              className={`navbar-link ${location.pathname === '/contact' ? 'active' : ''}`}
-            >
-              Contact
+              <FileText size={15} />
+              <span>Resume</span>
             </Link>
           </div>
 
-          <button 
+          <button
             onClick={() => setIsOpen(!isOpen)}
             className="navbar-toggle"
-            aria-label="Toggle menu"
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         <div className={`navbar-mobile ${isOpen ? 'open' : ''}`}>
-          <Link to="/" className="navbar-mobile-link" onClick={() => setIsOpen(false)}>
-            Home
-          </Link>
-          <Link to="/about" className="navbar-mobile-link" onClick={() => setIsOpen(false)}>
-            About
-          </Link>
-          <Link to="/projects" className="navbar-mobile-link" onClick={() => setIsOpen(false)}>
-            Projects
-          </Link>
-          <Link to="/contact" className="navbar-mobile-link" onClick={() => setIsOpen(false)}>
-            Contact
+          {links.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className={`navbar-mobile-link ${isActive(link.to) ? 'active' : ''}`}
+              onClick={() => setIsOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link
+            to="/resume"
+            className="navbar-mobile-link"
+            onClick={() => setIsOpen(false)}
+          >
+            Resume
           </Link>
         </div>
       </div>
