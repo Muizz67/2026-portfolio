@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Palette options — Muizz portfolio</title>
+<style>
+  :root {
+    --ink: #e9edf2;
+    --muted: #98a4b3;
+    --dim: #6b7787;
+    --page: #07090c;
+    --line: #232a34;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: Inter, -apple-system, system-ui, sans-serif;
+    background: var(--page);
+    color: var(--ink);
+    padding: 2.5rem 1.5rem 4rem;
+    line-height: 1.6;
+  }
+  header { max-width: 1100px; margin: 0 auto 2rem; }
+  h1 { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+  .lede { color: var(--muted); font-size: 1rem; max-width: 70ch; }
+  .grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .opt { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #0d1117; }
+  .opt-head { padding: 1.1rem 1.25rem; border-bottom: 1px solid var(--line); }
+  .opt-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.25rem; }
+  .badge {
+    display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 999px; margin-bottom: 0.5rem;
+  }
+  .badge.rec { background: rgba(16,185,129,.15); color: #34d399; border: 1px solid rgba(16,185,129,.3); }
+  .opt-note { font-size: 0.82rem; color: var(--muted); }
+
+  /* Live mini-preview of the real component language */
+  .demo { padding: 1.5rem 1.25rem; }
+  .demo h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  .demo h3 span { display:block; }
+  .demo h3 .grad { background: linear-gradient(135deg, var(--t-primary), var(--t-accent-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .demo p.sub { font-size: 0.86rem; color: var(--t-secondary); margin-bottom: 1.25rem; }
+  .badge-row {
+    display:inline-flex; align-items:center; gap:0.45rem;
+    background: color-mix(in srgb, var(--t-accent) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--t-accent) 26%, transparent);
+    border-radius: 50px; padding: 0.35rem 0.9rem; margin-bottom: 1.25rem;
+  }
+  .badge-row i { width: 6px; height: 6px; border-radius: 50%; background: var(--t-accent-light); }
+  .badge-row em { font-style: normal; font-size: 0.72rem; color: var(--t-accent-light); }
+  .btns { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--t-accent), var(--t-accent-dark));
+    color: #fff; border: none; border-radius: 10px; padding: 0.6rem 1.1rem;
+    font-weight: 600; font-size: 0.82rem;
+  }
+  .btn-secondary {
+    background: transparent; color: var(--t-primary);
+    border: 2px solid var(--t-border-light); border-radius: 10px;
+    padding: 0.55rem 1.1rem; font-weight: 600; font-size: 0.82rem;
+  }
+  .cards { display: grid; gap: 0.7rem; }
+  .card {
+    background: var(--t-bg-secondary); border: 1px solid var(--t-border);
+    border-radius: 12px; padding: 0.9rem 1rem;
+  }
+  .card:hover { border-color: var(--t-accent); }
+  .logo { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px;
+    border-radius:9px; background: rgba(255,255,255,.05); border:1px solid var(--t-border-light);
+    font-size: 0.7rem; font-weight:700; color: var(--t-accent-light); }
+  .card-top { display:flex; align-items:center; gap:0.7rem; margin-bottom:0.7rem; }
+  .card-name { font-size: 0.88rem; font-weight: 700; color: var(--t-primary); display:block; }
+  .card-pct { margin-left:auto; font-size: 0.76rem; font-weight:700; color: var(--t-accent-light); }
+  .bar { height: 5px; border-radius: 999px; background: color-mix(in srgb, var(--t-accent) 14%, transparent); overflow: hidden; }
+  .bar div { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--t-accent), var(--t-accent-light)); }
+  .swatches { display: flex; gap: 4px; padding: 0 1.25rem 1.25rem; flex-wrap: wrap; }
+  .sw { flex: 1; min-width: 34px; height: 40px; border-radius: 8px; border: 1px solid var(--line); }
+  .sw-labels { display:flex; gap:4px; padding: 0 1.25rem 1rem; }
+  .sw-l { flex:1; min-width:34px; text-align:center; font-size:0.6rem; color: var(--dim); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Palette options for your portfolio</h1>
+  <p class="lede">
+    Four <code>:root</code> token sets, each showing your actual hero, buttons, and
+    tech-card styling. Swap the matching block in <code>src/index.css</code> — no
+    markup changes needed.
+  </p>
+</header>
+<div class="grid" id="grid"></div>
+
+<script>
+const palettes = [
+  { key:'current', name:'Current — pure black + violet',
+    badge:null,
+    note:'Maximum contrast, and the reason it reads harsh. Pure #000 next to #111 surfaces looks like a void rather than a page.',
+    t:{ bgPrimary:'#000000', bgSecondary:'#0a0a0a', accent:'#8b5cf6', accentLight:'#a78bfa', accentDark:'#7c3aed',
+        primary:'#ffffff', secondary:'#a1a1aa', border:'#27272a', borderLight:'#3f3f46' } },
+  { key:'slate', name:'Soft slate + indigo', badge:'recommended',
+    note:'Lifts the page off #000 and cools the violet. Keeps it dark and professional, but the cards now read as surfaces instead of holes.',
+    t:{ bgPrimary:'#0d1117', bgSecondary:'#161b22', accent:'#7c8cf8', accentLight:'#a5b4fc', accentDark:'#6366f1',
+        primary:'#f0f4f8', secondary:'#a8b3c1', border:'#262d36', borderLight:'#39414c' } },
+  { key:'amber', name:'Warm charcoal + amber',
+    badge:null,
+    note:'Espresso darks with an amber accent. Least "developer default", and the warm accent separates cleanly from the cool tech logos.',
+    t:{ bgPrimary:'#12100e', bgSecondary:'#1c1917', accent:'#f59e0b', accentLight:'#fbbf24', accentDark:'#d97706',
+        primary:'#fafaf9', secondary:'#b8b0a6', border:'#292524', borderLight:'#44403c' } },
+  { key:'teal', name:'Deep teal + emerald',
+    badge:null,
+    note:'Harmonises with the green and blue brand logos already on your About page, so the tech grid stops fighting the accent.',
+    t:{ bgPrimary:'#0a1214', bgSecondary:'#111c1f', accent:'#2dd4bf', accentLight:'#5eead4', accentDark:'#14b8a6',
+        primary:'#eef7f6', secondary:'#9db3b2', border:'#1e2e31', borderLight:'#2c4247' } }
+];
+
+document.getElementById('grid').innerHTML = palettes.map(p => {
+  const s = Object.entries(p.t).map(([k,v]) => `--t-${k.replace(/[A-Z]/g, m => '-'+m.toLowerCase())}:${v}`).join(';');
+  return `<div class="opt" style="${s}">
+    <div class="opt-head">
+      ${p.badge ? `<span class="badge rec">${p.badge}</span>` : ''}
+      <div class="opt-name">${p.name}</div>
+      <div class="opt-note">${p.note}</div>
+    </div>
+    <div class="demo">
+      <div class="badge-row"><i></i><em>AI Automation • Software Developer</em></div>
+      <h3><span>Building Intelligent</span><span class="grad">AI Solutions</span></h3>
+      <p class="sub">AI engineer across data annotation, machine learning, and full-stack development.</p>
+      <div class="btns">
+        <span class="btn-primary">View Resume</span>
+        <span class="btn-secondary">View Projects</span>
+      </div>
+      <div class="cards">
+        <div class="card"><div class="card-top">
+          <span class="logo">Py</span>
+          <span><span class="card-name">Python</span></span>
+          <span class="card-pct">92%</span>
+        </div><div class="bar"><div style="width:92%"></div></div></div>
+        <div class="card"><div class="card-top">
+          <span class="logo">n8</span>
+          <span><span class="card-name">n8n</span></span>
+          <span class="card-pct">85%</span>
+        </div><div class="bar"><div style="width:85%"></div></div></div>
+      </div>
+    </div>
+    <div class="swatches">
+      <div class="sw" style="background:${p.t.bgPrimary}"></div>
+      <div class="sw" style="background:${p.t.bgSecondary}"></div>
+      <div class="sw" style="background:${p.t.accent}"></div>
+      <div class="sw" style="background:${p.t.accentLight}"></div>
+      <div class="sw" style="background:${p.t.border}"></div>
+    </div>
+    <div class="sw-labels">
+      <div class="sw-l">bg</div><div class="sw-l">card</div><div class="sw-l">acc</div>
+      <div class="sw-l">acc+</div><div class="sw-l">border</div>
+    </div>
+  </div>`;
+}).join('');
+</script>
+</body>
+</html>
