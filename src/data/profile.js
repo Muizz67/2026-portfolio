@@ -18,9 +18,8 @@ export const profile = {
   // than in `tagline` (which is the short positioning line used on Home and in
   // the footer).
   bio: [
-    "I'm passionate about AI, and the part I'm most drawn to is automation — the idea that something tedious only ever has to be built once. I worked that out during my AI engineering internship, where I built n8n workflows and the web scraping and automation scripts underneath them. Seeing a process that had been running on manual effort suddenly run by itself was the moment it clicked.",
-    'Beyond that I just genuinely like programming. The feeling of working something out and watching it work is its own reward, and I keep coming back to it.',
-    "Lately I've been digging into AI agents and building them for myself — automating my own day-to-day rather than someone else's. Gaming is what I do to switch off."
+    "I'm passionate about AI, and what I'm most drawn to is automation — the idea that something tedious only ever has to be built once. I worked that out during my AI engineering internship, where I built n8n workflows and the scraping and automation scripts underneath them. Watching a process that had run on manual effort suddenly run by itself was the moment it clicked.",
+    "Beyond that I just genuinely like programming — the feeling of working something out is its own reward. Lately I've been digging into AI agents and automating my own day-to-day, and gaming is what I do to switch off."
   ],
   resumeUrl: '/assets/resume/resume.pdf',
   links: {

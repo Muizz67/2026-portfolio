@@ -6,6 +6,8 @@ import {
   GraduationCap,
   ArrowRight,
   CheckCircle2,
+  Check,
+  ChevronDown,
   Calendar,
   Award,
   Sparkles,
@@ -93,14 +95,6 @@ const About = () => {
                 </div>
               </div>
 
-              {/* First-person bio. `tagline` stays the short positioning line
-                  used on Home and in the footer. */}
-              <div className="identity-bio">
-                {profile.bio.map((para) => (
-                  <p key={para.slice(0, 32)}>{para}</p>
-                ))}
-              </div>
-
               <div className="identity-pills">
                 {['AI', 'Automation', 'Programming', 'AI Agents', 'Gaming'].map((pill) => (
                   <span key={pill} className="identity-pill">
@@ -118,6 +112,72 @@ const About = () => {
                   <BsLinkedin size={16} />
                   <span>LinkedIn</span>
                 </a>
+              </div>
+            </motion.div>
+
+            {/* Bio + automation flow, side by side */}
+            <motion.div variants={itemVariants} className="mb-16">
+              <div className="about-split">
+                <div className="bio-col">
+                  <span className="section-eyebrow">In my own words</span>
+                  <div className="identity-bio">
+                    {profile.bio.map((para) => (
+                      <p key={para.slice(0, 32)}>{para}</p>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Illustrates the thing the bio describes rather than
+                    restating it: the manual-to-automatic arc. */}
+                <figure className="flow-card">
+                  <figcaption className="flow-caption">
+                    The idea I keep coming back to
+                  </figcaption>
+
+                  <div className="flow">
+                    <div className="flow-step">
+                      <span className="flow-dot" />
+                      <span className="flow-label">Manual process</span>
+                      <span className="flow-note">
+                        copy-paste, run by hand, every time
+                      </span>
+                    </div>
+
+                    <div className="flow-arrow" aria-hidden="true">
+                      <ChevronDown size={16} />
+                    </div>
+
+                    <div className="flow-step">
+                      <span className="flow-dot" />
+                      <span className="flow-label">n8n workflow</span>
+                      <span className="flow-note">orchestrates the triggers</span>
+                    </div>
+
+                    <div className="flow-arrow" aria-hidden="true">
+                      <ChevronDown size={16} />
+                    </div>
+
+                    <div className="flow-step">
+                      <span className="flow-dot" />
+                      <span className="flow-label">Python script</span>
+                      <span className="flow-note">scrapes, transforms, writes</span>
+                    </div>
+
+                    <div className="flow-arrow flow-arrow-accent" aria-hidden="true">
+                      <ChevronDown size={16} />
+                    </div>
+
+                    <div className="flow-step flow-step-end">
+                      <span className="flow-dot flow-dot-accent">
+                        <Check size={13} />
+                      </span>
+                      <span className="flow-label">Runs itself</span>
+                      <span className="flow-note">
+                        built once, works every time
+                      </span>
+                    </div>
+                  </div>
+                </figure>
               </div>
             </motion.div>
 
