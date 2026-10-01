@@ -196,7 +196,6 @@ export const certifications = [
     // Held as a PDF rather than a Credly badge, so this opens the local
     // document rather than leaving the site.
     link: '/assets/resume/n8n certificate simplilearn.pdf',
-    local: true,
   },
   {
     title: 'Introduction to Intelligent Virtual Agents (IVAs) with IBM watsonx Assistant',
