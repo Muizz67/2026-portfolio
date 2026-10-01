@@ -67,7 +67,7 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { y: 24, opacity: 0 },
+  hidden: { y: 22, opacity: 0 },
   visible: { y: 0, opacity: 1 }
 };
 
@@ -88,24 +88,26 @@ const Contact = () => {
 
   return (
     <div className="contact-page">
-      <section className="section">
+      <section className="section" ref={ref}>
         <div className="container">
           <motion.div
-            ref={ref}
             variants={containerVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
           >
-            <div className="section-header text-center mb-16">
+            <motion.div
+              variants={itemVariants}
+              className="section-header text-center mb-16"
+            >
               <span className="section-eyebrow">Contact</span>
               <h1 className="text-title mb-4">Get in touch</h1>
               <p className="text-subtitle">
                 Pick whichever channel suits you — I read all of them, and reply fastest
                 on WhatsApp and LinkedIn.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="contact-channels">
+            <motion.div variants={itemVariants} className="contact-channels">
               {channels.map((channel) => (
                 <motion.a
                   key={channel.id}
@@ -130,7 +132,7 @@ const Contact = () => {
                   </span>
                 </motion.a>
               ))}
-            </div>
+            </motion.div>
 
             {/* Convenience actions + availability */}
             <motion.div className="contact-utility" variants={itemVariants}>
