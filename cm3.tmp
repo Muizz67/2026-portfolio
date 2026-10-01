@@ -1,0 +1,37 @@
+Replace teal with indigo-violet on navy-slate surfaces
+
+User preferred the grey-box look of safwanhakim.com but wanted a purple
+accent, having rejected both the original violet and the teal.
+
+Accent choice:
+- Took the neutral structure from safwanhakim.com's actual stylesheet:
+  #0a0e17 page, #101828 card, #1a2436 raised surface. His accent is gold
+  (#d4af37), so the purple is ours; what we borrowed is the navy-slate
+  neutrality that makes boxes read as panels rather than holes.
+- Accent is #8b7cf6, an indigo-leaning violet rather than flat #8b5cf6.
+  Picked by measuring candidates against --bg-secondary: 5.33:1, versus
+  4.19:1 for the original. This keeps the accent legible on cards, not just
+  on the page background, which was the weakest part of the first purple.
+- Swapped all 113 hardcoded teal rgba values back to the new accent trio,
+  plus the navy-tinted navbar and modal overlays.
+
+Grey-box surfaces:
+- Made .card translucent (rgb(26 36 54 / 0.62) with backdrop blur), the way
+  Safwan's --surface is rgba(26,36,54,.62). A translucent slate lets the
+  hero gradient read through stacked cards, which is what produces the
+  layered grey-panel feel rather than flat opaque rectangles.
+- Seven page-level components set their own opaque --bg-secondary and would
+  have overridden that, so they were converted to match.
+- Card hover border now uses color-mix so it lands at 45% accent instead of
+  the full accent, which was very hot on the lighter base.
+
+Also removed a stray cm.tmp that an earlier commit picked up, and updated
+theme-color in index.html and manifest.json to the new base.
+
+Note: the repo's build/ directory is currently locked by a VS Code process,
+so verification was done against a BUILD_PATH build in scratch. Same source,
+clean compile, all five routes serve 200. The local build folder should
+regenerate normally once the editor releases it.
+
+Verified: compiled CSS contains #8b7cf6 59 times and zero teal; translucent
+card surface compiles to #1a24369e across 8 rules.

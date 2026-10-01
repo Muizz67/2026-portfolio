@@ -28,7 +28,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1.35rem 1.5rem;
-  background: var(--bg-secondary);
+  background: rgb(26 36 54 / 0.62);
   border: 1px solid var(--border);
   border-radius: 14px;
   text-decoration: none;
@@ -145,7 +145,7 @@
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-secondary);
-  background: var(--bg-secondary);
+  background: rgb(26 36 54 / 0.62);
   border: 1px solid var(--border);
   border-radius: 10px;
   cursor: pointer;
@@ -184,10 +184,10 @@
      so this one goes darker than the page rather than lighter. */
   background: linear-gradient(
     135deg,
-    rgb(45 212 191 / 0.12),
-    rgb(45 212 191 / 0.02)
+    rgb(139 124 246 / 0.12),
+    rgb(139 124 246 / 0.02)
   );
-  border: 1px solid rgb(45 212 191 / 0.28);
+  border: 1px solid rgb(139 124 246 / 0.28);
   border-radius: 16px;
 }
 
@@ -200,13 +200,13 @@
   margin-top: 0.5rem;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 4px rgb(45 212 191 / 0.18);
+  box-shadow: 0 0 0 4px rgb(139 124 246 / 0.18);
   animation: availability-pulse 2.4s ease-in-out infinite;
 }
 
 @keyframes availability-pulse {
-  0%, 100% { box-shadow: 0 0 0 4px rgb(45 212 191 / 0.18); }
-  50% { box-shadow: 0 0 0 7px rgb(45 212 191 / 0.06); }
+  0%, 100% { box-shadow: 0 0 0 4px rgb(139 124 246 / 0.18); }
+  50% { box-shadow: 0 0 0 7px rgb(139 124 246 / 0.06); }
 }
 
 .availability-title {

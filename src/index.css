@@ -7,27 +7,29 @@
 }
 
 :root {
-  /* Teal palette. The base is lifted well off #000 so cards read as surfaces
-     rather than holes, and the accent is a desaturated teal that sits with
-     the green/blue brand logos on the About page instead of fighting them. */
-  --bg-primary: #0a1214;
-  --bg-secondary: #111c1f;
-  --bg-tertiary: #18272b;
-  --accent: #2dd4bf;
-  --accent-light: #5eead4;
-  --accent-dark: #14b8a6;
-  --text-primary: #eef7f6;
-  --text-secondary: #9db3b2;
-  --text-muted: #6e8383;
-  --border: #1e2e31;
-  --border-light: #2c4247;
+  /* Palette borrowed in structure from safwanhakim.com: navy-slate surfaces
+     rather than pure black, which is what makes the boxes read as grey
+     panels instead of holes. His accent is gold; ours is an indigo-leaning
+     violet (#8b7cf6), chosen for 5.3:1 against --bg-secondary so the accent
+     stays legible on cards rather than only on the page. */
+  --bg-primary: #0a0e17;
+  --bg-secondary: #101828;
+  --bg-tertiary: #1a2436;
+  --accent: #8b7cf6;
+  --accent-light: #b0a6f9;
+  --accent-dark: #6f5ce8;
+  --text-primary: #e2e8f0;
+  --text-secondary: #9aa7bd;
+  --text-muted: #6b7789;
+  --border: #1e2a3d;
+  --border-light: #2b3a52;
 
   /* Shadows & Effects */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5);
-  --shadow-accent: 0 10px 25px -5px rgb(45 212 191 / 0.3);
+  --shadow-accent: 0 10px 25px -5px rgb(139 124 246 / 0.3);
 
   /* Transitions */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -129,7 +131,7 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 20px 40px -10px rgb(45 212 191 / 0.4);
+  box-shadow: 0 20px 40px -10px rgb(139 124 246 / 0.4);
 }
 
 /* Gradient Text */
@@ -140,18 +142,23 @@ body {
   background-clip: text;
 }
 
-/* Card System */
+/* Card System — translucent slate over the page, in the manner of
+   safwanhakim.com. A semi-transparent surface lets the page gradient show
+   through slightly, so stacked cards read as layers of grey panel rather
+   than flat opaque rectangles. Falls back to an opaque fill via the
+   bg-secondary underneath for browsers without backdrop-filter. */
 .card {
-  background: var(--bg-secondary);
+  background: rgb(26 36 54 / 0.62);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 2rem;
   transition: var(--transition);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .card:hover {
-  border-color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
   box-shadow: var(--shadow-accent);
   transform: translateY(-4px);
 }
