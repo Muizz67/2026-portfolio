@@ -69,22 +69,22 @@
 
 .identity-top {
   display: flex;
-  /* stretch, not center: the avatar grows to the full height of the text
-     column so it spans name -> availability with no gap above or below. */
-  align-items: stretch;
+  align-items: center;
   gap: 1.25rem;
   margin-bottom: 1.5rem;
 }
 
+/* Square tile sized to the text column's height (name + role + meta +
+   availability badge = 119px), so it spans the full block with no gap. */
 .identity-avatar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 88px;
-  min-height: 112px;
+  width: 119px;
+  height: 119px;
   flex-shrink: 0;
-  border-radius: 20px;
-  font-size: 1.75rem;
+  border-radius: 32px;
+  font-size: 2.45rem;
   font-weight: 800;
   letter-spacing: 0.02em;
   color: var(--bg-primary);
@@ -791,8 +791,7 @@ a.cert-card:hover .cert-cta {
   .identity-avatar {
     width: 76px;
     height: 76px;
-    min-height: 0;
-    font-size: 1.5rem;
-    border-radius: 18px;
+    font-size: 1.56rem;
+    border-radius: 20px;
   }
 }
