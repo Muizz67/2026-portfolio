@@ -3,11 +3,9 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import {
-  Globe2,
   GraduationCap,
   ArrowRight,
   CheckCircle2,
-  MapPin,
   Calendar,
   Award,
   Sparkles,
@@ -16,7 +14,6 @@ import {
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
 import {
   technicalStack,
-  languages,
   experience,
   education,
   certifications,
@@ -96,10 +93,16 @@ const About = () => {
                 </div>
               </div>
 
-              <p className="identity-bio">{profile.tagline}</p>
+              {/* First-person bio. `tagline` stays the short positioning line
+                  used on Home and in the footer. */}
+              <div className="identity-bio">
+                {profile.bio.map((para) => (
+                  <p key={para.slice(0, 32)}>{para}</p>
+                ))}
+              </div>
 
               <div className="identity-pills">
-                {['Vision', 'Execution', 'Iteration'].map((pill) => (
+                {['AI', 'Automation', 'Programming', 'AI Agents', 'Gaming'].map((pill) => (
                   <span key={pill} className="identity-pill">
                     {pill}
                   </span>
@@ -146,7 +149,7 @@ const About = () => {
                     Education
                   </h2>
                   <p className="block-sub">
-                    Universiti Teknologi MARA (UiTM)
+                    Where I Studied — and what I learned along the way
                   </p>
                 </div>
                 <div className="block-body">
@@ -296,33 +299,14 @@ const About = () => {
                 </div>
               </div>
             </motion.div>
-
-            {/* Languages */}
-            <motion.div variants={itemVariants} className="mb-16">
-              <div className="block">
-                <div className="block-head">
-                  <h2 className="block-title">
-                    <Globe2 size={18} />
-                    Languages
-                  </h2>
-                  <p className="block-sub">Working proficiency</p>
-                </div>
-                <div className="block-body">
-                  <div className="lang-row">
-                    {languages.map((lang) => (
-                      <div key={lang.name} className="lang-item">
-                        <span className="lang-name">{lang.name}</span>
-                        <span className="lang-level">{lang.level}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="loc-note">
-                    <MapPin size={14} />
-                    <span>{profile.location}</span>
-                  </div>
-                </div>
-              </div>
+            <motion.div variants={itemVariants} className="exp-footer">
+              <Link className="btn-secondary" to="/experience">
+                <span>View Experience</span>
+                <ArrowRight size={18} />
+              </Link>
+              <Link className="exp-footer-link" to="/contact">
+                Get in touch
+              </Link>
             </motion.div>
           </motion.div>
         </div>

@@ -4,7 +4,7 @@
 
 export const profile = {
   name: 'Muizz Rusdi',
-  fullName: "Muhammad Mu'izz bin Rusdi",
+  fullName: "Muizz Rusdi",
   role: 'AI Automation • Software Developer',
   headline: 'Building Intelligent AI Solutions',
   tagline:
@@ -14,6 +14,14 @@ export const profile = {
   // Digits only, international format, for the wa.me deep link.
   phoneDisplay: '+60 11-1185 0771',
   phoneE164: '601111850771',
+  // Personal biography. Longer and first-person, so it belongs on About rather
+  // than in `tagline` (which is the short positioning line used on Home and in
+  // the footer).
+  bio: [
+    "I'm passionate about AI, and the part I'm most drawn to is automation — the idea that something tedious only ever has to be built once. I worked that out during my AI engineering internship, where I built n8n workflows and the web scraping and automation scripts underneath them. Seeing a process that had been running on manual effort suddenly run by itself was the moment it clicked.",
+    'Beyond that I just genuinely like programming. The feeling of working something out and watching it work is its own reward, and I keep coming back to it.',
+    "Lately I've been digging into AI agents and building them for myself — automating my own day-to-day rather than someone else's. Gaming is what I do to switch off."
+  ],
   resumeUrl: '/assets/resume/resume.pdf',
   links: {
     github: 'https://github.com/Muizz67',
@@ -166,14 +174,14 @@ export const education = [
     degree: 'Intelligent System Engineering',
     university: 'Universiti Teknologi MARA (UiTM), Shah Alam',
     timeline: 'March 2023 — June 2025',
-    cgpa: '3.51 / 4.00'
+    cgpa: '3.51'
   },
   {
     level: 'Diploma',
     degree: 'Computer Science',
     university: 'Universiti Teknologi MARA (UiTM), Raub',
     timeline: 'October 2020 — March 2023',
-    cgpa: '3.49 / 4.00'
+    cgpa: '3.49'
   }
 ];
 

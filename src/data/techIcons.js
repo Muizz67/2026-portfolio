@@ -21,13 +21,20 @@ import {
   SiDocker,
   SiGit,
   SiObsidian,
-  SiCplusplus
+  SiCplusplus,
+  SiGooglecloud,
+  SiHtml5,
+  SiJson,
+  SiJupyter
 } from 'react-icons/si';
 
 import {
   FaDatabase,
   FaHashtag,
-  FaCubes
+  FaCubes,
+  FaLink,
+  FaChartBar,
+  FaCode
 } from 'react-icons/fa';
 
 // Simple Icons ships monochrome glyphs, so each entry carries its brand hex.
@@ -55,7 +62,19 @@ const registry = {
   obsidian: { Icon: SiObsidian, tint: '#A78BFA' },
   sql: { Icon: FaDatabase, tint: '#7BA8A6' },
   java: { Icon: FaHashtag, tint: '#ED8B00' },
-  cpp: { Icon: SiCplusplus, tint: '#3B8FD4' }
+  cpp: { Icon: SiCplusplus, tint: '#3B8FD4' },
+
+  // Technologies that appear in projects but not in the About stack.
+  gcp: { Icon: SiGooglecloud, tint: '#4285F4' },
+  html: { Icon: SiHtml5, tint: '#E34F26' },
+  json: { Icon: SiJson, tint: '#9AA7BD' },
+  rest: { Icon: FaLink, tint: '#5EEAD4' },
+  powerbi: { Icon: FaChartBar, tint: '#F2C811' },
+  llm: { Icon: FaCode, tint: '#B0A6F9' },
+  julius: { Icon: FaChartBar, tint: '#8B7CF6' },
+  ibmwatson: { Icon: FaCubes, tint: '#5EEAD4' },
+  dashboard: { Icon: FaChartBar, tint: '#5EEAD4' },
+  notebook: { Icon: SiJupyter, tint: '#F37726' }
 };
 
 export function techIcon(key, size = 22) {

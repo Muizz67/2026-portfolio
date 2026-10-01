@@ -3,9 +3,37 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Eye, X } from 'lucide-react';
 import { GithubIcon } from '../components/BrandIcons';
+import { techIcon } from '../data/techIcons';
 import { projects } from '../data/projects';
 import { icon } from '../data/icon';
 import './Projects.css';
+
+// Project tech labels don't all match the About stack names, so map each one
+// to a logo key. Anything unmapped simply renders without a mark.
+const techToKey = {
+  'IBM Watson': 'ibmwatson',
+  'Machine Learning': 'sklearn',
+  'Scikit-learn': 'sklearn',
+  'LLMs': 'llm',
+  'Julius AI': 'julius',
+  'Dashboard': 'dashboard',
+  'Power BI': 'powerbi',
+  'Cloudflare R2': 'cloudflare',
+  'Google Cloud Platform': 'gcp',
+  'REST API': 'rest',
+  JSON: 'json',
+  HTML: 'html',
+  CSS: 'html',
+  Python: 'python',
+  Pandas: 'pandas',
+  Selenium: 'selenium',
+  BeautifulSoup: 'selenium',
+  Obsidian: 'obsidian',
+  Docker: 'docker',
+  n8n: 'n8n',
+  'Node.js': 'node',
+  JavaScript: 'javascript'
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -58,8 +86,8 @@ const Projects = () => {
               variants={itemVariants}
               className="section-header text-center mb-16"
             >
-              <span className="section-eyebrow">Case studies</span>
-              <h1 className="text-title mb-4">Projects</h1>
+              <span className="section-eyebrow">Projects</span>
+              <h1 className="text-title mb-4">Case studies</h1>
               <p className="text-subtitle">
                 {projects.length} projects across AI, ML, automation, and full-stack work.
                 Open any one for the reasoning behind it.
@@ -108,7 +136,8 @@ const Projects = () => {
                     <div className="project-tech">
                       {project.tech.map((tech) => (
                         <span key={tech} className="tech-tag">
-                          {tech}
+                          {techIcon(techToKey[tech], 14)}
+                          <span>{tech}</span>
                         </span>
                       ))}
                     </div>

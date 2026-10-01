@@ -110,8 +110,8 @@ const Experience = () => {
             </div>
 
             <motion.div variants={itemVariants} className="exp-footer">
-              <Link className="btn-secondary" to="/about">
-                <span>Background, education &amp; stack</span>
+              <Link className="btn-secondary" to="/projects">
+                <span>See All Projects</span>
                 <ArrowRight size={18} />
               </Link>
               <Link className="exp-footer-link" to="/contact">

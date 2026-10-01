@@ -16,7 +16,6 @@ const channels = [
     href: `mailto:${profile.email}`,
     Icon: Mail,
     accent: '#EA4335',
-    note: 'Best for anything detailed',
     copyable: true
   },
   {
@@ -26,7 +25,6 @@ const channels = [
     href: `tel:${profile.phoneE164}`,
     Icon: Phone,
     accent: '#34A853',
-    note: 'Weekdays, 9am — 6pm MYT'
   },
   {
     id: 'whatsapp',
@@ -35,7 +33,6 @@ const channels = [
     href: profile.links.whatsapp,
     Icon: BsWhatsapp,
     accent: '#25D366',
-    note: 'Quickest for a short message',
     external: true
   },
   {
@@ -45,7 +42,6 @@ const channels = [
     href: profile.links.github,
     Icon: BsGithub,
     accent: '#E6EDF3',
-    note: 'Open source and experiments',
     external: true
   },
   {
@@ -55,7 +51,6 @@ const channels = [
     href: profile.links.linkedin,
     Icon: BsLinkedin,
     accent: '#0A66C2',
-    note: 'Professional enquiries',
     external: true
   }
 ];
@@ -112,7 +107,6 @@ const Contact = () => {
                   <span className="channel-body">
                     <span className="channel-label">{channel.label}</span>
                     <span className="channel-value">{channel.value}</span>
-                    <span className="channel-note">{channel.note}</span>
                   </span>
 
                   <span className="channel-arrow">
@@ -159,7 +153,7 @@ const Contact = () => {
                 <p className="availability-text">
                   I'm currently looking for AI engineering, data, or full-stack roles —
                   freelance, contract, or full-time. Based in Bandar Baru Bangi and
-                  comfortable working remotely across GMT+8 and beyond.
+                  comfortable working across GMT+8 and beyond.
                 </p>
               </div>
             </motion.div>
