@@ -231,6 +231,55 @@ export const certifications = [
   }
 ];
 
+// Expertise blocks. `technologies` renders as a chip cluster and
+// `highlights` as a checked list — the layout borrowed from the reference.
+export const expertise = [
+  {
+    title: 'AI & Machine Learning',
+    summary:
+      'Model development and evaluation in Python — dataset assembly, feature prep, trained models, interpretable results.',
+    technologies: ['Python', 'TensorFlow', 'Scikit-learn', 'Pandas', 'Random Forest', 'SVM', 'ANN'],
+    highlights: [
+      'Compared three model families (Random Forest, SVM, ANN) on Malaysian crop data behind a Power BI dashboard',
+      'Built ETL pipelines that cut manual data handling by around 70%',
+      'Ran prompt engineering across ChatGPT, DeepSeek, Gemini, Mistral and Ollama'
+    ]
+  },
+  {
+    title: 'Data Annotation & Collection',
+    summary:
+      'Specialist annotation for language and vision datasets, plus the scraping pipelines that feed them.',
+    technologies: ['Label Studio', 'YOLOv8', 'Selenium', 'BeautifulSoup', 'Julius AI'],
+    highlights: [
+      'Held ~97% annotation accuracy against a 95% KPI benchmark at volume',
+      'Annotated video object detection datasets in Label Studio for YOLOv8 training',
+      'Built collection pipelines from Twitter, Reddit and forum sources for sentiment analysis'
+    ]
+  },
+  {
+    title: 'Automation & Workflow',
+    summary:
+      'Scheduled pipelines that replace manual data handling with something reliable that runs without supervision.',
+    technologies: ['n8n', 'Python', 'Docker', 'Cloudflare R2', 'Google Sheets API'],
+    highlights: [
+      'Designed n8n AI pipelines removing roughly 70% of manual data handling',
+      'Delivered text-to-speech and AI video generation for internal products',
+      'Automated a daily publish cycle from scrape to Cloudflare R2'
+    ]
+  },
+  {
+    title: 'Full-Stack & Quality',
+    summary:
+      'Laravel, Vue and Node backends and frontends — defended by unit tests, because production bugs are expensive.',
+    technologies: ['Laravel', 'Vue.js', 'Node.js', 'PHP', 'REST API'],
+    highlights: [
+      'Maintained live client web applications and resolved production incidents',
+      'Wrote and maintained 20+ unit tests covering backend service functionality',
+      'Shipped an AI task planner to the IBM BridgeHack-To-Industry Top 10'
+    ]
+  }
+];
+
 export const stats = [
   { value: '6', label: 'Certifications' },
   { value: '5', label: 'Projects' },

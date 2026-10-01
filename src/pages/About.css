@@ -1,4 +1,13 @@
-/* Added for the About rebuild: shared eyebrow style. */
+/* About page. Box architecture follows the reference site (ali-ch.dev/about):
+   shadcn-style cards — thin 1px border, subtly lighter surface, 12-16px radius,
+   a header block separated from the body block. The colour values stay on the
+   navy-slate + amber theme rather than the reference's neutral sage. */
+
+.about-page {
+  padding-top: 6rem;
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
 
 .section-eyebrow {
   display: block;
@@ -6,431 +15,753 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent-light);
+  color: var(--accent);
   margin-bottom: 0.75rem;
 }
 
-.education-degree {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.35;
-  margin-bottom: 1.1rem;
+/* ---------- Block: header + body, the core container ---------- */
+.block {
+  background: rgb(26 36 54 / 0.5);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: var(--transition);
 }
 
-.education-gpa {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-top: 1rem;
-  padding: 0.7rem 0.9rem;
-  background: rgba(240, 180, 41, 0.08);
-  border: 1px solid rgba(240, 180, 41, 0.18);
-  border-radius: 10px;
+.block:hover {
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
-.education-gpa-value {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--accent-light);
-  font-variant-numeric: tabular-nums;
-}
-
-
-.education-card code,
-.text-body-muted code {
-  font-size: 0.85em;
-  color: var(--accent-light);
-  background: rgba(240, 180, 41, 0.1);
-  border-radius: 4px;
-  padding: 0.1rem 0.35rem;
-}
-
-/* Tighter rhythm than the other pages: this one is a single long read, so
-   the vertical spacing between sections is reduced to stop it reading as a
-   stack of disconnected blocks. */
-.about-page {
-  padding-top: 6rem;
-  background: var(--bg-primary);
-  min-height: 100vh;
-}
-
-/* Section label with a rule running to the edge — a cheap way to give each
-   block a clear heading instead of a floating centred title. */
-.about-section {
-  margin-bottom: 3rem;
-}
-
-.about-section-head {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 1.75rem;
-  padding-bottom: 0.85rem;
+.block-head {
+  padding: 1.5rem 1.75rem;
   border-bottom: 1px solid var(--border);
+  background: rgb(255 255 255 / 0.015);
 }
 
-.about-section-head h2 {
-  font-size: 1.35rem;
+.block-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin: 0;
+  margin-bottom: 0.3rem;
+}
+
+.block-title svg {
+  color: var(--accent);
   flex-shrink: 0;
 }
 
-.about-section-head span {
+.block-sub {
   font-size: 0.88rem;
   color: var(--text-muted);
 }
 
-.section-subtitle {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 1rem;
+.block-body {
+  padding: 1.75rem;
+}
+
+/* ---------- Identity card ---------- */
+.identity-card {
+  padding: 2rem;
+}
+
+.identity-top {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-}
-
-.text-body-muted {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
-.inline-icon {
-  color: var(--accent);
-}
-
-/* ---------- Background (+ inline Languages) ---------- */
-.languages-inline {
-  border-top: 1px solid rgba(240, 180, 41, 0.15);
-  padding-top: 1.5rem;
-}
-
-.languages-inline-title {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-}
-
-.language-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.language-item {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.6rem 1rem;
-  background: rgba(240, 180, 41, 0.08);
-  border: 1px solid rgba(240, 180, 41, 0.18);
-  border-radius: 8px;
-}
-
-.language-name {
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.language-level {
-  font-size: 0.85rem;
-  color: var(--accent);
-  font-weight: 600;
-}
-
-/* ---------- Education ---------- */
-.education-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.education-card {
-  position: relative;
-  text-align: left;
-}
-
-.education-icon {
-  width: 40px;
-  height: 40px;
-  background: rgba(240, 180, 41, 0.1);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
-  border: 1px solid rgba(240, 180, 41, 0.2);
-  margin-bottom: 1rem;
-}
-
-.education-level {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  color: var(--accent);
-  margin-bottom: 1rem;
-}
-
-.education-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.education-row:last-child {
-  margin-bottom: 0;
-}
-
-.education-label {
-  display: block;
-  text-align: left;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-bottom: 0.25rem;
-}
-
-.education-value {
-  text-align: left;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-/* ---------- Certifications ---------- */
-.cert-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
-.cert-card-new {
-  background: rgba(240, 180, 41, 0.05);
-  border: 1px solid rgba(240, 180, 41, 0.15);
-  border-radius: 10px;
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.cert-card-new .cert-icon {
-  width: 40px;
-  height: 40px;
-  background: rgba(240, 180, 41, 0.1);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
-  border: 1px solid rgba(240, 180, 41, 0.2);
-  margin-bottom: 0.25rem;
-}
-
-.cert-card-new .cert-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1.35;
-}
-
-.cert-card-new .cert-meta {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.cert-view-btn {
-  margin-top: 0.5rem;
-  align-self: flex-start;
+.identity-avatar {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  font-size: 0.8rem;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  border-radius: 18px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--bg-primary);
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+}
+
+.identity-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.identity-role {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.identity-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--accent);
-  border: 1px solid rgba(240, 180, 41, 0.3);
-  border-radius: 6px;
-  padding: 0.35rem 0.8rem;
-  text-decoration: none;
-  transition: background 0.2s ease;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+  border-radius: 999px;
 }
 
-.cert-view-btn:hover {
-  background: rgba(240, 180, 41, 0.1);
+.identity-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  position: relative;
 }
 
-.cert-view-btn-disabled {
-  color: var(--text-muted);
-  border-color: rgba(240, 180, 41, 0.12);
-  cursor: default;
+.identity-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: identity-pulse 2s ease-out infinite;
 }
 
-/* ---------- Technical Stack ---------- */
-.stack-tabs {
+@keyframes identity-pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+.identity-bio {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 72ch;
+  margin-bottom: 1.5rem;
+}
+
+.identity-pills {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: 0.6rem;
-  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
 }
 
-.stack-tab {
-  font-size: 0.8rem;
+.identity-pill {
+  padding: 0.4rem 1rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-secondary);
-  background: transparent;
-  border: 1px solid rgba(240, 180, 41, 0.2);
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid var(--border-light);
   border-radius: 999px;
-  padding: 0.45rem 1rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-.stack-tab:hover {
-  border-color: var(--accent);
-  color: var(--text-primary);
-}
-
-.stack-tab-active {
-  background: var(--accent);
-  border-color: var(--accent);
-  /* Dark text on the light amber fill — white here would be 1.9:1. */
-  color: #0a0e17;
-}
-
-.stack-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.25rem;
-  margin-bottom: 2.5rem;
-}
-
-.stack-card {
-  background: rgb(26 36 54 / 0.62);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.15rem 1.25rem 1.25rem;
+.identity-links {
   display: flex;
-  flex-direction: column;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.identity-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-decoration: none;
   transition: var(--transition);
 }
 
-.stack-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(240, 180, 41, 0.45);
-  box-shadow: var(--shadow-accent);
+.identity-links a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
 }
 
-/* Logo chip: a tinted tile so dark brand marks (Pandas, YOLO) stay legible
-   against the near-black card instead of vanishing into it. */
-.stack-logo {
+/* ---------- Stats grid ---------- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.stat-box {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: rgb(26 36 54 / 0.5);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: var(--transition);
+}
+
+.stat-box:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  transform: translateY(-3px);
+}
+
+.stat-box-value {
+  display: block;
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-box-label {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Context cards ---------- */
+.context-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.context-card {
+  padding: 1.4rem 1.5rem;
+  background: rgb(255 255 255 / 0.022);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+.context-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.context-text {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* ---------- Signals: chips + steps ---------- */
+.signal-block {
+  padding-top: 1.75rem;
+  margin-top: 1.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.signal-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.chip {
+  padding: 0.4rem 0.95rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgb(255 255 255 / 0.035);
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+}
+
+.steps {
+  list-style: none;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  border-radius: 8px;
+}
+
+/* ---------- Experience bridge ---------- */
+.bridge-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem 1.75rem;
+  background: rgb(26 36 54 / 0.5);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.bridge-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  background: rgb(26 36 54 / 0.72);
+  transform: translateY(-2px);
+}
+
+.bridge-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 46px;
   height: 46px;
   flex-shrink: 0;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-light);
+  border-radius: 13px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
 }
 
-.stack-card-top {
-  display: flex;
+.bridge-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.bridge-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.15rem;
+}
+
+.bridge-sub {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.bridge-arrow {
+  display: inline-flex;
   align-items: center;
-  gap: 0.85rem;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  transition: var(--transition);
+}
+
+.bridge-card:hover .bridge-arrow {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+/* ---------- Split grid (Education + Languages) ---------- */
+.split-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.edu-stack {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.edu-item {
+  padding: 1.25rem 1.4rem;
+  background: rgb(255 255 255 / 0.022);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.edu-level {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.edu-degree {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text-primary);
   margin-bottom: 0.9rem;
 }
 
-.stack-card-heading {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  min-width: 0;
-  flex: 1;
+/* Label/value pairs — the reference's "box, label, value" pattern. */
+.field-list {
+  display: grid;
+  gap: 0.6rem;
 }
 
-.stack-card-name {
-  font-size: 0.98rem;
+.field {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+.field dt {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.field dd {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.field-icon {
+  color: var(--text-muted);
+  display: inline-flex;
+}
+
+.field-strong {
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Languages ---------- */
+.lang-list {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.lang-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.1rem;
+  background: rgb(255 255 255 / 0.022);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.lang-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.lang-level {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.loc-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.loc-note svg {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+/* ---------- Certifications ---------- */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.9rem;
+}
+
+.cert-card {
+  padding: 1.25rem 1.4rem;
+  background: rgb(255 255 255 / 0.022);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: var(--transition);
+}
+
+.cert-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  transform: translateY(-2px);
+}
+
+.cert-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.7rem;
+}
+
+.cert-issuer {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.cert-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.cert-verified svg {
+  color: var(--accent);
+}
+
+.cert-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.show-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.25rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgb(255 255 255 / 0.035);
+  border: 1px solid var(--border-light);
+  border-radius: 9px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.show-more:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---------- Technical stack ---------- */
+.stack-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+  background: rgb(255 255 255 / 0.015);
+}
+
+.stack-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.stack-tab:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+}
+
+.stack-tab-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  /* Dark text on the light amber fill; white would be ~1.9:1. */
+  color: var(--bg-primary);
+}
+
+.stack-tab-count {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0.75;
+}
+
+.stack-tab-active .stack-tab-count {
+  background: rgba(10, 14, 23, 0.25);
+  opacity: 1;
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.9rem;
+}
+
+.stack-card {
+  padding: 1.25rem 1.4rem;
+  background: rgb(255 255 255 / 0.022);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: var(--transition);
+}
+
+.stack-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  transform: translateY(-2px);
+}
+
+.stack-top {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.stack-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: rgb(255 255 255 / 0.05);
+  border: 1px solid var(--border-light);
+}
+
+.stack-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.25;
 }
 
-.stack-card-group {
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.stack-card-percent {
-  font-size: 0.82rem;
+.stack-level {
+  font-size: 0.8rem;
   font-weight: 700;
-  color: var(--accent-light);
+  color: var(--accent);
   font-variant-numeric: tabular-nums;
   flex-shrink: 0;
 }
 
-.stack-bar-track {
-  width: 100%;
+.stack-track {
   height: 5px;
   border-radius: 999px;
-  background: rgba(240, 180, 41, 0.12);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
   overflow: hidden;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.75rem;
 }
 
-.stack-bar-fill {
+.stack-fill {
   height: 100%;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--accent), var(--accent-light));
 }
 
-.stack-card-description {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  line-height: 1.55;
-  margin-top: auto;
+.stack-desc {
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: var(--text-muted);
 }
-
-
-
-
 
 /* ---------- Responsive ---------- */
 @media (max-width: 968px) {
-  .info-grid {
+  .split-grid {
     grid-template-columns: 1fr;
   }
 
-
-
-
-
-
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 640px) {
-  .education-row {
-    grid-template-columns: 1fr;
-    gap: 0.6rem;
+  .identity-card,
+  .block-body {
+    padding: 1.5rem;
   }
 
+  .identity-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .field {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .context-grid,
+  .stack-grid,
   .cert-grid {
     grid-template-columns: 1fr;
   }
 
-  .stack-grid {
-    grid-template-columns: 1fr;
+  .stack-tabs {
+    padding: 1rem 1.25rem;
+  }
+
+  .block-head {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .bridge-card {
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .identity-dot::after {
+    animation: none;
   }
 }
