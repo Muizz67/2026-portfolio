@@ -69,7 +69,9 @@
 
 .identity-top {
   display: flex;
-  align-items: center;
+  /* stretch, not center: the avatar grows to the full height of the text
+     column so it spans name -> availability with no gap above or below. */
+  align-items: stretch;
   gap: 1.25rem;
   margin-bottom: 1.5rem;
 }
@@ -78,11 +80,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 68px;
-  height: 68px;
+  width: 88px;
+  min-height: 112px;
   flex-shrink: 0;
-  border-radius: 18px;
-  font-size: 1.4rem;
+  border-radius: 20px;
+  font-size: 1.75rem;
   font-weight: 800;
   letter-spacing: 0.02em;
   color: var(--bg-primary);
@@ -775,4 +777,22 @@ a.cert-card:hover .cert-cta {
 .identity-meta-item svg {
   color: var(--accent);
   flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  /* Once stacked, a stretched avatar would read as an odd tall slab next to
+     no text, so it returns to a fixed square. */
+  .identity-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .identity-avatar {
+    width: 76px;
+    height: 76px;
+    min-height: 0;
+    font-size: 1.5rem;
+    border-radius: 18px;
+  }
 }
