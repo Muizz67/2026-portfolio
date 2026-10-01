@@ -156,21 +156,6 @@ export const experience = [
       'Maintained application features across Laravel, Vue.js and Node.js'
     ],
     icon: 'Code'
-  },
-  {
-    title: 'Adaptive Task Manager — Top 10 Finalist',
-    company: "IBM's BridgeHack-To-Industry",
-    location: 'Malaysia',
-    date: '2024',
-    tags: ['Generative AI', 'IBM watsonx', 'Hackathon'],
-    description:
-      'Generative AI task planner built and pitched under enterprise time constraints. Placed Top 10 in the challenge.',
-    achievements: [
-      'Reached Top 10 Finalist with a working generative AI task planner',
-      'Built on IBM watsonx for real-time automation of knowledge work',
-      'Pitched and demonstrated the product live against enterprise needs'
-    ],
-    icon: 'Trophy'
   }
 ];
 
@@ -193,40 +178,43 @@ export const education = [
 ];
 
 export const certifications = [
+  // TODO: replace `link` with the specific badge/credential URL for each
+  // cert once you have them. All six currently point at the same Credly
+  // profile badge you supplied as a placeholder.
   {
     title: 'Introduction to Intelligent Virtual Agents with IBM watsonx Assistant',
     issuer: 'IBM',
-    link: null,
+    link: 'https://www.credly.com/earner/earned/badge/7c09b9a6-1e41-4584-89ff-9b37717e852b',
     icon: 'Brain'
   },
   {
     title: 'IBM Watsonx Orchestrate: Build an AI Assistant',
     issuer: 'IBM',
-    link: null,
+    link: 'https://www.credly.com/earner/earned/badge/7c09b9a6-1e41-4584-89ff-9b37717e852b',
     icon: 'Robot'
   },
   {
     title: 'IBM Watsonx.ai Technical Essentials',
     issuer: 'IBM',
-    link: null,
+    link: 'https://www.credly.com/earner/earned/badge/7c09b9a6-1e41-4584-89ff-9b37717e852b',
     icon: 'Microchip'
   },
   {
     title: 'Enterprise Design Thinking Practitioner',
     issuer: 'IBM',
-    link: null,
+    link: 'https://www.credly.com/earner/earned/badge/7c09b9a6-1e41-4584-89ff-9b37717e852b',
     icon: 'Lightbulb'
   },
   {
     title: '5G Pioneers Program',
     issuer: 'Ericsson',
-    link: null,
+    link: 'https://www.credly.com/earner/earned/badge/7c09b9a6-1e41-4584-89ff-9b37717e852b',
     icon: 'TowerBroadcast'
   },
   {
     title: 'n8n: No-Code AI Agent Builder',
     issuer: 'Simplilearn',
-    link: null,
+    link: 'https://www.credly.com/earner/earned/badge/7c09b9a6-1e41-4584-89ff-9b37717e852b',
     icon: 'SiN8N'
   }
 ];

@@ -189,135 +189,6 @@
   transform: translateY(-2px);
 }
 
-/* ---------- Stats grid ---------- */
-.stat-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
-
-.stat-box {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  background: rgb(26 36 54 / 0.5);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  transition: var(--transition);
-}
-
-.stat-box:hover {
-  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
-  transform: translateY(-3px);
-}
-
-.stat-box-value {
-  display: block;
-  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-}
-
-.stat-box-label {
-  display: block;
-  margin-top: 0.3rem;
-  font-size: 0.82rem;
-  color: var(--text-muted);
-}
-
-/* ---------- Context cards ---------- */
-.context-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.context-card {
-  padding: 1.4rem 1.5rem;
-  background: rgb(255 255 255 / 0.022);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  border-left: 3px solid var(--accent);
-}
-
-.context-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-}
-
-.context-text {
-  font-size: 0.88rem;
-  line-height: 1.65;
-  color: var(--text-secondary);
-}
-
-/* ---------- Signals: chips + steps ---------- */
-.signal-block {
-  padding-top: 1.75rem;
-  margin-top: 1.75rem;
-  border-top: 1px solid var(--border);
-}
-
-.signal-label {
-  display: block;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-}
-
-.chip-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-}
-
-.chip {
-  padding: 0.4rem 0.95rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  background: rgb(255 255 255 / 0.035);
-  border: 1px solid var(--border-light);
-  border-radius: 999px;
-}
-
-.steps {
-  list-style: none;
-  display: grid;
-  gap: 0.85rem;
-}
-
-.step {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.9rem;
-  font-size: 0.92rem;
-  line-height: 1.65;
-  color: var(--text-secondary);
-}
-
-.step-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  flex-shrink: 0;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
-  border-radius: 8px;
-}
-
 /* ---------- Experience bridge ---------- */
 .bridge-card {
   display: flex;
@@ -384,128 +255,6 @@
 .bridge-card:hover .bridge-arrow {
   background: var(--accent);
   color: var(--bg-primary);
-}
-
-/* ---------- Split grid (Education + Languages) ---------- */
-.split-grid {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  gap: 1.25rem;
-  align-items: start;
-}
-
-.edu-stack {
-  display: grid;
-  gap: 1.25rem;
-}
-
-.edu-item {
-  padding: 1.25rem 1.4rem;
-  background: rgb(255 255 255 / 0.022);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.edu-level {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.4rem;
-}
-
-.edu-degree {
-  font-size: 1.02rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.9rem;
-}
-
-/* Label/value pairs — the reference's "box, label, value" pattern. */
-.field-list {
-  display: grid;
-  gap: 0.6rem;
-}
-
-.field {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 0.75rem;
-  align-items: baseline;
-}
-
-.field dt {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-.field dd {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-}
-
-.field-icon {
-  color: var(--text-muted);
-  display: inline-flex;
-}
-
-.field-strong {
-  font-weight: 700;
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-}
-
-/* ---------- Languages ---------- */
-.lang-list {
-  display: grid;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-
-.lang-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.85rem 1.1rem;
-  background: rgb(255 255 255 / 0.022);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-}
-
-.lang-name {
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.lang-level {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-align: right;
-}
-
-.loc-note {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  padding-top: 1.1rem;
-  border-top: 1px solid var(--border);
-  font-size: 0.84rem;
-  color: var(--text-muted);
-}
-
-.loc-note svg {
-  flex-shrink: 0;
-  margin-top: 0.15rem;
 }
 
 /* ---------- Certifications ---------- */
@@ -587,181 +336,332 @@
   border-color: var(--accent);
 }
 
-/* ---------- Technical stack ---------- */
-.stack-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  padding: 1.25rem 1.75rem;
-  border-bottom: 1px solid var(--border);
-  background: rgb(255 255 255 / 0.015);
-}
-
-.stack-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.5rem 1rem;
-  font-family: inherit;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  background: transparent;
-  border: 1px solid var(--border-light);
-  border-radius: 999px;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.stack-tab:hover {
-  color: var(--text-primary);
-  border-color: var(--accent);
-}
-
-.stack-tab-active {
-  background: var(--accent);
-  border-color: var(--accent);
-  /* Dark text on the light amber fill; white would be ~1.9:1. */
-  color: var(--bg-primary);
-}
-
-.stack-tab-count {
-  font-size: 0.68rem;
-  font-weight: 700;
-  padding: 0.05rem 0.4rem;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.2);
-  opacity: 0.75;
-}
-
-.stack-tab-active .stack-tab-count {
-  background: rgba(10, 14, 23, 0.25);
-  opacity: 1;
-}
-
-.stack-grid {
+/* ---------- Education: degree left, diploma right ---------- */
+.edu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.edu-item {
+  display: flex;
+  flex-direction: column;
+  padding: 1.4rem 1.5rem;
+  background: rgb(255 255 255 / 0.022);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.edu-level {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.45rem;
+}
+
+.edu-degree {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+/* Label/value pairs. */
+.field-list {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: auto;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+.field dt {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.field dd {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.field-icon {
+  color: var(--text-muted);
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.field-strong {
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Languages ---------- */
+.lang-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+  margin-bottom: 1.4rem;
+}
+
+.lang-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: rgb(255 255 255 / 0.022);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+}
+
+.lang-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.lang-level {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.loc-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.loc-note svg {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+/* ---------- Certifications ---------- */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 0.9rem;
 }
 
-.stack-card {
+.cert-card {
+  display: flex;
+  flex-direction: column;
   padding: 1.25rem 1.4rem;
   background: rgb(255 255 255 / 0.022);
   border: 1px solid var(--border);
   border-radius: 12px;
+  text-decoration: none;
   transition: var(--transition);
 }
 
-.stack-card:hover {
+a.cert-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  transform: translateY(-2px);
+}
+
+.cert-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.7rem;
+}
+
+.cert-issuer {
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.cert-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.cert-verified svg {
+  color: var(--accent);
+}
+
+.cert-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+/* Pushed to the bottom so cards of different title lengths line up. */
+.cert-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+a.cert-card:hover .cert-cta {
+  color: var(--accent);
+}
+
+.show-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.25rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgb(255 255 255 / 0.035);
+  border: 1px solid var(--border-light);
+  border-radius: 9px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.show-more:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---------- Technical stack: grouped, no percentage bars ----------
+   Bars asked the reader to compare self-assessed numbers, which says little.
+   Grouping by purpose answers the useful question instead: what is this used
+   for, and with what. */
+.stack-groups {
+  display: grid;
+  gap: 2rem;
+}
+
+.stack-group-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.stack-group-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stack-group-count {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.stack-group-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.stack-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.85rem;
+}
+
+.stack-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 1rem 1.15rem;
+  background: rgb(255 255 255 / 0.022);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  transition: var(--transition);
+}
+
+.stack-item:hover {
   border-color: color-mix(in srgb, var(--accent) 35%, transparent);
   transform: translateY(-2px);
 }
 
-.stack-top {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.85rem;
-}
-
-.stack-logo {
+.stack-item-logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   flex-shrink: 0;
   border-radius: 10px;
   background: rgb(255 255 255 / 0.05);
   border: 1px solid var(--border-light);
 }
 
-.stack-name {
-  flex: 1;
-  min-width: 0;
-  font-size: 0.95rem;
+.stack-item-name {
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--text-primary);
+  margin-bottom: 0.15rem;
 }
 
-.stack-level {
+.stack-item-desc {
   font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-  flex-shrink: 0;
-}
-
-.stack-track {
-  height: 5px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--accent) 14%, transparent);
-  overflow: hidden;
-  margin-bottom: 0.75rem;
-}
-
-.stack-fill {
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-light));
-}
-
-.stack-desc {
-  font-size: 0.83rem;
-  line-height: 1.6;
+  line-height: 1.55;
   color: var(--text-muted);
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 968px) {
-  .split-grid {
+@media (max-width: 900px) {
+  .edu-grid {
     grid-template-columns: 1fr;
-  }
-
-  .stat-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 640px) {
-  .identity-card,
-  .block-body {
-    padding: 1.5rem;
-  }
-
-  .identity-top {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+  .lang-row {
+    grid-template-columns: 1fr;
   }
 
   .field {
     grid-template-columns: 1fr;
-    gap: 0.15rem;
+    gap: 0.1rem;
   }
 
-  .context-grid,
-  .stack-grid,
-  .cert-grid {
+  .stack-items {
     grid-template-columns: 1fr;
-  }
-
-  .stack-tabs {
-    padding: 1rem 1.25rem;
-  }
-
-  .block-head {
-    padding: 1.25rem 1.5rem;
-  }
-
-  .bridge-card {
-    flex-wrap: wrap;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .identity-dot::after {
-    animation: none;
   }
 }
