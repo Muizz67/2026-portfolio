@@ -6,8 +6,6 @@ import {
   GraduationCap,
   ArrowRight,
   CheckCircle2,
-  Check,
-  ChevronDown,
   Calendar,
   Award,
   Sparkles,
@@ -22,6 +20,7 @@ import {
   profile
 } from '../data/profile';
 import { techIcon } from '../data/techIcons';
+import { icon } from '../data/icon';
 import './About.css';
 
 const containerVariants = {
@@ -39,6 +38,30 @@ const itemVariants = {
 
 // Hardcoded rather than derived from the name, which contains an apostrophe.
 const initials = 'MR';
+
+// What he's drawn to, in his own framing rather than as a capability list.
+const passions = [
+  {
+    title: 'AI, especially automation',
+    note: 'Building a process once so it never has to be run by hand again',
+    icon: 'Workflow'
+  },
+  {
+    title: 'Programming',
+    note: 'The feeling of working something out, and watching it work',
+    icon: 'Code'
+  },
+  {
+    title: 'AI agents',
+    note: 'Building them for myself — automating my own day-to-day',
+    icon: 'Bot'
+  },
+  {
+    title: 'Gaming',
+    note: 'What I do to switch off',
+    icon: 'FaGamepad'
+  }
+];
 
 // What each stack category is actually for. Keeps the grouped list readable
 // without reintroducing self-assessed percentage bars.
@@ -127,57 +150,21 @@ const About = () => {
                   </div>
                 </div>
 
-                {/* Illustrates the thing the bio describes rather than
-                    restating it: the manual-to-automatic arc. */}
-                <figure className="flow-card">
-                  <figcaption className="flow-caption">
-                    The idea I keep coming back to
-                  </figcaption>
+                <div className="passion-card">
+                  <span className="passion-label">I'm passionate about</span>
 
-                  <div className="flow">
-                    <div className="flow-step">
-                      <span className="flow-dot" />
-                      <span className="flow-label">Manual process</span>
-                      <span className="flow-note">
-                        copy-paste, run by hand, every time
-                      </span>
-                    </div>
-
-                    <div className="flow-arrow" aria-hidden="true">
-                      <ChevronDown size={16} />
-                    </div>
-
-                    <div className="flow-step">
-                      <span className="flow-dot" />
-                      <span className="flow-label">n8n workflow</span>
-                      <span className="flow-note">orchestrates the triggers</span>
-                    </div>
-
-                    <div className="flow-arrow" aria-hidden="true">
-                      <ChevronDown size={16} />
-                    </div>
-
-                    <div className="flow-step">
-                      <span className="flow-dot" />
-                      <span className="flow-label">Python script</span>
-                      <span className="flow-note">scrapes, transforms, writes</span>
-                    </div>
-
-                    <div className="flow-arrow flow-arrow-accent" aria-hidden="true">
-                      <ChevronDown size={16} />
-                    </div>
-
-                    <div className="flow-step flow-step-end">
-                      <span className="flow-dot flow-dot-accent">
-                        <Check size={13} />
-                      </span>
-                      <span className="flow-label">Runs itself</span>
-                      <span className="flow-note">
-                        built once, works every time
-                      </span>
-                    </div>
+                  <div className="passion-list">
+                    {passions.map((item) => (
+                      <div key={item.title} className="passion-item">
+                        <span className="passion-icon">{icon(item.icon, 17)}</span>
+                        <div className="passion-text">
+                          <h3 className="passion-title">{item.title}</h3>
+                          <p className="passion-note">{item.note}</p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                </figure>
+                </div>
               </div>
             </motion.div>
 

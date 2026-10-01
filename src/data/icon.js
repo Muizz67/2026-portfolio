@@ -20,7 +20,8 @@ import {
   FaRobot,
   FaMicrochip,
   FaLightbulb,
-  FaTrophy
+  FaTrophy,
+  FaGamepad
 } from 'react-icons/fa';
 
 import { SiN8N, SiEricsson } from 'react-icons/si';
@@ -43,7 +44,8 @@ const registry = {
   Lightbulb: FaLightbulb,
   Microchip: FaMicrochip,
   TowerBroadcast: SiEricsson,
-  SiN8N
+  SiN8N,
+  FaGamepad
 };
 
 export function icon(name, size = 20) {
