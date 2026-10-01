@@ -753,3 +753,26 @@ a.cert-card:hover .cert-cta {
     padding: 1.15rem 1.25rem;
   }
 }
+
+/* ---------- Identity meta row ----------
+   Age and country, sitting between the role line and the availability badge. */
+.identity-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.identity-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.identity-meta-item svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}

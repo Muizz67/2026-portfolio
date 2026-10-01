@@ -5,11 +5,14 @@
 export const profile = {
   name: 'Muizz Rusdi',
   fullName: "Muizz Rusdi",
-  role: 'AI Automation • Software Developer',
+  role: 'AI Engineer • Automation • Software Developer',
   headline: 'Building Intelligent AI Solutions',
   tagline:
     'AI engineer across data annotation, machine learning, and full-stack development — turning research and manual processes into systems that run themselves.',
   location: 'Bandar Baru Bangi, Selangor, Malaysia',
+  // Shown in the About identity card alongside the role.
+  age: 24,
+  country: 'Malaysia',
   email: 'muizzrusdi@yahoo.com',
   // Digits only, international format, for the wa.me deep link.
   phoneDisplay: '+60 11-1185 0771',

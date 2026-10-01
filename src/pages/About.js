@@ -7,6 +7,8 @@ import {
   ArrowRight,
   CheckCircle2,
   Calendar,
+  Cake,
+  MapPin,
   Award,
   Sparkles,
   Layers,
@@ -109,6 +111,18 @@ const About = () => {
                 <div className="identity-text">
                   <h2 className="identity-name">{profile.fullName}</h2>
                   <p className="identity-role">{profile.role}</p>
+
+                  <div className="identity-meta">
+                    <span className="identity-meta-item">
+                      <Cake size={14} />
+                      {profile.age} years old
+                    </span>
+                    <span className="identity-meta-item">
+                      <MapPin size={14} />
+                      {profile.country}
+                    </span>
+                  </div>
+
                   <span className="identity-status">
                     <span className="identity-dot" />
                     Available for new work

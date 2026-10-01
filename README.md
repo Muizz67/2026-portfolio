@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# Portfolio — Muhammad Mu'izz bin Rusdi
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal portfolio and case-study site for an AI engineer working across data
+annotation, machine learning, automation, and full-stack development.
 
-## Available Scripts
+Built as a static React single-page app, deployed to Cloudflare Pages.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## What it is
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Six routes, each doing one job:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+| Route | Purpose |
+| --- | --- |
+| `/` | Hero with a typed headline, focus areas, featured work, headline stats, closing CTA |
+| `/about` | Identity card, first-person bio, passions, education, certifications, filterable tech stack |
+| `/experience` | Role-by-role work history as a single reading rail |
+| `/projects` | Five projects as cards; each opens a case-study modal covering role, impact, and engineering context |
+| `/contact` | Five real contact channels — email, phone, WhatsApp, GitHub, LinkedIn |
+| `/resume` | Embedded PDF resume with download and open-in-new-tab |
 
-### `npm test`
+A site-wide footer carries navigation, contact details, and back-to-top.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Content is real throughout: quantified results (97% annotation accuracy against
+a 95% KPI, roughly 70% less manual data handling, 20+ unit tests), full UiTM
+education with CGPA, and six verified certifications.
 
-### `npm run build`
+## Design
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Navy-slate surfaces (`#0a0e17` / `#101828` / `#1a2436`) with an amber accent
+(`#f0b429`), applied sitewide through CSS custom properties in
+`src/index.css`. Cards are translucent, so stacked panels read as layers
+rather than opaque blocks.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Because amber is a light accent, any filled element using it takes near-black
+text: white on `#f0b429` measures 1.86:1 and fails contrast, while `#0a0e17`
+gives 10.35:1. This applies to primary buttons, the active stack tab, and the
+availability dot. Adding a new filled accent surface means re-checking this.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Tech logos render in their official brand colours through `react-icons`, lifted
+where a brand's own colour is too dark to read against the card background.
 
-### `npm run eject`
+## Tech stack
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **React 19** with **React Router 7**
+- **react-scripts** (Create React App)
+- **Framer Motion** — page reveals, the typed hero headline, stack-filter transitions
+- **lucide-react** — interface icons
+- **react-icons** — brand marks for the tech stack and social links
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+src/
+  components/
+    BrandIcons.js   GitHub and LinkedIn marks (lucide v1 dropped brand icons)
+    Footer.js/.css  Site-wide footer
+    Navbar.js/.css  Navigation with mobile menu
+  data/
+    profile.js      Personal details, bio, experience, education, certs, stack
+    projects.js     Project records shared by Home and Projects
+    techIcons.js    Brand logo registry with official brand colours
+    icon.js         String-to-icon mapping for the data files
+  hooks/
+    useTypewriter.js  Typed hero headline; respects reduced-motion
+  pages/
+    About, Contact, Experience, Home, Projects, Resume
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**All content lives in `src/data/`.** Editing `profile.js` or `projects.js`
+updates every page that reads from it — navigation, footer, stack counts, and
+hero stats included. Nothing is duplicated between components.
 
-## Learn More
+## Running it
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm install
+npm start      # http://localhost:3000
+npm run build  # production bundle into build/
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To preview the production build, serve it with SPA fallback:
 
-### Code Splitting
+```bash
+npx serve -s build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Deployment
 
-### Analyzing the Bundle Size
+Cloudflare Pages, configured for a static CRA build:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Build command:** `npm run build`
+- **Build output directory:** `build`
 
-### Making a Progressive Web App
+`public/_redirects` holds `/* /index.html 200`, a rewrite fallback that is
+required for client-side routing. Without it, refreshing `/projects` or
+`/resume` returns a 404, since no matching file exists in the build output.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Accessibility notes
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `prefers-reduced-motion` is respected sitewide: the typed hero renders
+  finished, the tech marquee is hidden, and all pulses and transitions stop
+- The hero headline carries its full text in `aria-label` with the animating
+  text `aria-hidden`, so screen readers announce a complete heading rather than
+  a half-typed fragment
+- Filled amber elements use near-black text for contrast
+- The project modal supports Escape to close and restores body scroll on exit
