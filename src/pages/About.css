@@ -36,15 +36,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-.timeline-company {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--accent-light);
-  margin: 0.2rem 0 0.35rem;
-}
 
 .education-card code,
 .text-body-muted code {
@@ -55,10 +46,41 @@
   padding: 0.1rem 0.35rem;
 }
 
+/* Tighter rhythm than the other pages: this one is a single long read, so
+   the vertical spacing between sections is reduced to stop it reading as a
+   stack of disconnected blocks. */
 .about-page {
   padding-top: 6rem;
   background: var(--bg-primary);
   min-height: 100vh;
+}
+
+/* Section label with a rule running to the edge — a cheap way to give each
+   block a clear heading instead of a floating centred title. */
+.about-section {
+  margin-bottom: 3rem;
+}
+
+.about-section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.about-section-head h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.about-section-head span {
+  font-size: 0.88rem;
+  color: var(--text-muted);
 }
 
 .section-subtitle {
@@ -121,165 +143,6 @@
   font-size: 0.85rem;
   color: var(--accent);
   font-weight: 600;
-}
-
-/* ---------- Experience timeline ---------- */
-.timeline {
-  position: relative;
-  padding: 1rem 0;
-}
-
-.timeline-line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: rgba(240, 180, 41, 0.25);
-  transform: translateX(-50%);
-}
-
-.timeline-item {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-bottom: 3rem;
-}
-
-.timeline-item:last-child {
-  margin-bottom: 0;
-}
-
-.timeline-node {
-  position: absolute;
-  top: 1.75rem;
-  left: 50%;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--bg-primary);
-  border: 2px solid var(--accent);
-  transform: translateX(-50%);
-}
-
-.timeline-card {
-  background: var(--bg-secondary, #15121f);
-  border: 1px solid rgba(240, 180, 41, 0.18);
-  border-radius: 12px;
-  padding: 1.5rem;
-}
-
-.timeline-left {
-  justify-items: end;
-}
-
-.timeline-left .timeline-card {
-  grid-column: 1;
-  margin-right: 2.5rem;
-}
-
-.timeline-right {
-  justify-items: start;
-}
-
-.timeline-right .timeline-card {
-  grid-column: 2;
-  margin-left: 2.5rem;
-}
-
-.timeline-card-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-.timeline-icon {
-  width: 40px;
-  height: 40px;
-  background: rgba(240, 180, 41, 0.1);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
-  border: 1px solid rgba(240, 180, 41, 0.2);
-  flex-shrink: 0;
-}
-
-.timeline-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.35rem;
-}
-
-.timeline-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.9rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.timeline-meta span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.timeline-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.timeline-tag {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--accent);
-  background: rgba(240, 180, 41, 0.1);
-  border: 1px solid rgba(240, 180, 41, 0.2);
-  border-radius: 999px;
-  padding: 0.25rem 0.7rem;
-}
-
-.timeline-description {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 1.1rem;
-}
-
-.timeline-achievements-label {
-  display: block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.6rem;
-}
-
-.timeline-achievements ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.timeline-achievements li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-.timeline-achievements li svg {
-  color: var(--accent);
-  margin-top: 0.2rem;
-  flex-shrink: 0;
 }
 
 /* ---------- Education ---------- */
@@ -540,33 +403,9 @@
   margin-top: auto;
 }
 
-.stack-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
 
-.stack-stat {
-  text-align: center;
-  padding: 1.25rem 1rem;
-  background: rgba(240, 180, 41, 0.08);
-  border: 1px solid rgba(240, 180, 41, 0.18);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
 
-.stack-stat-value {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--accent);
-}
 
-.stack-stat-label {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
 
 /* ---------- Responsive ---------- */
 @media (max-width: 968px) {
@@ -574,33 +413,11 @@
     grid-template-columns: 1fr;
   }
 
-  .timeline-line {
-    left: 20px;
-  }
 
-  .timeline-item {
-    grid-template-columns: 1fr;
-  }
 
-  .timeline-left .timeline-card,
-  .timeline-right .timeline-card {
-    grid-column: 1;
-    margin-left: 3rem;
-    margin-right: 0;
-  }
 
-  .timeline-left,
-  .timeline-right {
-    justify-items: start;
-  }
 
-  .timeline-node {
-    left: 20px;
-  }
 
-  .stack-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 640px) {

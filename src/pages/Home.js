@@ -112,8 +112,7 @@ const Home = () => {
             <motion.p variants={itemVariants} className="hero-status">
               <span className="status-pulse" aria-hidden="true" />
               <span>
-                <strong>Open to work</strong> — AI engineering, data, and full-stack
-                roles.
+                <strong>Open to work</strong> — AI engineering, QA Automation, and full-stack roles.
               </span>
             </motion.p>
 

@@ -1,0 +1,276 @@
+.experience-page {
+  padding-top: 6rem;
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+.section-eyebrow {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- Summary strip ---------- */
+.exp-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 880px;
+  margin: 0 auto 4rem;
+}
+
+.exp-summary-item {
+  text-align: center;
+  padding: 1.1rem 0.5rem;
+  background: rgb(26 36 54 / 0.5);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.exp-summary-value {
+  display: block;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.exp-summary-label {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Role rail ---------- */
+.rail {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* The connecting line, inset to sit behind the markers. */
+.rail::before {
+  content: '';
+  position: absolute;
+  left: 27px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--accent),
+    color-mix(in srgb, var(--accent) 35%, transparent)
+  );
+  opacity: 0.55;
+}
+
+.role {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 1.25rem;
+}
+
+.role-marker {
+  position: relative;
+  z-index: 1;
+}
+
+.role-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--bg-secondary);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  color: var(--accent);
+  box-shadow: 0 0 0 6px var(--bg-primary);
+}
+
+.role-body {
+  background: rgb(26 36 54 / 0.55);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+}
+
+.role-body:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  transform: translateX(3px);
+}
+
+/* Title on the left, date pinned right — keeps the eye on one line. */
+.role-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.role-heading {
+  min-width: 0;
+}
+
+.role-title {
+  font-size: 1.22rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-primary);
+}
+
+.role-company {
+  margin-top: 0.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.role-date {
+  flex-shrink: 0;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.role-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.role-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.role-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.role-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.35rem;
+}
+
+.role-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 11%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+}
+
+.role-achievements {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--border);
+}
+
+.role-achievements li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.role-achievements li svg {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  color: var(--accent);
+}
+
+/* ---------- Footer ---------- */
+.exp-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 3.5rem;
+}
+
+.exp-footer-link {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.exp-footer-link:hover {
+  color: var(--text-primary);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .exp-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rail::before {
+    left: 21px;
+  }
+
+  .role {
+    grid-template-columns: 44px 1fr;
+    gap: 0.85rem;
+  }
+
+  .role-dot {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+  }
+
+  .role-head {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .role-date {
+    align-self: flex-start;
+  }
+
+  .role-body {
+    padding: 1.4rem 1.25rem;
+  }
+
+  .role-body:hover {
+    transform: none;
+  }
+}

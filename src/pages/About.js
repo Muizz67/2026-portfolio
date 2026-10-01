@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import {
-  Globe2,
-  MapPin,
-  Calendar,
-  CheckCircle2,
-  GraduationCap,
-  Building2
-} from 'lucide-react';
+import { Globe2, GraduationCap, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import {
   technicalStack,
   languages,
@@ -61,7 +55,7 @@ const About = () => {
               className="section-header text-center mb-16"
             >
               <span className="section-eyebrow">About</span>
-              <h1 className="text-title mb-4">The short version</h1>
+              <h1 className="text-title mb-4">Background &amp; stack</h1>
               <p className="text-subtitle">
                 Intelligence Systems Engineering graduate working across AI pipelines,
                 data annotation, and full-stack development.
@@ -69,8 +63,13 @@ const About = () => {
             </motion.div>
 
             {/* Background */}
-            <motion.div variants={itemVariants} className="card background-card mb-16">
-              <h2 className="section-subtitle mb-6">Background</h2>
+            <motion.div variants={itemVariants} className="about-section">
+              <div className="about-section-head">
+                <h2>Background</h2>
+                <span>What I work on and how I got here</span>
+              </div>
+
+              <div className="about-prose">
               <p className="text-body mb-4">
                 I work across the full arc of an AI system: getting the data in,
                 labelling it correctly, training something on it, and building the
@@ -96,6 +95,8 @@ const About = () => {
                 one that ran.
               </p>
 
+              </div>
+
               <div className="languages-inline">
                 <h3 className="languages-inline-title">
                   <Globe2 size={18} className="inline-icon" />
@@ -112,79 +113,27 @@ const About = () => {
               </div>
             </motion.div>
 
-            {/* Experience */}
-            <motion.div variants={itemVariants} className="mb-16">
-              <div className="section-header mb-10">
-                <h2 className="section-subtitle mb-2">Experience</h2>
-                <p className="text-body-muted">
-                  Roles and projects that shaped how I build
-                </p>
-              </div>
-
-              <div className="timeline">
-                <div className="timeline-line" />
-                {experience.map((exp, index) => (
-                  <div
-                    key={exp.title}
-                    className={`timeline-item ${index % 2 === 0 ? 'timeline-left' : 'timeline-right'}`}
-                  >
-                    <div className="timeline-card">
-                      <div className="timeline-card-header">
-                        <div className="timeline-icon">{icon(exp.icon, 20)}</div>
-                        <div>
-                          <h4 className="timeline-title">{exp.title}</h4>
-                          <div className="timeline-company">
-                            <Building2 size={13} />
-                            <span>{exp.company}</span>
-                          </div>
-                          <div className="timeline-meta">
-                            <span>
-                              <MapPin size={14} /> {exp.location}
-                            </span>
-                            <span>
-                              <Calendar size={14} /> {exp.date}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="timeline-tags">
-                        {exp.tags.map((tag) => (
-                          <span key={tag} className="timeline-tag">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      <p className="timeline-description">{exp.description}</p>
-
-                      <div className="timeline-achievements">
-                        <span className="timeline-achievements-label">
-                          Key achievements
-                        </span>
-                        <ul>
-                          {exp.achievements.map((achievement) => (
-                            <li key={achievement}>
-                              <CheckCircle2 size={14} />
-                              <span>{achievement}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="timeline-node" />
-                  </div>
-                ))}
-              </div>
+            {/* Experience moved to its own page — a full view of it is at /experience. */}
+            <motion.div variants={itemVariants} className="about-bridge">
+              <Link className="about-bridge-card" to="/experience">
+                <div className="about-bridge-text">
+                  <h2 className="section-subtitle">Experience</h2>
+                  <p className="text-body-muted">
+                    {experience.length} roles — data annotation, AI engineering, and
+                    full-stack work.
+                  </p>
+                </div>
+                <span className="about-bridge-arrow">
+                  <ArrowRight size={18} />
+                </span>
+              </Link>
             </motion.div>
 
             {/* Education */}
-            <motion.div variants={itemVariants} className="mb-16">
-              <div className="section-header mb-10">
-                <h2 className="section-subtitle mb-2">Education</h2>
-                <p className="text-body-muted">
-                  Universiti Teknologi MARA (UiTM)
-                </p>
+            <motion.div variants={itemVariants} className="about-section">
+              <div className="about-section-head">
+                <h2>Education</h2>
+                <span>Universiti Teknologi MARA (UiTM)</span>
               </div>
               <div className="education-grid">
                 {education.map((edu) => (
@@ -216,15 +165,13 @@ const About = () => {
             </motion.div>
 
             {/* Certifications */}
-            <motion.div variants={itemVariants} className="mb-16">
-              <div className="section-header text-center mb-10">
-                <h2 className="section-subtitle">
-                  Certifications &amp; Training
-                </h2>
-                <p className="text-body-muted">
+            <motion.div variants={itemVariants} className="about-section">
+              <div className="about-section-head">
+                <h2>Certifications</h2>
+                <span>
                   {certifications.length} credentials across AI platforms, design
                   thinking, and 5G
-                </p>
+                </span>
               </div>
               <div className="cert-grid">
                 {certifications.map((cert) => (
@@ -238,14 +185,13 @@ const About = () => {
             </motion.div>
 
             {/* Technical stack — brand logos */}
-            <motion.div variants={itemVariants}>
-              <div className="section-header text-center mb-8">
-                <span className="section-eyebrow">Technical stack</span>
-                <h2 className="section-subtitle">Tools I build with</h2>
-                <p className="text-body-muted">
+            <motion.div variants={itemVariants} className="about-section">
+              <div className="about-section-head">
+                <h2>Technical stack</h2>
+                <span>
                   {technicalStack.reduce((n, g) => n + g.items.length, 0)} technologies,
-                  grouped by what I actually use them for
-                </p>
+                  grouped by what I use them for
+                </span>
               </div>
 
               <div className="stack-tabs">
@@ -257,6 +203,11 @@ const About = () => {
                     onClick={() => setActiveCategory(cat)}
                   >
                     {cat}
+                    <span className="stack-tab-count">
+                      {cat === 'All'
+                        ? technicalStack.reduce((n, g) => n + g.items.length, 0)
+                        : technicalStack.find((g) => g.category === cat).items.length}
+                    </span>
                   </button>
                 ))}
               </div>
