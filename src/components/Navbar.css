@@ -4,14 +4,14 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(8, 20, 22, 0.82);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid transparent;
   transition: var(--transition);
 }
 
 .navbar-scrolled {
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(8, 20, 22, 0.94);
   border-bottom-color: var(--border);
   box-shadow: var(--shadow-lg);
 }
@@ -36,7 +36,7 @@
 }
 
 .brand-accent {
-  color: var(--accent-purple);
+  color: var(--accent);
 }
 
 .navbar-menu {
@@ -61,7 +61,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--accent-purple);
+  background: var(--accent);
   transition: width 0.3s ease;
 }
 
@@ -85,7 +85,7 @@
 }
 
 .navbar-toggle:hover {
-  color: var(--accent-purple);
+  color: var(--accent);
 }
 
 .navbar-resume {
@@ -100,7 +100,7 @@
 
 .navbar-resume:hover,
 .navbar-resume.active {
-  border-color: var(--accent-purple);
+  border-color: var(--accent);
 }
 
 .navbar-mobile {
@@ -108,7 +108,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.98);
+  background: rgba(8, 20, 22, 0.98);
   backdrop-filter: blur(20px);
   border-top: 1px solid var(--border);
   padding: 2rem 0;
@@ -137,7 +137,7 @@
 .navbar-mobile-link:hover {
   color: var(--text-primary);
   background: var(--bg-secondary);
-  border-left-color: var(--accent-purple);
+  border-left-color: var(--accent);
 }
 
 @media (min-width: 768px) {

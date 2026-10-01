@@ -44,7 +44,7 @@ const channels = [
     value: 'github.com/Muizz67',
     href: profile.links.github,
     Icon: BsGithub,
-    accent: '#A78BFA',
+    accent: '#E6EDF3',
     note: 'Open source and experiments',
     external: true
   },

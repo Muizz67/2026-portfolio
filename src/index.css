@@ -7,26 +7,28 @@
 }
 
 :root {
-  /* Ali-inspired Color Palette */
-  --bg-primary: #000000;
-  --bg-secondary: #0a0a0a;
-  --bg-tertiary: #111111;
-  --accent-purple: #8b5cf6;
-  --accent-purple-light: #a78bfa;
-  --accent-purple-dark: #7c3aed;
-  --text-primary: #ffffff;
-  --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
-  --border: #27272a;
-  --border-light: #3f3f46;
-  
+  /* Teal palette. The base is lifted well off #000 so cards read as surfaces
+     rather than holes, and the accent is a desaturated teal that sits with
+     the green/blue brand logos on the About page instead of fighting them. */
+  --bg-primary: #0a1214;
+  --bg-secondary: #111c1f;
+  --bg-tertiary: #18272b;
+  --accent: #2dd4bf;
+  --accent-light: #5eead4;
+  --accent-dark: #14b8a6;
+  --text-primary: #eef7f6;
+  --text-secondary: #9db3b2;
+  --text-muted: #6e8383;
+  --border: #1e2e31;
+  --border-light: #2c4247;
+
   /* Shadows & Effects */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5);
-  --shadow-purple: 0 10px 25px -5px rgb(139 92 246 / 0.3);
-  
+  --shadow-accent: 0 10px 25px -5px rgb(45 212 191 / 0.3);
+
   /* Transitions */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -93,7 +95,7 @@ body {
 
 /* Modern Button */
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple-dark));
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
   color: var(--text-primary);
   border: none;
   border-radius: 12px;
@@ -105,7 +107,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  box-shadow: var(--shadow-purple);
+  box-shadow: var(--shadow-accent);
   position: relative;
   overflow: hidden;
 }
@@ -127,12 +129,12 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 20px 40px -10px rgb(139 92 246 / 0.4);
+  box-shadow: 0 20px 40px -10px rgb(45 212 191 / 0.4);
 }
 
 /* Gradient Text */
 .gradient-text {
-  background: linear-gradient(135deg, var(--text-primary), var(--accent-purple-light));
+  background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -149,8 +151,8 @@ body {
 }
 
 .card:hover {
-  border-color: var(--accent-purple);
-  box-shadow: var(--shadow-purple);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-accent);
   transform: translateY(-4px);
 }
 
@@ -209,10 +211,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-purple);
+  background: var(--accent);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-purple-light);
+  background: var(--accent-light);
 }

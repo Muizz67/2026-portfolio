@@ -5,7 +5,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent-purple-light);
+  color: var(--accent-light);
   margin-bottom: 0.75rem;
 }
 
@@ -38,7 +38,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--accent-purple), var(--accent-purple-light));
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -58,13 +58,13 @@
 .project-icon {
   width: 48px;
   height: 48px;
-  background: rgba(139, 92, 246, 0.1);
+  background: rgba(45, 212, 191, 0.1);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent-purple);
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  color: var(--accent);
+  border: 1px solid rgba(45, 212, 191, 0.2);
 }
 
 .project-meta {
@@ -178,8 +178,8 @@
 }
 
 .tech-tag:hover {
-  color: var(--accent-purple);
-  border-color: var(--accent-purple);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 .project-actions {
@@ -207,9 +207,9 @@
 }
 
 .btn-project:hover {
-  color: var(--accent-purple);
-  border-color: var(--accent-purple);
-  background: rgba(139, 92, 246, 0.05);
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(45, 212, 191, 0.05);
 }
 
 .projects-cta {
@@ -230,7 +230,7 @@
 .project-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(6, 16, 18, 0.76);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   display: flex;
@@ -302,8 +302,8 @@
 
 .modal-close:hover {
   color: var(--text-primary);
-  border-color: var(--accent-purple);
-  background: rgba(139, 92, 246, 0.1);
+  border-color: var(--accent);
+  background: rgba(45, 212, 191, 0.1);
 }
 
 .modal-title {
@@ -348,12 +348,12 @@
 }
 
 .modal-info-box.highlight {
-  background: rgba(139, 92, 246, 0.08);
-  border-color: rgba(139, 92, 246, 0.25);
+  background: rgba(45, 212, 191, 0.08);
+  border-color: rgba(45, 212, 191, 0.25);
 }
 
 .modal-info-box.highlight p {
-  color: var(--accent-purple-light);
+  color: var(--accent-light);
 }
 
 .modal-tech-section {
@@ -397,9 +397,9 @@
 }
 
 .modal-source-btn:hover {
-  color: var(--accent-purple);
-  border-color: var(--accent-purple);
-  background: rgba(139, 92, 246, 0.05);
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(45, 212, 191, 0.05);
 }
 
 /* Disabled state, e.g. private / unavailable source code */

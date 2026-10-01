@@ -10,7 +10,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent-purple-light);
+  color: var(--accent-light);
   margin-bottom: 0.75rem;
 }
 
@@ -153,8 +153,8 @@
 }
 
 .copy-btn:hover {
-  color: var(--accent-purple-light);
-  border-color: var(--accent-purple);
+  color: var(--accent-light);
+  border-color: var(--accent);
   transform: translateY(-2px);
 }
 
@@ -180,19 +180,33 @@
   max-width: 720px;
   margin: 3rem auto 0;
   padding: 1.75rem 2rem;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.02));
-  border: 1px solid rgba(139, 92, 246, 0.22);
+  /* On the darker teal base a light-tinted gradient stops being visible,
+     so this one goes darker than the page rather than lighter. */
+  background: linear-gradient(
+    135deg,
+    rgb(45 212 191 / 0.12),
+    rgb(45 212 191 / 0.02)
+  );
+  border: 1px solid rgb(45 212 191 / 0.28);
   border-radius: 16px;
 }
 
+/* Availability dot. Green was too close to the teal accent to read as a
+   distinct status signal, so this uses the accent itself with a ring. */
 .availability-dot {
   width: 9px;
   height: 9px;
   flex-shrink: 0;
   margin-top: 0.5rem;
   border-radius: 50%;
-  background: #4ADE80;
-  box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.15);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgb(45 212 191 / 0.18);
+  animation: availability-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes availability-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgb(45 212 191 / 0.18); }
+  50% { box-shadow: 0 0 0 7px rgb(45 212 191 / 0.06); }
 }
 
 .availability-title {

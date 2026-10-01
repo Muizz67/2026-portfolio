@@ -16,7 +16,7 @@
 }
 
 .resume-back:hover {
-  color: var(--accent-purple-light);
+  color: var(--accent-light);
   gap: 0.6rem;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .resume-fallback a {
-  color: var(--accent-purple-light);
+  color: var(--accent-light);
 }
 
 .resume-header .text-subtitle {

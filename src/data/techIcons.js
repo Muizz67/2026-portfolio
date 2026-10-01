@@ -26,7 +26,6 @@ import {
 
 import {
   FaDatabase,
-  FaRobot,
   FaHashtag,
   FaCubes
 } from 'react-icons/fa';
@@ -37,8 +36,8 @@ const registry = {
   python: { Icon: SiPython, tint: '#3776AB' },
   tensorflow: { Icon: SiTensorflow, tint: '#FF6F00' },
   sklearn: { Icon: SiScikitlearn, tint: '#F7931E' },
-  pandas: { Icon: SiPandas, tint: '#150458' },
-  yolo: { Icon: SiYolo, tint: '#111111' },
+  pandas: { Icon: SiPandas, tint: '#7B6CC4' },
+  yolo: { Icon: SiYolo, tint: '#8A8F98' },
   selenium: { Icon: SiSelenium, tint: '#43B02A' },
   huggingface: { Icon: SiHuggingface, tint: '#FFD21E' },
   labelstudio: { Icon: FaCubes, tint: '#FFA61E' },
@@ -53,10 +52,10 @@ const registry = {
   googlesheets: { Icon: SiGooglesheets, tint: '#0F9D58' },
   docker: { Icon: SiDocker, tint: '#2496ED' },
   git: { Icon: SiGit, tint: '#F05032' },
-  obsidian: { Icon: SiObsidian, tint: '#7C3AED' },
-  sql: { Icon: FaDatabase, tint: '#A78BFA' },
+  obsidian: { Icon: SiObsidian, tint: '#A78BFA' },
+  sql: { Icon: FaDatabase, tint: '#7BA8A6' },
   java: { Icon: FaHashtag, tint: '#ED8B00' },
-  cpp: { Icon: SiCplusplus, tint: '#00599C' }
+  cpp: { Icon: SiCplusplus, tint: '#3B8FD4' }
 };
 
 export function techIcon(key, size = 22) {

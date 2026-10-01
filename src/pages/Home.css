@@ -21,9 +21,9 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at center, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 20% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+    radial-gradient(ellipse at center, rgba(45, 212, 191, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(45, 212, 191, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(45, 212, 191, 0.06) 0%, transparent 50%);
 }
 
 .floating-particles {
@@ -31,10 +31,10 @@
   width: 100%;
   height: 100%;
   background-image:
-    radial-gradient(2px 2px at 20px 30px, rgba(139, 92, 246, 0.3), transparent),
-    radial-gradient(2px 2px at 40px 70px, rgba(167, 139, 250, 0.3), transparent),
-    radial-gradient(1px 1px at 90px 40px, rgba(139, 92, 246, 0.4), transparent),
-    radial-gradient(1px 1px at 130px 80px, rgba(167, 139, 250, 0.4), transparent);
+    radial-gradient(2px 2px at 20px 30px, rgba(45, 212, 191, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(94, 234, 212, 0.3), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(45, 212, 191, 0.4), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(94, 234, 212, 0.4), transparent);
   background-repeat: repeat;
   background-size: 200px 150px;
   animation: float 20s linear infinite;
@@ -59,8 +59,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid rgba(45, 212, 191, 0.2);
   border-radius: 50px;
   padding: 0.5rem 1.5rem;
   margin-bottom: 2rem;
@@ -71,14 +71,14 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--accent-purple-light);
-  box-shadow: 0 0 8px var(--accent-purple);
+  background: var(--accent-light);
+  box-shadow: 0 0 8px var(--accent);
 }
 
 .badge-text {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--accent-purple-light);
+  color: var(--accent-light);
 }
 
 .hero-title {
@@ -133,10 +133,10 @@
 
 .social-circle:hover {
   color: var(--text-primary);
-  border-color: var(--accent-purple);
-  background: var(--accent-purple-dark);
+  border-color: var(--accent);
+  background: var(--accent-dark);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-purple);
+  box-shadow: var(--shadow-accent);
 }
 
 .social-logo {
@@ -161,8 +161,8 @@
 }
 
 .btn-secondary:hover {
-  border-color: var(--accent-purple);
-  color: var(--accent-purple);
+  border-color: var(--accent);
+  color: var(--accent);
   transform: translateY(-2px);
 }
 
@@ -188,7 +188,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent-purple-light);
+  color: var(--accent-light);
   margin-bottom: 0.75rem;
 }
 
@@ -230,9 +230,9 @@
 .focus-item {
   font-size: 0.78rem;
   font-weight: 500;
-  color: var(--accent-purple-light);
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  color: var(--accent-light);
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid rgba(45, 212, 191, 0.2);
   border-radius: 6px;
   padding: 0.3rem 0.65rem;
 }
@@ -246,7 +246,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  color: var(--accent-purple-light);
+  color: var(--accent-light);
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
@@ -313,7 +313,7 @@
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--accent-purple-light);
+  color: var(--accent-light);
   margin-bottom: 0.6rem;
 }
 
@@ -339,7 +339,7 @@
   margin-top: auto;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--accent-purple-light);
+  color: var(--accent-light);
   transition: var(--transition);
 }
 
@@ -375,7 +375,7 @@
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--text-primary), var(--accent-purple-light));
+  background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -395,8 +395,8 @@
 }
 
 .cta-panel {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(139, 92, 246, 0.03));
-  border: 1px solid rgba(139, 92, 246, 0.25);
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.12), rgba(45, 212, 191, 0.03));
+  border: 1px solid rgba(45, 212, 191, 0.25);
   border-radius: 20px;
   padding: 4rem 2rem;
   text-align: center;
