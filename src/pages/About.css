@@ -1,5 +1,4 @@
-/* Added for the About rebuild: shared eyebrow style and the
-   placeholder-detail marker used until real entries are supplied. */
+/* Added for the About rebuild: shared eyebrow style. */
 
 .section-eyebrow {
   display: block;
@@ -11,15 +10,40 @@
   margin-bottom: 0.75rem;
 }
 
-.education-value-todo {
-  color: var(--text-muted);
-  font-style: italic;
-  background: rgba(113, 113, 122, 0.08);
-  border: 1px dashed var(--border-light);
-  border-radius: 6px;
-  padding: 0.15rem 0.5rem;
-  font-size: 0.9rem;
-  display: inline-block;
+.education-degree {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+  margin-bottom: 1.1rem;
+}
+
+.education-gpa {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding: 0.7rem 0.9rem;
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.18);
+  border-radius: 10px;
+}
+
+.education-gpa-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-purple-light);
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline-company {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent-purple-light);
+  margin: 0.2rem 0 0.35rem;
 }
 
 .education-card code,
@@ -426,50 +450,93 @@
 }
 
 .stack-card {
-  background: var(--bg-secondary, #15121f);
-  border: 1px solid rgba(139, 92, 246, 0.15);
-  border-radius: 10px;
-  padding: 1.1rem 1.25rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.15rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
 }
 
-.stack-card-header {
+.stack-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: var(--shadow-purple);
+}
+
+/* Logo chip: a tinted tile so dark brand marks (Pandas, YOLO) stay legible
+   against the near-black card instead of vanishing into it. */
+.stack-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-light);
+}
+
+.stack-card-top {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 0.6rem;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.9rem;
+}
+
+.stack-card-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+  flex: 1;
 }
 
 .stack-card-name {
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.98rem;
+  font-weight: 700;
   color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.stack-card-group {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .stack-card-percent {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--accent-purple);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-purple-light);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
 }
 
 .stack-bar-track {
   width: 100%;
-  height: 6px;
+  height: 5px;
   border-radius: 999px;
   background: rgba(139, 92, 246, 0.12);
   overflow: hidden;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.7rem;
 }
 
 .stack-bar-fill {
   height: 100%;
   border-radius: 999px;
-  background: var(--accent-purple);
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-purple-light));
 }
 
 .stack-card-description {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  line-height: 1.5;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-top: auto;
 }
 
 .stack-stats {

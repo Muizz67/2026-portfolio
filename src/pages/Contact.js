@@ -1,45 +1,67 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Send, ArrowUpRight, Copy, Check } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from '../components/BrandIcons';
+import { Mail, MapPin, Phone, Copy, Check, ArrowUpRight } from 'lucide-react';
+import { BsGithub, BsLinkedin, BsWhatsapp } from 'react-icons/bs';
 import { profile } from '../data/profile';
 import './Contact.css';
 
-const subjects = [
-  'Project enquiry',
-  'AI / ML work',
-  'Automation or scraping',
-  'Full-time role',
-  'Something else'
+// Every channel is a real link — email opens the mail client, WhatsApp opens a
+// chat with the message pre-typed, phone dials. No form, no backend, nothing
+// that can silently fail.
+const channels = [
+  {
+    id: 'email',
+    label: 'Email',
+    value: profile.email,
+    href: `mailto:${profile.email}`,
+    Icon: Mail,
+    accent: '#EA4335',
+    note: 'Best for anything detailed',
+    copyable: true
+  },
+  {
+    id: 'phone',
+    label: 'Phone',
+    value: profile.phoneDisplay,
+    href: `tel:${profile.phoneE164}`,
+    Icon: Phone,
+    accent: '#34A853',
+    note: 'Weekdays, 9am — 6pm MYT'
+  },
+  {
+    id: 'whatsapp',
+    label: 'WhatsApp',
+    value: profile.phoneDisplay,
+    href: profile.links.whatsapp,
+    Icon: BsWhatsapp,
+    accent: '#25D366',
+    note: 'Quickest for a short message',
+    external: true
+  },
+  {
+    id: 'github',
+    label: 'GitHub',
+    value: 'github.com/Muizz67',
+    href: profile.links.github,
+    Icon: BsGithub,
+    accent: '#A78BFA',
+    note: 'Open source and experiments',
+    external: true
+  },
+  {
+    id: 'linkedin',
+    label: 'LinkedIn',
+    value: 'in/muizzrusdi',
+    href: profile.links.linkedin,
+    Icon: BsLinkedin,
+    accent: '#0A66C2',
+    note: 'Professional enquiries',
+    external: true
+  }
 ];
 
-// No backend here by design: the form composes a mailto: link, so "Send" opens
-// the visitor's own mail client with the message already filled in. That works
-// on Cloudflare Pages with no server and can't silently drop a message.
-function buildMailto({ name, email, subject, message }) {
-  const body = `${message}\n\n—\n${name}\n${email}`;
-  return `mailto:${profile.email}?subject=${encodeURIComponent(
-    subject
-  )}&body=${encodeURIComponent(body)}`;
-}
-
 const Contact = () => {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    subject: subjects[0],
-    message: ''
-  });
   const [copied, setCopied] = useState(false);
-
-  const update = (field) => (event) => {
-    setForm((prev) => ({ ...prev, [field]: event.target.value }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    window.location.href = buildMailto(form);
-  };
 
   const copyEmail = async () => {
     try {
@@ -47,8 +69,8 @@ const Contact = () => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Clipboard blocked (insecure context / permissions) — the address is
-      // still visible and selectable next to the button.
+      // Clipboard blocked (insecure context or denied permission). The address
+      // is still selectable next to the button.
     }
   };
 
@@ -63,153 +85,94 @@ const Contact = () => {
           >
             <div className="section-header text-center mb-16">
               <span className="section-eyebrow">Contact</span>
-              <h1 className="text-title mb-4">Let's talk</h1>
+              <h1 className="text-title mb-4">Get in touch</h1>
               <p className="text-subtitle">
-                Open to AI engineering, automation, and full-stack work — freelance,
-                contract, or full-time.
+                Pick whichever channel suits you — I read all of them, and reply fastest
+                on WhatsApp and LinkedIn.
               </p>
             </div>
 
-            <div className="contact-grid">
-              {/* Left: details + socials */}
-              <div className="contact-info">
-                <div className="contact-item card">
-                  <div className="contact-icon">
-                    <Mail size={24} />
-                  </div>
-                  <div className="contact-content">
-                    <h3 className="contact-title">Email</h3>
-                    <a href={`mailto:${profile.email}`} className="contact-text contact-link">
-                      {profile.email}
-                    </a>
-                    <button type="button" className="copy-btn" onClick={copyEmail}>
-                      {copied ? <Check size={13} /> : <Copy size={13} />}
-                      <span>{copied ? 'Copied' : 'Copy'}</span>
-                    </button>
-                  </div>
-                </div>
+            <div className="contact-channels">
+              {channels.map((channel, index) => (
+                <motion.a
+                  key={channel.id}
+                  className="channel-card"
+                  href={channel.href}
+                  target={channel.external ? '_blank' : undefined}
+                  rel={channel.external ? 'noopener noreferrer' : undefined}
+                  style={{ '--channel-accent': channel.accent }}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + index * 0.07, duration: 0.45 }}
+                >
+                  <span className="channel-icon">
+                    <channel.Icon size={22} />
+                  </span>
 
-                <div className="contact-item card">
-                  <div className="contact-icon">
-                    <MapPin size={24} />
-                  </div>
-                  <div className="contact-content">
-                    <h3 className="contact-title">Location</h3>
-                    <p className="contact-text">{profile.location}</p>
-                    <span className="contact-note">Open to remote and hybrid roles</span>
-                  </div>
-                </div>
+                  <span className="channel-body">
+                    <span className="channel-label">{channel.label}</span>
+                    <span className="channel-value">{channel.value}</span>
+                    <span className="channel-note">{channel.note}</span>
+                  </span>
 
-                <div className="contact-socials">
-                  <a
-                    className="social-btn"
-                    href={profile.links.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GithubIcon size={18} />
-                    <span>GitHub</span>
-                    <ArrowUpRight size={14} className="social-btn-arrow" />
-                  </a>
-                  <a
-                    className="social-btn"
-                    href={profile.links.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkedinIcon size={18} />
-                    <span>LinkedIn</span>
-                    <ArrowUpRight size={14} className="social-btn-arrow" />
-                  </a>
-                </div>
-
-                <div className="response-note">
-                  <strong>Typical reply time:</strong> within a day or two. For anything
-                  urgent, LinkedIn is the fastest way to reach me.
-                </div>
-              </div>
-
-              {/* Right: form */}
-              <div className="contact-form card">
-                <h3 className="form-title">Send a message</h3>
-                <p className="form-note">
-                  Fill this in and I'll get an email in your own mail app — nothing is
-                  stored on this site.
-                </p>
-
-                <form className="form" onSubmit={handleSubmit}>
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label className="form-label" htmlFor="contact-name">
-                        Your name
-                      </label>
-                      <input
-                        id="contact-name"
-                        type="text"
-                        placeholder="Jane Doe"
-                        className="form-input"
-                        value={form.name}
-                        onChange={update('name')}
-                        required
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label className="form-label" htmlFor="contact-email">
-                        Your email
-                      </label>
-                      <input
-                        id="contact-email"
-                        type="email"
-                        placeholder="jane@company.com"
-                        className="form-input"
-                        value={form.email}
-                        onChange={update('email')}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="contact-subject">
-                      What's this about?
-                    </label>
-                    <select
-                      id="contact-subject"
-                      className="form-input form-select"
-                      value={form.subject}
-                      onChange={update('subject')}
-                    >
-                      {subjects.map((subject) => (
-                        <option key={subject} value={subject}>
-                          {subject}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="contact-message">
-                      Message
-                    </label>
-                    <textarea
-                      id="contact-message"
-                      placeholder="What are you working on, and where could I help?"
-                      className="form-textarea"
-                      rows="6"
-                      value={form.message}
-                      onChange={update('message')}
-                      required
-                    />
-                  </div>
-
-                  <button type="submit" className="btn-primary form-submit">
-                    <Send size={18} />
-                    <span>Send message</span>
-                  </button>
-                </form>
-              </div>
+                  <span className="channel-arrow">
+                    <ArrowUpRight size={16} />
+                  </span>
+                </motion.a>
+              ))}
             </div>
+
+            {/* Convenience actions + availability */}
+            <motion.div
+              className="contact-utility"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+            >
+              <button
+                type="button"
+                className="copy-btn"
+                onClick={copyEmail}
+                aria-label="Copy email address"
+              >
+                {copied ? <Check size={15} /> : <Copy size={15} />}
+                <span>{copied ? 'Email copied' : 'Copy email address'}</span>
+              </button>
+
+              <span className="utility-divider" aria-hidden="true" />
+
+              <span className="location-note">
+                <MapPin size={15} />
+                <span>{profile.location}</span>
+              </span>
+            </motion.div>
+
+            <motion.div
+              className="availability-panel"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+            >
+              <span className="availability-dot" />
+              <div>
+                <h3 className="availability-title">Open to new work</h3>
+                <p className="availability-text">
+                  I'm currently looking for AI engineering, data, or full-stack roles —
+                  freelance, contract, or full-time. Based in Bandar Baru Bangi and
+                  comfortable working remotely across GMT+8 and beyond.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.p
+              className="contact-footnote"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7 }}
+            >
+              Prefer a traditional email with your CV attached? The same address works —
+              mention the role and I'll come back to you within a day or two.
+            </motion.p>
           </motion.div>
         </div>
       </section>
