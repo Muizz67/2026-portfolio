@@ -190,9 +190,9 @@ export const education = [
 ];
 
 export const certifications = [
-  // TODO: replace `link` with the specific badge/credential URL for each
-  // cert once you have them. All six currently point at the same Credly
-  // profile badge you supplied as a placeholder.
+  // Each entry links to its own Credly badge. The n8n credential is held as a
+  // local PDF instead and is flagged `local: true`, which makes the card open
+  // the document in place rather than in a new tab.
   {
     title: 'n8n: No-Code AI Agent Builder',
     issuer: 'Simplilearn',
@@ -282,7 +282,7 @@ export const expertise = [
 ];
 
 export const stats = [
-  { value: '6', label: 'Certifications' },
+  { value: '7', label: 'Certifications' },
   { value: '5', label: 'Projects' },
   { value: '97%', label: 'Annotation Accuracy' },
   { value: '20+', label: 'Unit Tests Written' }

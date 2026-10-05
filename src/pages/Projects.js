@@ -23,7 +23,7 @@ const techToKey = {
   'REST API': 'rest',
   JSON: 'json',
   HTML: 'html',
-  CSS: 'html',
+  CSS: null,
   Python: 'python',
   Pandas: 'pandas',
   Selenium: 'selenium',

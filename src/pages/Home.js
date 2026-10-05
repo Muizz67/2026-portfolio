@@ -168,7 +168,7 @@ const Home = () => {
             {[0, 1].map((copy) => (
               <div className="marquee-group" key={copy}>
                 {marqueeItems.map((item) => (
-                  <span className="marquee-item" key={`${copy}-${item}`}>
+                  <span className="marquee-item" key={`${copy}-${item.name}`}>
                     <span className="marquee-logo">{techIcon(item.icon, 20)}</span>
                     {item.name}
                   </span>

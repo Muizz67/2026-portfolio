@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, MapPin, Phone, Copy, Check, ArrowUpRight } from 'lucide-react';
@@ -73,18 +73,24 @@ const itemVariants = {
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
+  // The reset timer must be cleared on unmount: navigating away within the
+  // 2s window would otherwise fire setState on an unmounted component.
+  const copiedTimerRef = useRef(null);
   const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: true });
 
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText(profile.email);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      clearTimeout(copiedTimerRef.current);
+      copiedTimerRef.current = setTimeout(() => setCopied(false), 2000);
     } catch {
       // Clipboard blocked (insecure context or denied permission). The address
       // is still selectable next to the button.
     }
   };
+
+  useEffect(() => () => clearTimeout(copiedTimerRef.current), []);
 
   return (
     <div className="contact-page">

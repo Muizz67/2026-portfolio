@@ -47,7 +47,9 @@ export default function useTypewriter(phrases, options = {}) {
     window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Reduced motion: show the final phrase, stop the loop, touch nothing.
+  // Reduced motion: show the finished text immediately and never animate.
+  // In append mode the joined string is the final state, so this matches what
+  // the animated path ends on.
   useEffect(() => {
     if (prefersReducedMotion) {
       setText(phrases.join(separator));
@@ -57,6 +59,9 @@ export default function useTypewriter(phrases, options = {}) {
 
   useEffect(() => {
     if (prefersReducedMotion) return undefined;
+    // Without this, an empty phrases array indexes to undefined and `.slice()`
+    // throws inside the timer callback where nothing can catch it.
+    if (!phrases || phrases.length === 0) return undefined;
 
     // A single stable phrase string avoids re-running on every render.
     const current = phrases[phraseIndex % phrases.length];
@@ -137,6 +142,6 @@ export default function useTypewriter(phrases, options = {}) {
     text,
     done,
     // The complete headline for assistive tech and for no-JS/fast renders.
-    fullText: phrases.join(separator)
+    fullText: (phrases || []).join(separator)
   };
 }
