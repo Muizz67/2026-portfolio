@@ -1,4 +1,0 @@
-# Cloudflare Pages SPA fallback.
-# Without this, deep links like /projects or /resume return a 404 on refresh,
-# because there is no matching file in the build output.
-/*    /index.html   200
