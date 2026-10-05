@@ -159,7 +159,7 @@ const Contact = () => {
               <div>
                 <h3 className="availability-title">Open to new work</h3>
                 <p className="availability-text">
-                  I'm currently looking for AI engineering, data, or full-stack roles —
+                  I'm currently looking for AI engineering, QA Automation, data or full-stack roles —
                   freelance, contract, or full-time. Based in Bandar Baru Bangi and
                   comfortable working across GMT+8 and beyond.
                 </p>
