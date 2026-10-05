@@ -80,6 +80,14 @@ npm start      # http://localhost:3000
 npm run build  # production bundle into build/
 ```
 
+`npm run build` calls `scripts/build.js`, a thin wrapper around
+`react-scripts build`. react-scripts 5 bundles webpack 4, whose md4 hashing
+breaks under OpenSSL 3 (Node 17+); Cloudflare builds on Node 18 and would fail
+with `digital envelope routines::unsupported`. The wrapper retries with
+`--openssl-legacy-provider` when it sees that specific error, but only on Node
+versions below 23 where the flag still exists — so local builds on newer Node
+keep working.
+
 To preview the production build, serve it with SPA fallback:
 
 ```bash
@@ -88,10 +96,23 @@ npx serve -s build
 
 ## Deployment
 
-Cloudflare Pages, configured for a static CRA build:
+Cloudflare Pages, connected to this GitHub repository. Settings:
 
+- **Framework preset:** Create React App
 - **Build command:** `npm run build`
 - **Build output directory:** `build`
+- **Root directory:** `/` (leave blank)
+- **Node version:** 18.x — set via `engines` in `package.json`
+
+Every push to `main` triggers a fresh build and deploy. No action needed.
+
+To deploy by hand instead of via Git integration:
+
+```bash
+npm i -g wrangler
+npx wrangler login
+npm run deploy
+```
 
 `public/_redirects` holds `/* /index.html 200`, a rewrite fallback that is
 required for client-side routing. Without it, refreshing `/projects` or
