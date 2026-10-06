@@ -7,12 +7,10 @@
  *
  *   error:0308010C:digital envelope routines::unsupported
  *
- * The usual fix is NODE_OPTIONS=--openssl-legacy-provider. But that flag was
- * removed in Node 23+, so passing it unconditionally would break the build on
- * a newer local Node — which is exactly the machine this is developed on.
- *
- * So: try the build as-is first, and only retry with the legacy provider if it
- * fails AND the running Node is old enough to still accept the flag.
+ * The usual fix is NODE_OPTIONS=--openssl-legacy-provider. Vercel no longer
+ * offers Node 18 (it now runs Node 24+), and the flag is safe on Node 24+,
+ * so the wrapper retries with it on any modern Node that fails the first
+ * build with the OpenSSL error.
  */
 
 const { spawnSync } = require('child_process');
@@ -43,13 +41,13 @@ const isOpenSslError = /digital envelope routines|0308010C|openssl-legacy-provid
   output
 );
 
-if (!isOpenSslError || nodeMajor >= 23) {
+if (!isOpenSslError) {
   console.error('[build] Build failed. Re-running with no legacy-provider flag.');
   process.exit(first.status ?? 1);
 }
 
 console.warn(
-  `[build] OpenSSL 3 incompatibility detected on Node ${nodeMajor}. ` +
+  `[build] OpenSSL 3 incompatibility detected (Node ${nodeMajor}). ` +
     'Retrying with --openssl-legacy-provider.'
 );
 
