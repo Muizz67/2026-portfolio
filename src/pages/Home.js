@@ -8,23 +8,10 @@ import { profile, focusAreas, stats } from '../data/profile';
 import { featuredProjects } from '../data/projects';
 import { technicalStack } from '../data/profile';
 import { techIcon } from '../data/techIcons';
+import { makePageVariants } from '../components/PageVariants';
 import './Home.css';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0.2,
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 30, opacity: 0 },
-  visible: { y: 0, opacity: 1 }
-};
+const { containerVariants, itemVariants } = makePageVariants(0.2, 0.1, 30);
 
 // Hoisted to module scope: a new array identity on every render would land in
 // the typewriter's dependency array and restart it continuously.

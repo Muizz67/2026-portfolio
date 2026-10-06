@@ -3,7 +3,7 @@
 Personal portfolio and case-study site for an AI engineer working across data
 annotation, machine learning, automation, and full-stack development.
 
-Built as a static React single-page app, deployed to Cloudflare Pages.
+Built as a static React single-page app, deployed to **Vercel**.
 
 ---
 
@@ -49,7 +49,7 @@ where a brand's own colour is too dark to read against the card background.
 - **lucide-react** — interface icons
 - **react-icons** — brand marks for the tech stack and social links
 
-## Structure
+### Project structure
 
 ```
 src/
@@ -72,7 +72,7 @@ src/
 updates every page that reads from it — navigation, footer, stack counts, and
 hero stats included. Nothing is duplicated between components.
 
-## Running it
+## Running it locally
 
 ```bash
 npm install
@@ -80,39 +80,42 @@ npm start      # http://localhost:3000
 npm run build  # production bundle into build/
 ```
 
-`npm run build` calls `scripts/build.js`, a thin wrapper around
-`react-scripts build`. react-scripts 5 bundles webpack 4, whose md4 hashing
-breaks under OpenSSL 3 (Node 17+); Cloudflare builds on Node 18 and would fail
-with `digital envelope routines::unsupported`. The wrapper retries with
-`--openssl-legacy-provider` when it sees that specific error, but only on Node
-versions below 23 where the flag still exists — so local builds on newer Node
-keep working.
+The `build` script runs `scripts/build.js`, a wrapper around `react-scripts
+build`. Create React App (webpack 4) hashes with md4, which breaks under
+OpenSSL 3 (Node 17+) with `error:0308010C:digital envelope routines::unsupported`.
+The wrapper retries the first build with `--openssl-legacy-provider` when it
+sees that exact error — safely on Node 24+ (Vercel's current runtime), where
+the flag is supported.
 
-To preview the production build, serve it with SPA fallback:
+To preview the production build with SPA fallback:
 
 ```bash
 npx serve -s build
 ```
 
-## Deployment
+## Deployment (Vercel)
 
-Cloudflare Pages, connected to this GitHub repository. Settings:
+Connect this repository to **Vercel** and every push to `main` triggers a fresh
+build and deploy automatically. No manual redeploy needed.
 
-- **Framework preset:** Create React App
-- **Build command:** `npm run build`
-- **Build output directory:** `build`
-- **Root directory:** `/` (leave blank)
-- **Node version:** 18.x — set via `engines` in `package.json`
+1. Go to [vercel.com/new](https://vercel.com/new), sign in with GitHub, and import
+   the `Muizz67/2026-portfolio` repository.
+2. Confirm these build settings:
+   - **Framework preset:** Create React App
+   - **Build command:** `npm run build`
+   - **Output directory:** `build`
+   - **Root directory:** `./` (project root)
+3. The **project name** you give it becomes the deployment URL — for example,
+   `yourname.vercel.app`. (Use `muizz-rusdi` for `muizz-rusdi.vercel.app`.)
+4. Deploy. Done.
 
-Every push to `main` triggers a fresh build and deploy. No action needed.
+> [!note]
+> Vercel runs Node 24+ and no longer offers Node 18, so `package.json`'s
+> `engines` field is set to `24.x`. The `scripts/build.js` wrapper retries the
+> build with `--openssl-legacy-provider` on the OpenSSL-3 error, which is
+> safe on Node 24+ and verified locally.
 
-To deploy by hand instead of via Git integration:
-
-```bash
-npm i -g wrangler
-npx wrangler login
-npm run deploy
-```
+### The `_redirects` file (keep it)
 
 `public/_redirects` holds `/* /index.html 200`, a rewrite fallback that is
 required for client-side routing. Without it, refreshing `/projects` or
@@ -127,3 +130,16 @@ required for client-side routing. Without it, refreshing `/projects` or
   a half-typed fragment
 - Filled amber elements use near-black text for contrast
 - The project modal supports Escape to close and restores body scroll on exit
+
+## Hand-deploy (optional)
+
+If you ever need to deploy without Vercel's Git integration:
+
+```bash
+npm i -g wrangler
+npx wrangler login
+npm run deploy
+```
+
+This is a Wrangler Pages deployment (the original intent of the repo). The
+Vercel Git integration shown above is the recommended path for ongoing builds.

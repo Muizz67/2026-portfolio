@@ -6,50 +6,33 @@ import { GithubIcon } from '../components/BrandIcons';
 import { techIcon } from '../data/techIcons';
 import { projects } from '../data/projects';
 import { icon } from '../data/icon';
+import { makePageVariants } from '../components/PageVariants';
 import './Projects.css';
 
-// Project tech labels don't all match the About stack names, so map each one
-// to a logo key. Anything unmapped simply renders without a mark.
-const techToKey = {
-  'IBM Watson': 'ibmwatson',
+// Project tech labels are display names, not the icon registry keys used by
+// src/data/techIcons. Normalize to a registry key; the small override table
+// below covers labels that don't map cleanly (e.g. 'Machine Learning' to
+// 'sklearn', 'Node.js' to 'node', 'REST API' to 'rest').
+const techKeyOverrides = {
+  'LLMs': 'llm',
   'Machine Learning': 'sklearn',
   'Scikit-learn': 'sklearn',
-  'LLMs': 'llm',
+  'Node.js': 'node',
+  'Cloudflare R2': 'cloudflare',
+  'IBM Watson': 'ibmwatson',
   'Julius AI': 'julius',
   'Dashboard': 'dashboard',
   'Power BI': 'powerbi',
-  'Cloudflare R2': 'cloudflare',
   'Google Cloud Platform': 'gcp',
   'REST API': 'rest',
-  JSON: 'json',
-  HTML: 'html',
-  CSS: null,
-  Python: 'python',
-  Pandas: 'pandas',
-  Selenium: 'selenium',
-  BeautifulSoup: 'selenium',
-  Obsidian: 'obsidian',
-  Docker: 'docker',
-  n8n: 'n8n',
-  'Node.js': 'node',
-  JavaScript: 'javascript'
+  'BeautifulSoup': 'selenium'
 };
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0.2,
-      staggerChildren: 0.1
-    }
-  }
-};
+function techKey(label) {
+  return techKeyOverrides[label] ?? label.toLowerCase().replace(/\s+/g, '');
+}
 
-const itemVariants = {
-  hidden: { y: 30, opacity: 0 },
-  visible: { y: 0, opacity: 1 }
-};
+const { containerVariants, itemVariants } = makePageVariants(0.2, 0.1, 30);
 
 const Projects = () => {
   const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: true });
@@ -136,7 +119,7 @@ const Projects = () => {
                     <div className="project-tech">
                       {project.tech.map((tech) => (
                         <span key={tech} className="tech-tag">
-                          {techIcon(techToKey[tech], 14)}
+                          {techIcon(techKey(tech), 14)}
                           <span>{tech}</span>
                         </span>
                       ))}

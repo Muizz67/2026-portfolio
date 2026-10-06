@@ -5,20 +5,10 @@ import { MapPin, Calendar, CheckCircle2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { experience, stats } from '../data/profile';
 import { icon } from '../data/icon';
+import { makePageVariants } from '../components/PageVariants';
 import './Experience.css';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { delayChildren: 0.15, staggerChildren: 0.09 }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 24, opacity: 0 },
-  visible: { y: 0, opacity: 1 }
-};
+const { containerVariants, itemVariants } = makePageVariants(0.15, 0.09, 24);
 
 // Roles are listed newest first. This is a single reading column with a rail
 // on the left rather than an alternating two-column timeline: alternating

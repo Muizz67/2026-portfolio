@@ -25,20 +25,10 @@ import {
 } from '../data/profile';
 import { techIcon } from '../data/techIcons';
 import { icon } from '../data/icon';
+import { makePageVariants } from '../components/PageVariants';
 import './About.css';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { delayChildren: 0.15, staggerChildren: 0.08 }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 22, opacity: 0 },
-  visible: { y: 0, opacity: 1 }
-};
+const { containerVariants, itemVariants } = makePageVariants(0.15, 0.08, 22);
 
 // Hardcoded rather than derived from the name, which contains an apostrophe.
 const initials = 'MR';

@@ -4,11 +4,11 @@ import { useInView } from 'react-intersection-observer';
 import { Mail, MapPin, Phone, Copy, Check, ArrowUpRight } from 'lucide-react';
 import { BsGithub, BsLinkedin, BsWhatsapp } from 'react-icons/bs';
 import { profile } from '../data/profile';
+import { makePageVariants } from '../components/PageVariants';
 import './Contact.css';
 
-// Every channel is a real link — email opens the mail client, WhatsApp opens a
-// chat with the message pre-typed, phone dials. No form, no backend, nothing
-// that can silently fail.
+const { containerVariants, itemVariants } = makePageVariants(0.15, 0.08, 22);
+
 const channels = [
   {
     id: 'email',
@@ -55,21 +55,6 @@ const channels = [
     external: true
   }
 ];
-
-// Same variant pair and stagger timing used by Home, About, Experience and
-// Projects, so the page reveal is identical across the site.
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { delayChildren: 0.15, staggerChildren: 0.08 }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 22, opacity: 0 },
-  visible: { y: 0, opacity: 1 }
-};
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
