@@ -1,93 +1,100 @@
-# 👋 Hi, welcome to my digital home
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0a0e17,50:f0b429,100:101828&height=200&section=header&text=Muhammad%20Mu'izz%20bin%20Rusdi&fontSize=42&fontColor=f0b429&animation=fadeIn&fontAlignY=36&desc=AI%20Engineer%20%7C%20Full-Stack%20Developer%20%7C%20UiTM%20Shah%20Alam%20Graduate&descAlignY=58&descSize=16&descColor=e5e7eb" alt="header banner" />
+</p>
 
-Pleased to meet you — I'm Mu'izz. This repository is the source behind my
-personal portfolio: the projects I've shipped, the things I learned along the way,
-and a little bit of the photo journey behind all of it.
+<p align="center">
+  <img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="420" alt="coding gif" />
+</p>
 
-Feel free to explore, poke around the components, and borrow anything that's
-useful. If something here catches your eye or sparks a question, I'd love to
-hear from you — the **Contact** page has all the ways to reach me.
+<p align="center">
+  <a href="https://github.com/Muizz67">
+    <img src="https://komarev.com/ghpvc/?username=Muizz67&label=Profile%20views&color=f0b429&style=flat" alt="profile views" />
+  </a>
+</p>
 
-Below is the hands-on readme for anyone who wants to build, run, or extend it.
+# Hi 👋, I'm Muhammad Mu'izz
+
+### Aspiring AI Engineer & Full-Stack Developer
+
+<p align="center">
+  <a href="https://linkedin.com/in/muizz-rusdi" target="_blank">
+    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" height="30" width="40" alt="LinkedIn" />
+  </a>
+  <a href="https://github.com/Muizz67" target="_blank">
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" height="30" width="40" alt="GitHub" />
+  </a>
+</p>
+
+- 🔭 I'm currently working on my **Final Year Project: Customer Emotion Recognition System** (CNN-based)
+- 🌱 I'm currently learning **Web Development**, **Convolutional Neural Networks**, and **Agentic AI workflows**
+- 👨‍💻 Browse my projects → [Muizz67 on GitHub](https://github.com/Muizz67?tab=repositories)
+- 💼 Open to: AI Engineering, Data Annotation/QA, Full-Stack roles
+- 📫 Reach me at **muizzrusdi@yahoo.com**
+- ⚡ Fun fact: **I love turning messy data into clean, shippable models**
+
+### Languages and Tools:
+
+<p align="left">
+  <a href="https://www.python.org/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="40" height="40" alt="Python" /></a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" width="40" height="40" alt="JavaScript" /></a>
+  <a href="https://reactjs.org/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" width="40" height="40" alt="React" /></a>
+  <a href="https://vitejs.dev/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vitejs/vitejs-original.svg" width="40" height="40" alt="Vite" /></a>
+  <a href="https://nodejs.org/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" width="40" height="40" alt="Node.js" /></a>
+  <a href="https://git-scm.com/" target="_blank"><img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" width="40" height="40" alt="Git" /></a>
+  <a href="https://www.tensorflow.org/" target="_blank"><img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg" width="40" height="40" alt="TensorFlow" /></a>
+  <a href="https://www.mysql.com/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" width="40" height="40" alt="MySQL" /></a>
+</p>
+
+### 📊 GitHub Stats:
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=Muizz67&show_icons=true&locale=en&theme=dark&title_color=f0b429&text_color=e5e7eb&icon_color=f0b429&border_color=f0b429&bg_color=0a0e17" alt="Muizz67 stats" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Muizz67&show_icons=true&locale=en&layout=compact&theme=dark&title_color=f0b429&text_color=e5e7eb&icon_color=f0b429&border_color=f0b429&bg_color=0a0e17" alt="Muizz67 top languages" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Muizz67&theme=dark&background=0a0e17&ring=f0b429&fire=f0b429&currStreakLabel=e5e7eb&sideLabels=e5e7eb&dates=9ca3af&border=f0b429" alt="Muizz67 streak" />
+</p>
 
 ---
 
-# Portfolio — Muhammad Mu'izz bin Rusdi
+## About this portfolio site
 
-Personal portfolio and case-study site for an AI engineer working across data
-annotation, machine learning, automation, and full-stack development.
-
-Built as a static React single-page app, deployed to **Vercel**.
-
----
-
-## What it is
-
-Six routes, each doing one job:
+A six-route React single-page app showcasing my work:
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Hero with a typed headline, focus areas, featured work, headline stats, closing CTA |
-| `/about` | Identity card, first-person bio, passions, education, certifications, filterable tech stack |
+| `/` | Hero with typed headline, focus areas, featured work, stats, closing CTA |
+| `/about` | Identity card, bio, education, certifications, tech stack |
 | `/experience` | Role-by-role work history as a single reading rail |
-| `/gallery` | Full photo gallery of degree years, internships, and work snapshots (lightbox on tap) |
-| `/projects` | Five projects as cards; each opens a case-study modal covering role, impact, and engineering context |
-| `/contact` | Five real contact channels — email, phone, WhatsApp, GitHub, LinkedIn |
-| `/resume` | Embedded PDF resume with download and open-in-new-tab |
+| `/projects` | Project case-study cards with modal details |
+| `/gallery` | Photo timeline with lightbox (newest-first, filterable by activity) |
+| `/contact` | Five real contact channels |
+| `/resume` | Embedded PDF resume with download + open |
 
-A site-wide footer carries navigation, contact details, and back-to-top.
+### Design system
 
-Content is real throughout: quantified results (97% annotation accuracy against
-a 95% KPI, roughly 70% less manual data handling, 20+ unit tests), full UiTM
-education with CGPA, and six verified certifications.
-
-## Design
-
-Navy-slate surfaces (`#0a0e17` / `#101828` / `#1a2436`) with an amber accent
-(`#f0b429`), applied sitewide through CSS custom properties in
-`src/index.css`. Cards are translucent, so stacked panels read as layers
-rather than opaque blocks.
-
-Because amber is a light accent, any filled element using it takes near-black
-text: white on `#f0b429` measures 1.86:1 and fails contrast, while `#0a0e17`
-gives 10.35:1. This applies to primary buttons, the active stack tab, and the
-availability dot. Adding a new filled accent surface means re-checking this.
-
-Tech logos render in their official brand colours through `react-icons`, lifted
-where a brand's own colour is too dark to read against the card background.
-
-## Tech stack
-
-- **React 19** with **React Router 7**
-- **react-scripts** (Create React App)
-- **Framer Motion** — page reveals, the typed hero headline, stack-filter transitions
-- **lucide-react** — interface icons
-- **react-icons** — brand marks for the tech stack and social links
+Navy-slate surfaces (`#0a0e17` / `#101828` / `#1a2436`) with an amber accent (`#f0b429`), set through CSS custom properties in `src/index.css`. Amber is a light accent, so filled elements use near-black text (`#0a0e17`) for contrast (10.35:1).
 
 ### Project structure
 
 ```
 src/
-  components/
-    BrandIcons.js   GitHub and LinkedIn marks (lucide v1 dropped brand icons)
-    Footer.js/.css  Site-wide footer
-    Navbar.js/.css  Navigation with mobile menu
-  data/
-    profile.js      Personal details, bio, experience, education, certs, stack
-    projects.js     Project records shared by Home and Projects
-    techIcons.js    Brand logo registry with official brand colours
-    icon.js         String-to-icon mapping for the data files
-  hooks/
-    useTypewriter.js  Typed hero headline; respects reduced-motion
-  pages/
-    About, Contact, Experience, Home, Projects, Resume
+ ├── components/        # Navbar, Footer, PageVariants, CareerPhotos (lightbox)
+ ├── pages/             # Home, About, Projects, Experience, Gallery, Contact, Resume
+ ├── data/              # careerPhotos, projects, profile, techIcons (single source of truth)
+ ├── index.css          # design tokens + buttons
+ └── App.js             # routing + scroll-to-top on navigation
+public/
+ └── assets/            # photos and resume.pdf
 ```
 
-**All content lives in `src/data/`.** Editing `profile.js` or `projects.js`
-updates every page that reads from it — navigation, footer, stack counts, and
-hero stats included. Nothing is duplicated between components.
+All content lives in `src/data/` — edit there and every page that reads it updates (navigation, footer, stack counts, hero stats included). Nothing is duplicated between components.
 
-## Running it locally
+### Running it locally
 
 ```bash
 npm install
@@ -95,12 +102,7 @@ npm start      # http://localhost:3000
 npm run build  # production bundle into build/
 ```
 
-The `build` script runs `scripts/build.js`, a wrapper around `react-scripts
-build`. Create React App (webpack 4) hashes with md4, which breaks under
-OpenSSL 3 (Node 17+) with `error:0308010C:digital envelope routines::unsupported`.
-The wrapper retries the first build with `--openssl-legacy-provider` when it
-sees that exact error — safely on Node 24+ (Vercel's current runtime), where
-the flag is supported.
+The `build` script runs `scripts/build.js`, a wrapper around `react-scripts build` that retries with `--openssl-legacy-provider` on Node 17+ OpenSSL 3 errors (safe on Vercel's Node 24 runtime).
 
 To preview the production build with SPA fallback:
 
@@ -108,12 +110,12 @@ To preview the production build with SPA fallback:
 npx serve -s build
 ```
 
-## Accessibility notes
+### Accessibility notes
 
-- `prefers-reduced-motion` is respected sitewide: the typed hero renders
-  finished, the tech marquee is hidden, and all pulses and transitions stop
-- The hero headline carries its full text in `aria-label` with the animating
-  text `aria-hidden`, so screen readers announce a complete heading rather than
-  a half-typed fragment
+- `prefers-reduced-motion` respected sitewide (typed hero renders finished, tech marquee hidden, transitions stop)
+- Hero headline carries full text in `aria-label`, animating text is `aria-hidden`
 - Filled amber elements use near-black text for contrast
-- The project modal supports Escape to close and restores body scroll on exit
+- Project modal supports Escape-to-close and restores body scroll on exit
+- Lightbox supports arrow keys and Escape
+
+Made with care and caffeine ☕ — feel free to fork, but a star would make my day 🌟
