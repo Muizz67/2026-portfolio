@@ -5,6 +5,8 @@ import { MapPin, Calendar, CheckCircle2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { experience, stats } from '../data/profile';
 import { icon } from '../data/icon';
+import { careerPhotos } from '../data/careerPhotos';
+import CareerPhotos from '../components/CareerPhotos';
 import { makePageVariants } from '../components/PageVariants';
 import './Experience.css';
 
@@ -98,6 +100,14 @@ const Experience = () => {
                 </motion.article>
               ))}
             </div>
+
+            {/* Visual recap of the photos across these roles. */}
+            <CareerPhotos
+              photos={careerPhotos}
+              lightbox={false}
+              gridOnly
+              title="Career photos"
+            />
 
             <motion.div variants={itemVariants} className="exp-footer">
               <Link className="btn-secondary" to="/projects">

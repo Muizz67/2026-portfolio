@@ -15,7 +15,8 @@ Six routes, each doing one job:
 | --- | --- |
 | `/` | Hero with a typed headline, focus areas, featured work, headline stats, closing CTA |
 | `/about` | Identity card, first-person bio, passions, education, certifications, filterable tech stack |
-| `/experience` | Role-by-role work history as a single reading rail |
+| `/experience` | Role-by-role work history as a single reading rail, plus a compact photo recap |
+| `/career` | Full photo gallery of degree years, internships, and work snapshots (lightbox on tap) |
 | `/projects` | Five projects as cards; each opens a case-study modal covering role, impact, and engineering context |
 | `/contact` | Five real contact channels — email, phone, WhatsApp, GitHub, LinkedIn |
 | `/resume` | Embedded PDF resume with download and open-in-new-tab |
@@ -93,34 +94,6 @@ To preview the production build with SPA fallback:
 npx serve -s build
 ```
 
-## Deployment (Vercel)
-
-Connect this repository to **Vercel** and every push to `main` triggers a fresh
-build and deploy automatically. No manual redeploy needed.
-
-1. Go to [vercel.com/new](https://vercel.com/new), sign in with GitHub, and import
-   the `Muizz67/2026-portfolio` repository.
-2. Confirm these build settings:
-   - **Framework preset:** Create React App
-   - **Build command:** `npm run build`
-   - **Output directory:** `build`
-   - **Root directory:** `./` (project root)
-3. The **project name** you give it becomes the deployment URL — for example,
-   `yourname.vercel.app`. (Use `muizz-rusdi` for `muizz-rusdi.vercel.app`.)
-4. Deploy. Done.
-
-> [!note]
-> Vercel runs Node 24+ and no longer offers Node 18, so `package.json`'s
-> `engines` field is set to `24.x`. The `scripts/build.js` wrapper retries the
-> build with `--openssl-legacy-provider` on the OpenSSL-3 error, which is
-> safe on Node 24+ and verified locally.
-
-### The `_redirects` file (keep it)
-
-`public/_redirects` holds `/* /index.html 200`, a rewrite fallback that is
-required for client-side routing. Without it, refreshing `/projects` or
-`/resume` returns a 404, since no matching file exists in the build output.
-
 ## Accessibility notes
 
 - `prefers-reduced-motion` is respected sitewide: the typed hero renders
@@ -130,16 +103,3 @@ required for client-side routing. Without it, refreshing `/projects` or
   a half-typed fragment
 - Filled amber elements use near-black text for contrast
 - The project modal supports Escape to close and restores body scroll on exit
-
-## Hand-deploy (optional)
-
-If you ever need to deploy without Vercel's Git integration:
-
-```bash
-npm i -g wrangler
-npx wrangler login
-npm run deploy
-```
-
-This is a Wrangler Pages deployment (the original intent of the repo). The
-Vercel Git integration shown above is the recommended path for ongoing builds.

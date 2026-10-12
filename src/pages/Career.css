@@ -1,0 +1,346 @@
+.career-page {
+  min-height: 100vh;
+  padding-top: 6rem;
+  background: var(--bg-primary);
+}
+
+.career-section {
+  padding: 0;
+}
+
+.career-hero {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 2.5rem;
+  text-align: center;
+}
+
+.career-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-bottom: 1.25rem;
+  transition: var(--transition);
+}
+
+.career-back:hover {
+  color: var(--accent);
+}
+
+.career-hero-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 1rem;
+}
+
+.career-hero-sub {
+  max-width: 580px;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.career-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.career-hero-count {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.career-grid-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.1rem;
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgb(26 36 54 / 0.55);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.career-grid-toggle:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+  background: rgb(26 36 54 / 0.75);
+}
+
+.career-grid-toggle.on {
+  color: var(--bg-primary);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.career-grid-toggle.on:hover {
+  color: var(--text-primary);
+}
+
+.career-photo-wrap {
+  max-width: 1120px;
+  margin: 1.5rem auto 0;
+}
+
+/* ---- Section heading ---- */
+.career-photo-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 1.5rem;
+  text-align: center;
+}
+
+.career-photo-empty {
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* ---- Grid ---- */
+.career-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+  gap: 1.25rem;
+}
+
+.career-photo-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgb(26 36 54 / 0.55);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: var(--transition);
+  aspect-ratio: 4 / 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.career-photo-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  transform: translateY(-3px);
+}
+
+.career-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Placeholder so the grid never collapses while photos load. */
+  background: var(--bg-tertiary);
+}
+
+/* Caption overlaid on the bottom of the thumbnail */
+.career-photo-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(to top, rgba(6, 12, 20, 0.92), rgba(6, 12, 20, 0.15));
+  color: var(--text-primary);
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.career-photo-date {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 0.15rem;
+}
+
+.career-photo-caption-text {
+  color: var(--text-primary);
+}
+
+.career-photo-date-label {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bg-primary);
+  background: var(--accent);
+  border-radius: 999px;
+}
+
+/* ---- Lightbox ---- */
+.career-photo-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(6, 12, 20, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  overflow-y: auto;
+}
+
+.career-photo-lightbox {
+  width: 100%;
+  max-width: 960px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: rgba(10, 14, 23, 0.96);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 1.25rem 1.25rem 0.75rem;
+}
+
+.career-photo-lightbox-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgb(26 36 54 / 0.7);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.career-photo-lightbox-close:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+  background: rgb(26 36 54 / 0.95);
+}
+
+.career-photo-lightbox-nav {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52vh;
+}
+
+.career-photo-lightbox-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgb(26 36 54 / 0.7);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.career-photo-lightbox-nav-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.career-photo-lightbox-viewport {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  max-height: 62vh;
+}
+
+.career-photo-lightbox-img {
+  max-width: 100%;
+  max-height: 62vh;
+  object-fit: contain;
+  display: block;
+}
+
+.career-photo-lightbox-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1rem 1.25rem;
+  background: rgb(26 36 54 / 0.7);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  text-align: center;
+  width: 100%;
+}
+
+.career-photo-lightbox-date {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+}
+
+.career-photo-lightbox-caption-text {
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.career-photo-lightbox-counter {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Grid-only variant ---- */
+.career-photo-grid.grid-only {
+  cursor: default;
+}
+
+.career-photo-grid.grid-only .career-photo-card {
+  cursor: default;
+  pointer-events: none;
+}
+
+.career-photo-grid.grid-only .career-photo-card:hover {
+  transform: none;
+}
+
+.career-photo-grid.grid-only .career-photo-card {
+  border-color: var(--border);
+}

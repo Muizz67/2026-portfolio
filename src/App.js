@@ -6,6 +6,7 @@ import About from './pages/About';
 import Experience from './pages/Experience';
 import Contact from './pages/Contact';
 import Resume from './pages/Resume';
+import Career from './pages/Career';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import './App.css';
@@ -20,6 +21,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="/experience" element={<Experience />} />
+          <Route path="/career" element={<Career />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/resume" element={<Resume />} />
         </Routes>
