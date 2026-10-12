@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import CareerPhotos from '../components/CareerPhotos';
@@ -26,7 +27,7 @@ const Gallery = () => {
               className="section-header text-center mb-16"
             >
               <span className="section-eyebrow">Gallery</span>
-              <h1 className="text-title mb-4">My career in pictures</h1>
+              <h1 className="text-title mb-4">Photos from my career</h1>
               <p className="text-subtitle">
                 A visual timeline — from early studies at UiTM Shah Alam through AI
                 engineering internships and graduation.
@@ -35,6 +36,9 @@ const Gallery = () => {
 
             <motion.div variants={itemVariants}>
               <CareerPhotos photos={careerPhotos} />
+            </motion.div>
+            <motion.div variants={itemVariants} className="text-center mt-12">
+              <Link className="btn-secondary" to="/contact">Let's work together →</Link>
             </motion.div>
           </motion.div>
         </div>

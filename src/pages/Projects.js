@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Eye, X } from 'lucide-react';
@@ -138,6 +139,9 @@ const Projects = () => {
                 </motion.div>
               ))}
             </div>
+            <motion.div variants={itemVariants} className="gallery-flow-cta">
+              <Link className="btn-secondary" to="/gallery">See photo gallery →</Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
