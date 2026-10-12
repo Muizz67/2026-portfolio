@@ -193,10 +193,10 @@ export default function CareerPhotos({
               <div className="gallery-lightbox-text">
                 <p className="gallery-lightbox-caption">{current.caption}</p>
                 <div className="gallery-lightbox-meta">
-                  <span>{current.date || '—'}</span>
-                  <span className="gallery-lightbox-dot">·</span>
-                  <span>{current.location || '—'}</span>
-                </div>
+                    {current.date && <span>{current.date}</span>}
+                    {current.date && current.location && <span className="gallery-lightbox-dot">·</span>}
+                    {current.location && <span>{current.location}</span>}
+                  </div>
                 <div className="gallery-lightbox-counter">
                   {index + 1} / {filtered.length}
                 </div>
