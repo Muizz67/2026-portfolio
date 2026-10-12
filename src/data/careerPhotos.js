@@ -9,10 +9,7 @@
 //
 // Sorted chronologically by date.
 export const careerPhotos = [
-,
-
-,
-  {
+{
     id: 16,
     date: 'May 2026',
     label: 'UiTM Shah Alam',
@@ -21,10 +18,7 @@ export const careerPhotos = [
     location: 'UiTM Shah Alam',
   },
 
-,
-
-,
-  {
+{
     id: 9,
     date: 'May 2026',
     label: 'UiTM Shah Alam',
@@ -33,10 +27,7 @@ export const careerPhotos = [
     location: 'UiTM Shah Alam',
   },
 
-,
-
-,
-  {
+{
     id: 10,
     date: 'March 2026',
     label: 'TDCX',
@@ -45,10 +36,7 @@ export const careerPhotos = [
     location: 'TDCX, Kuala Lumpur',
   },
 
-,
-
-,
-  {
+{
     id: 11,
     date: 'December 2025',
     label: 'TDCX',
@@ -57,10 +45,7 @@ export const careerPhotos = [
     location: 'TDCX, Kuala Lumpur',
   },
 
-,
-
-,
-  {
+{
     id: 12,
     date: 'December 2025',
     label: 'TDCX',
@@ -69,10 +54,7 @@ export const careerPhotos = [
     location: 'TDCX, Kuala Lumpur',
   },
 
-,
-
-,
-  {
+{
     id: 13,
     date: 'October 2025',
     label: 'TDCX',
@@ -81,10 +63,7 @@ export const careerPhotos = [
     location: 'TDCX, Kuala Lumpur',
   },
 
-,
-
-,
-  {
+{
     id: 14,
     date: 'October 2025',
     label: 'TDCX',
@@ -93,10 +72,7 @@ export const careerPhotos = [
     location: "Chilli's, Mid Valley City",
   },
 
-,
-
-,
-  {
+{
     id: 15,
     date: 'September 2025',
     label: 'TDCX',
@@ -105,10 +81,7 @@ export const careerPhotos = [
     location: 'TDCX, Kuala Lumpur',
   },
 
-,
-
-,
-  {
+{
     id: 5,
     date: 'June 2025',
     label: 'AGA Touch',
@@ -117,10 +90,7 @@ export const careerPhotos = [
     location: 'AGA Touch, Shah Alam',
   },
 
-,
-
-,
-  {
+{
     id: 8,
     date: 'June 2025',
     label: 'AGA Touch',
@@ -129,10 +99,7 @@ export const careerPhotos = [
     location: 'AGA Touch, Shah Alam',
   },
 
-,
-
-,
-  {
+{
     id: 7,
     date: 'May 2025',
     label: 'AGA Touch',
@@ -141,10 +108,7 @@ export const careerPhotos = [
     location: 'Aman Rimba, Janda Baik',
   },
 
-,
-
-,
-  {
+{
     id: 4,
     date: 'April 2025',
     label: 'AGA Touch',
@@ -153,10 +117,7 @@ export const careerPhotos = [
     location: 'AGA Touch, Shah Alam',
   },
 
-,
-
-,
-  {
+{
     id: 6,
     date: 'February 2025',
     label: 'UiTM Shah Alam',
@@ -165,10 +126,7 @@ export const careerPhotos = [
     location: 'UiTM Shah Alam',
   },
 
-,
-
-,
-  {
+{
     id: 99,
     date: 'December 2024',
     label: 'UiTM Shah Alam',
@@ -184,7 +142,7 @@ export const careerPhotos = [
     caption: 'HR and IT Team in Bluevy PLT.',
     image: '/assets/photos/bluevy-01.jpg',
     location: 'Bluevy PLT',
-  },
+  }
 ];
 
 export const careerPhotoCount = careerPhotos.length;
