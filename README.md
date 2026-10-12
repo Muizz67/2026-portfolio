@@ -15,8 +15,8 @@ Six routes, each doing one job:
 | --- | --- |
 | `/` | Hero with a typed headline, focus areas, featured work, headline stats, closing CTA |
 | `/about` | Identity card, first-person bio, passions, education, certifications, filterable tech stack |
-| `/experience` | Role-by-role work history as a single reading rail, plus a compact photo recap |
-| `/career` | Full photo gallery of degree years, internships, and work snapshots (lightbox on tap) |
+| `/experience` | Role-by-role work history as a single reading rail |
+| `/gallery` | Full photo gallery of degree years, internships, and work snapshots (lightbox on tap) |
 | `/projects` | Five projects as cards; each opens a case-study modal covering role, impact, and engineering context |
 | `/contact` | Five real contact channels — email, phone, WhatsApp, GitHub, LinkedIn |
 | `/resume` | Embedded PDF resume with download and open-in-new-tab |

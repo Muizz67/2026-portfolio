@@ -275,20 +275,3 @@
   }
 }
 
-/* ---- Career photos strip inside the Experience page ---- */
-.experience-page .gallery-title {
-  margin-bottom: 1.25rem;
-  font-size: 1.3rem;
-}
-
-.experience-page .gallery-grid {
-  gap: 1rem;
-}
-
-.experience-page .gallery-card {
-  aspect-ratio: 3 / 4;
-}
-
-.experience-page .gallery-card:hover {
-  transform: none;
-}

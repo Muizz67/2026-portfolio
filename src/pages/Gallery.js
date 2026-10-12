@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CareerPhotos from '../components/CareerPhotos';
-import '../pages/Career.css';
+import '../pages/Gallery.css';
 
 /**
  * Gallery page — a full-page, Google Images–style photo gallery.
@@ -10,7 +10,7 @@ import '../pages/Career.css';
  * the lightbox. This page simply mounts it and lets the gallery fill the
  * viewport.
  */
-const Career = () => {
+const Gallery = () => {
   return (
     <div className="gallery-page">
       <section className="gallery-section">
@@ -22,4 +22,4 @@ const Career = () => {
   );
 };
 
-export default Career;
+export default Gallery;
