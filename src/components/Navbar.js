@@ -6,9 +6,9 @@ import './Navbar.css';
 const links = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
-  { to: '/gallery', label: 'Gallery' },
   { to: '/experience', label: 'Experience' },
   { to: '/projects', label: 'Projects' },
+  { to: '/gallery', label: 'Gallery' },
   { to: '/contact', label: 'Contact' }
 ];
 
