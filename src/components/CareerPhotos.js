@@ -27,6 +27,7 @@ export default function CareerPhotos({
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const overlayRef = useRef(null);
+  const [broken, setBroken] = useState(new Set());
 
   const labels = useMemo(() => {
     const seen = new Set();
@@ -127,12 +128,18 @@ export default function CareerPhotos({
               if (e.key === 'Enter' || e.key === ' ') openPhoto(photo.id);
             }}
           >
-            <img
-              src={photo.image}
-              alt={photo.caption}
-              loading="lazy"
-              className="gallery-img"
-            />
+            <span className="gallery-card-label">{photo.label}</span>
+            {broken.has(photo.id) ? (
+              <div className="gallery-card-empty">Image unavailable</div>
+            ) : (
+              <img
+                src={photo.image}
+                alt={photo.caption}
+                loading="lazy"
+                className="gallery-img"
+                onError={() => setBroken((prev) => new Set(prev).add(photo.id))}
+              />
+            )}
             <figcaption className="gallery-caption">{photo.caption}</figcaption>
           </figure>
         ))}
