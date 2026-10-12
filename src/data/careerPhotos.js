@@ -24,13 +24,6 @@ export const careerPhotos = [
     image: '/assets/photos/degree-01.jpg',
   },
   {
-    id: 3,
-    date: 'February 2025',
-    label: 'Degree',
-    caption: 'Third-year degree snapshot.',
-    image: '/assets/photos/degree-02.jpg',
-  },
-  {
     id: 4,
     date: 'April 2025',
     label: 'AGA',
