@@ -44,7 +44,7 @@
   justify-content: center;
   gap: 0.65rem;
   padding: 1rem 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: none; /* remove faint rule below filters */
 }
 
 .gallery-filter {

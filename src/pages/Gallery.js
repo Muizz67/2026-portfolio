@@ -37,9 +37,9 @@ const Gallery = () => {
             <motion.div variants={itemVariants}>
               <CareerPhotos photos={careerPhotos} />
             </motion.div>
-            <motion.div variants={itemVariants} className="text-center mt-12">
-              <Link className="btn-secondary" to="/contact">Let's work together →</Link>
-            </motion.div>
+<motion.div variants={itemVariants} className="text-center mt-20">
+              <Link className="btn-primary" to="/contact">Get in touch →</Link>
+            </motion.div>>
           </motion.div>
         </div>
       </section>

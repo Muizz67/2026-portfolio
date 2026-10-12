@@ -139,8 +139,9 @@ const Projects = () => {
                 </motion.div>
               ))}
             </div>
-            <motion.div variants={itemVariants} className="gallery-flow-cta">
+            <motion.div variants={itemVariants} className="text-center mt-12">
               <Link className="btn-secondary" to="/gallery">See photo gallery →</Link>
+              <Link className="btn-primary" to="/contact" style={{ marginLeft: '0.75rem' }}>Get in touch →</Link>
             </motion.div>
           </motion.div>
         </div>
