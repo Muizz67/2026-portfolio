@@ -9,15 +9,15 @@ import { careerPhotos } from '../data/careerPhotos';
  * the header and the page-level transitions.
  *
  * Props:
- *   photos       — array of { id, label, caption, image } (defaults to all).
- *   lightbox     — whether clicking a thumbnail opens the lightbox.
+ *   photos       — array of { id, label, caption, image, date?, location? }.
+ *   lightbox     — whether clicking a thumbnail opens the lightbox (default true).
  *   showFilters  — show the label-filter pills.
  *
  * Layout:
  *   - A label filter bar ("All" + one pill per distinct label).
  *   - A large uniform grid; each card shows the photo and reveals the caption
  *     on hover.
- *   - Clicking a card opens a larger lightbox with prev/next.
+ *   - Clicking a card opens a lightbox showing Date / Description / Location.
  */
 export default function CareerPhotos({
   photos = careerPhotos,
@@ -28,7 +28,6 @@ export default function CareerPhotos({
   const [index, setIndex] = useState(0);
   const overlayRef = useRef(null);
 
-  // Distinct labels, in the order they first appear in `photos`.
   const labels = useMemo(() => {
     const seen = new Set();
     const list = [];
@@ -48,6 +47,8 @@ export default function CareerPhotos({
     return photos.filter((p) => p.label === activeLabel);
   }, [photos, activeLabel]);
 
+  const current = filtered[index] || null;
+
   const openPhoto = (id) => {
     const list = activeLabel === 'All' ? photos : photos.filter((p) => p.label === activeLabel);
     const idx = list.findIndex((p) => p.id === id);
@@ -57,7 +58,7 @@ export default function CareerPhotos({
     }
   };
 
-  const close = () => setOpen(false);
+  const close = useCallback(() => setOpen(false), []);
   const goTo = useCallback((i) => setIndex(i), []);
   const prev = useCallback(() => {
     goTo((index - 1 + filtered.length) % filtered.length);
@@ -75,7 +76,7 @@ export default function CareerPhotos({
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [open, index, filtered.length, prev, next]);
+  }, [open, index, filtered.length, close, prev, next]);
 
   React.useEffect(() => {
     if (open) {
@@ -138,7 +139,7 @@ export default function CareerPhotos({
       </div>
 
       <AnimatePresence>
-        {open && (
+        {open && current && (
           <motion.div
             ref={overlayRef}
             className="gallery-overlay"
@@ -157,54 +158,61 @@ export default function CareerPhotos({
               role="dialog"
               aria-modal="true"
               aria-label={`Photo ${index + 1} of ${filtered.length}`}
+              onClick={(e) => e.stopPropagation()}
             >
               <button
                 type="button"
                 className="gallery-lightbox-close"
-                onClick={close}
+                onClick={(e) => { e.stopPropagation(); close(); }}
                 aria-label="Close photo"
               >
                 <X size={20} />
               </button>
 
+              <div className="gallery-lightbox-media">
+                <img
+                  src={current.image}
+                  alt={current.caption}
+                  className="gallery-lightbox-img"
+                />
+              </div>
+
+              <dl className="gallery-lightbox-details">
+                <div className="gallery-lightbox-row">
+                  <dt>Date</dt>
+                  <dd>{current.date || '—'}</dd>
+                </div>
+                <div className="gallery-lightbox-row">
+                  <dt>Description</dt>
+                  <dd>{current.caption}</dd>
+                </div>
+                <div className="gallery-lightbox-row">
+                  <dt>Location</dt>
+                  <dd>{current.location || '—'}</dd>
+                </div>
+              </dl>
+
               <div className="gallery-lightbox-nav">
                 <button
                   type="button"
                   className="gallery-lightbox-nav-btn"
-                  onClick={prev}
+                  onClick={(e) => { e.stopPropagation(); prev(); }}
                   aria-label="Previous photo"
-                  tabIndex={0}
                 >
                   <ChevronLeft size={24} />
                 </button>
-
-                <div className="gallery-lightbox-viewport">
-                  <img
-                    src={filtered[index].image}
-                    alt={filtered[index].caption}
-                    className="gallery-lightbox-img"
-                  />
-                  <figcaption className="gallery-lightbox-caption">
-                    <span className="gallery-lightbox-caption-text">
-                      {filtered[index].caption}
-                    </span>
-                  </figcaption>
-                </div>
-
+                <span className="gallery-lightbox-counter">
+                  {index + 1} / {filtered.length}
+                </span>
                 <button
                   type="button"
                   className="gallery-lightbox-nav-btn"
-                  onClick={next}
+                  onClick={(e) => { e.stopPropagation(); next(); }}
                   aria-label="Next photo"
-                  tabIndex={0}
                 >
                   <ChevronRight size={24} />
                 </button>
               </div>
-
-              <span className="gallery-lightbox-counter">
-                {index + 1} / {filtered.length}
-              </span>
             </motion.div>
           </motion.div>
         )}
