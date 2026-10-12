@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Eye, X } from 'lucide-react';
+import { Eye, X, ArrowRight } from 'lucide-react';
 import { GithubIcon } from '../components/BrandIcons';
 import { techIcon } from '../data/techIcons';
 import { projects } from '../data/projects';
@@ -139,10 +139,13 @@ const Projects = () => {
                 </motion.div>
               ))}
             </div>
-            <motion.div variants={itemVariants} style={{ textAlign: 'center', marginTop: '3rem' }}>
-              <Link className="btn-secondary" to="/gallery">See photo gallery →</Link>
-              <Link to="/contact" style={{ color: 'var(--accent)', fontWeight: 600, marginLeft: '1.25rem', textDecoration: 'none' }}>Get in touch →</Link>
-            </motion.div>>
+            <motion.div variants={itemVariants} className="flow-footer">
+              <Link className="btn-secondary" to="/gallery">
+                <span>See photo gallery</span>
+                <ArrowRight size={18} />
+              </Link>
+              <Link className="flow-footer-link" to="/contact">Get in touch</Link>
+            </motion.div>>>
           </motion.div>
         </div>
       </section>

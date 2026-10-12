@@ -448,3 +448,6 @@
     font-size: 1.5rem;
   }
 }
+.flow-footer { display:flex; align-items:center; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin-top:3.5rem; }
+.flow-footer-link { font-size:0.92rem; font-weight:600; color:var(--accent); text-decoration:none; transition:var(--transition); }
+.flow-footer-link:hover { color:var(--text-primary); }
