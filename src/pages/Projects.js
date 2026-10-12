@@ -139,10 +139,10 @@ const Projects = () => {
                 </motion.div>
               ))}
             </div>
-            <motion.div variants={itemVariants} className="text-center mt-12">
+            <motion.div variants={itemVariants} style={{ textAlign: 'center', marginTop: '3rem' }}>
               <Link className="btn-secondary" to="/gallery">See photo gallery →</Link>
-              <Link className="btn-primary" to="/contact" style={{ marginLeft: '0.75rem' }}>Get in touch →</Link>
-            </motion.div>
+              <Link to="/contact" style={{ color: 'var(--accent)', fontWeight: 600, marginLeft: '1.25rem', textDecoration: 'none' }}>Get in touch →</Link>
+            </motion.div>>
           </motion.div>
         </div>
       </section>

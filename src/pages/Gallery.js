@@ -37,7 +37,7 @@ const Gallery = () => {
             <motion.div variants={itemVariants}>
               <CareerPhotos photos={careerPhotos} />
             </motion.div>
-<motion.div variants={itemVariants} className="text-center mt-20">
+<motion.div variants={itemVariants} style={{ textAlign: 'center', marginTop: '3rem' }}>
               <Link className="btn-primary" to="/contact">Get in touch →</Link>
             </motion.div>>
           </motion.div>
