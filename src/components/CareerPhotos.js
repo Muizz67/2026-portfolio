@@ -156,6 +156,22 @@ export default function CareerPhotos({
             onClick={close}
             aria-hidden="true"
           >
+            <button
+              type="button"
+              className="gallery-lightbox-close"
+              onClick={(e) => { e.stopPropagation(); close(); }}
+              aria-label="Close photo"
+            >
+              <X size={22} />
+            </button>
+            <button
+              type="button"
+              className="gallery-lightbox-nav-btn gallery-lightbox-nav-prev"
+              onClick={(e) => { e.stopPropagation(); prev(); }}
+              aria-label="Previous photo"
+            >
+              <ChevronLeft size={26} />
+            </button>
             <motion.div
               className="gallery-lightbox"
               initial={{ opacity: 0, scale: 0.96, y: 12 }}
@@ -167,15 +183,6 @@ export default function CareerPhotos({
               aria-label={`Photo ${index + 1} of ${filtered.length}`}
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                type="button"
-                className="gallery-lightbox-close"
-                onClick={(e) => { e.stopPropagation(); close(); }}
-                aria-label="Close photo"
-              >
-                <X size={20} />
-              </button>
-
               <div className="gallery-lightbox-media">
                 <img
                   src={current.image}
@@ -183,44 +190,26 @@ export default function CareerPhotos({
                   className="gallery-lightbox-img"
                 />
               </div>
-
-              <dl className="gallery-lightbox-details">
-                <div className="gallery-lightbox-row">
-                  <dt>Date</dt>
-                  <dd>{current.date || '—'}</dd>
+              <div className="gallery-lightbox-text">
+                <p className="gallery-lightbox-caption">{current.caption}</p>
+                <div className="gallery-lightbox-meta">
+                  <span>{current.date || '—'}</span>
+                  <span className="gallery-lightbox-dot">·</span>
+                  <span>{current.location || '—'}</span>
                 </div>
-                <div className="gallery-lightbox-row">
-                  <dt>Description</dt>
-                  <dd>{current.caption}</dd>
-                </div>
-                <div className="gallery-lightbox-row">
-                  <dt>Location</dt>
-                  <dd>{current.location || '—'}</dd>
-                </div>
-              </dl>
-
-              <div className="gallery-lightbox-nav">
-                <button
-                  type="button"
-                  className="gallery-lightbox-nav-btn"
-                  onClick={(e) => { e.stopPropagation(); prev(); }}
-                  aria-label="Previous photo"
-                >
-                  <ChevronLeft size={24} />
-                </button>
-                <span className="gallery-lightbox-counter">
+                <div className="gallery-lightbox-counter">
                   {index + 1} / {filtered.length}
-                </span>
-                <button
-                  type="button"
-                  className="gallery-lightbox-nav-btn"
-                  onClick={(e) => { e.stopPropagation(); next(); }}
-                  aria-label="Next photo"
-                >
-                  <ChevronRight size={24} />
-                </button>
+                </div>
               </div>
             </motion.div>
+            <button
+              type="button"
+              className="gallery-lightbox-nav-btn gallery-lightbox-nav-next"
+              onClick={(e) => { e.stopPropagation(); next(); }}
+              aria-label="Next photo"
+            >
+              <ChevronRight size={26} />
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
