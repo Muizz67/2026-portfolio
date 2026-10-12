@@ -1,36 +1,18 @@
 .gallery-page {
-  display: flex;
-  min-height: 100vh;
   padding-top: 6rem;
   background: var(--bg-primary);
+  min-height: 100vh;
 }
 
-.gallery-section {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 6rem);
-  overflow-y: auto;
-  padding: 0 0 3rem;
-}
-
-.container {
-  width: 100%;
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  flex: 1 1 auto;
-}
-
-.gallery-title {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 800;
-  color: var(--text-primary);
-  text-align: center;
-  margin: 0;
+/* ---- Shared section header, in the style of the other pages ---- */
+.section-eyebrow {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
 }
 
 /* ---- Filter bar ---- */

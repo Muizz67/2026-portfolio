@@ -1,17 +1,20 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { careerPhotos } from '../data/careerPhotos';
 
 /**
- * Gallery — a full-page, Google Images–style photo gallery.
+ * Gallery content — a full-page, Google Images–style photo gallery.
+ *
+ * This component owns the filter bar, the image grid, and the lightbox. It is
+ * mounted inside the page's section by the consuming page (Gallery.js), which
+ * owns the section header (eyebrow + title + subtitle) and the page-level
+ * transitions.
  *
  * Props:
  *   photos       — array of { id, date, caption, image } (defaults to all 16).
  *   lightbox     — whether clicking a thumbnail opens the lightbox (default true).
- *   title        — section heading (default "Gallery").
- *   showFilters  — show the date-filter pills (default true). Turn off for a
- *                  compact recap strip on the Experience page.
+ *   showFilters  — show the date-filter pills (default true).
  *
  * Layout:
  *   - A sticky date filter bar ("All" + one pill per distinct month+year).
@@ -19,12 +22,9 @@ import { careerPhotos } from '../data/careerPhotos';
  *     on hover (dates are no longer printed on the cards).
  *   - Clicking a card opens a larger lightbox with prev/next.
  */
-const CAREER_PHOTO_DIR = 'assets/photos';
-
 export default function CareerPhotos({
   photos = careerPhotos,
   lightbox = true,
-  title = 'Gallery',
   showFilters = true,
 }) {
   const [open, setOpen] = useState(false);
@@ -61,9 +61,13 @@ export default function CareerPhotos({
   };
 
   const close = () => setOpen(false);
-  const goTo = (i) => setIndex(i);
-  const prev = () => goTo((index - 1 + filtered.length) % filtered.length);
-  const next = () => goTo((index + 1) % filtered.length);
+  const goTo = useCallback((i) => setIndex(i), []);
+  const prev = useCallback(() => {
+    goTo((index - 1 + filtered.length) % filtered.length);
+  }, [goTo, index, filtered.length]);
+  const next = useCallback(() => {
+    goTo((index + 1) % filtered.length);
+  }, [goTo, index, filtered.length]);
 
   // Close on Escape, and navigate with arrow keys while the lightbox is open.
   React.useEffect(() => {
@@ -75,7 +79,7 @@ export default function CareerPhotos({
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [open, index, filtered.length]);
+  }, [open, index, filtered.length, prev, next]);
 
   // Lock body scroll while the lightbox is open (same pattern as the project modal).
   React.useEffect(() => {
@@ -86,69 +90,56 @@ export default function CareerPhotos({
     }
   }, [open]);
 
-  if (photos.length === 0) {
-    return (
-      <section className="gallery-section">
-        <div className="container">
-          <h2 className="gallery-title">{title}</h2>
-          <p className="gallery-empty">No photos yet.</p>
-        </div>
-      </section>
-    );
-  }
+  if (photos.length === 0) return null;
 
   return (
-    <section className="gallery-section">
-      <div className="container">
-        <h2 className="gallery-title">{title}</h2>
-
-        {showFilters && lightbox && (
-          <div className="gallery-filter-bar" role="tablist" aria-label="Filter by date">
+    <>
+      {showFilters && (
+        <div className="gallery-filter-bar" role="tablist" aria-label="Filter by date">
+          <button
+            type="button"
+            className={`gallery-filter${activeDate === 'All' ? ' active' : ''}`}
+            onClick={() => setActiveDate('All')}
+            aria-pressed={activeDate === 'All'}
+          >
+            All
+          </button>
+          {dates.map((date) => (
             <button
+              key={date}
               type="button"
-              className={`gallery-filter${activeDate === 'All' ? ' active' : ''}`}
-              onClick={() => setActiveDate('All')}
-              aria-pressed={activeDate === 'All'}
+              className={`gallery-filter${activeDate === date ? ' active' : ''}`}
+              onClick={() => setActiveDate(date)}
+              aria-pressed={activeDate === date}
             >
-              All
+              {date}
             </button>
-            {dates.map((date) => (
-              <button
-                key={date}
-                type="button"
-                className={`gallery-filter${activeDate === date ? ' active' : ''}`}
-                onClick={() => setActiveDate(date)}
-                aria-pressed={activeDate === date}
-              >
-                {date}
-              </button>
-            ))}
-          </div>
-        )}
-
-        <div className="gallery-grid">
-          {filtered.map((photo, i) => (
-            <figure
-              key={photo.id}
-              className="gallery-card"
-              onClick={() => openPhoto(photo.id)}
-              role="button"
-              tabIndex={0}
-              aria-label={`Open photo ${i + 1} of ${filtered.length}: ${photo.caption}`}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') openPhoto(photo.id);
-              }}
-            >
-              <img
-                src={photo.image}
-                alt={photo.caption}
-                loading="lazy"
-                className="gallery-img"
-              />
-              <figcaption className="gallery-caption">{photo.caption}</figcaption>
-            </figure>
           ))}
         </div>
+      )}
+
+      <div className="gallery-grid">
+        {filtered.map((photo, i) => (
+          <figure
+            key={photo.id}
+            className="gallery-card"
+            onClick={() => openPhoto(photo.id)}
+            role="button"
+            tabIndex={0}
+            aria-label={`Open photo ${i + 1} of ${filtered.length}: ${photo.caption}`}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') openPhoto(photo.id);
+            }}
+          >
+            <img
+              src={photo.image}
+              alt={photo.caption}
+              loading="lazy"
+              className="gallery-img"
+            />
+            <figcaption className="gallery-caption">{photo.caption}</figcaption>
+          </figure>
+        ))}
       </div>
 
       {/* Lightbox overlay */}
@@ -224,6 +215,6 @@ export default function CareerPhotos({
           </motion.div>
         )}
       </AnimatePresence>
-    </section>
+    </>
   );
 }
