@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { ArrowRight } from 'lucide-react';
 import CareerPhotos from '../components/CareerPhotos';
 import { careerPhotos } from '../data/careerPhotos';
 import { makePageVariants } from '../components/PageVariants';
@@ -38,8 +39,11 @@ const Gallery = () => {
               <CareerPhotos photos={careerPhotos} />
             </motion.div>
 <motion.div variants={itemVariants} className="flow-footer">
-              <Link className="flow-footer-link" to="/contact">Get in touch</Link>
-            </motion.div>>
+              <Link className="btn-secondary" to="/contact">
+                <span>Get in touch</span>
+                <ArrowRight size={18} />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>

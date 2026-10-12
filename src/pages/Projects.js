@@ -145,8 +145,8 @@ const Projects = () => {
                 <ArrowRight size={18} />
               </Link>
               <Link className="flow-footer-link" to="/contact">Get in touch</Link>
-            </motion.div>>>
-          </motion.div>
+            </motion.div>
+                       </motion.div>
         </div>
       </section>
 
