@@ -1,3 +1,17 @@
+# 👋 Hi, welcome to my digital home
+
+Pleased to meet you — I'm Mu'izz. This repository is the source behind my
+personal portfolio: the projects I've shipped, the things I learned along the way,
+and a little bit of the photo journey behind all of it.
+
+Feel free to explore, poke around the components, and borrow anything that's
+useful. If something here catches your eye or sparks a question, I'd love to
+hear from you — the **Contact** page has all the ways to reach me.
+
+Below is the hands-on readme for anyone who wants to build, run, or extend it.
+
+---
+
 # Portfolio — Muhammad Mu'izz bin Rusdi
 
 Personal portfolio and case-study site for an AI engineer working across data
