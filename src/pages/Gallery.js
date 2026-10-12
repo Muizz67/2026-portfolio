@@ -26,10 +26,10 @@ const Gallery = () => {
               className="section-header text-center mb-16"
             >
               <span className="section-eyebrow">Gallery</span>
-              <h1 className="text-title mb-4">Photos from my career</h1>
+              <h1 className="text-title mb-4">My career in pictures</h1>
               <p className="text-subtitle">
-                A visual timeline of my degree years, internships, and the work I've
-                touched along the way. Select a period below to filter.
+                A visual timeline — from early studies at UiTM Shah Alam through AI
+                engineering internships and graduation.
               </p>
             </motion.div>
 
