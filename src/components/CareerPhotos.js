@@ -4,22 +4,19 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { careerPhotos } from '../data/careerPhotos';
 
 /**
- * Gallery content — a full-page, Google Images–style photo gallery.
- *
- * This component owns the filter bar, the image grid, and the lightbox. It is
- * mounted inside the page's section by the consuming page (Gallery.js), which
- * owns the section header (eyebrow + title + subtitle) and the page-level
- * transitions.
+ * Gallery content — photo grid filtered by activity label ("TDCX", "AGA",
+ * "Degree", "Graduation"). Mounted inside the page's section; the page owns
+ * the header and the page-level transitions.
  *
  * Props:
- *   photos       — array of { id, date, caption, image } (defaults to all 16).
- *   lightbox     — whether clicking a thumbnail opens the lightbox (default true).
- *   showFilters  — show the date-filter pills (default true).
+ *   photos       — array of { id, label, caption, image } (defaults to all).
+ *   lightbox     — whether clicking a thumbnail opens the lightbox.
+ *   showFilters  — show the label-filter pills.
  *
  * Layout:
- *   - A sticky date filter bar ("All" + one pill per distinct month+year).
+ *   - A label filter bar ("All" + one pill per distinct label).
  *   - A large uniform grid; each card shows the photo and reveals the caption
- *     on hover (dates are no longer printed on the cards).
+ *     on hover.
  *   - Clicking a card opens a larger lightbox with prev/next.
  */
 export default function CareerPhotos({
@@ -31,28 +28,28 @@ export default function CareerPhotos({
   const [index, setIndex] = useState(0);
   const overlayRef = useRef(null);
 
-  // Distinct month+year values, in the order they appear in `photos`.
-  const dates = useMemo(() => {
+  // Distinct labels, in the order they first appear in `photos`.
+  const labels = useMemo(() => {
     const seen = new Set();
     const list = [];
     photos.forEach((p) => {
-      if (p.date && !seen.has(p.date)) {
-        seen.add(p.date);
-        list.push(p.date);
+      if (p.label && !seen.has(p.label)) {
+        seen.add(p.label);
+        list.push(p.label);
       }
     });
     return list;
   }, [photos]);
 
-  const [activeDate, setActiveDate] = useState('All');
+  const [activeLabel, setActiveLabel] = useState('All');
 
   const filtered = useMemo(() => {
-    if (activeDate === 'All') return photos;
-    return photos.filter((p) => p.date === activeDate);
-  }, [photos, activeDate]);
+    if (activeLabel === 'All') return photos;
+    return photos.filter((p) => p.label === activeLabel);
+  }, [photos, activeLabel]);
 
   const openPhoto = (id) => {
-    const list = activeDate === 'All' ? photos : photos.filter((p) => p.date === activeDate);
+    const list = activeLabel === 'All' ? photos : photos.filter((p) => p.label === activeLabel);
     const idx = list.findIndex((p) => p.id === id);
     if (idx >= 0) {
       setIndex(idx);
@@ -69,7 +66,6 @@ export default function CareerPhotos({
     goTo((index + 1) % filtered.length);
   }, [goTo, index, filtered.length]);
 
-  // Close on Escape, and navigate with arrow keys while the lightbox is open.
   React.useEffect(() => {
     if (!open) return;
     const onKey = (e) => {
@@ -81,7 +77,6 @@ export default function CareerPhotos({
     return () => window.removeEventListener('keydown', onKey);
   }, [open, index, filtered.length, prev, next]);
 
-  // Lock body scroll while the lightbox is open (same pattern as the project modal).
   React.useEffect(() => {
     if (open) {
       const previousOverflow = document.body.style.overflow;
@@ -95,24 +90,24 @@ export default function CareerPhotos({
   return (
     <>
       {showFilters && (
-        <div className="gallery-filter-bar" role="tablist" aria-label="Filter by date">
+        <div className="gallery-filter-bar" role="tablist" aria-label="Filter by activity">
           <button
             type="button"
-            className={`gallery-filter${activeDate === 'All' ? ' active' : ''}`}
-            onClick={() => setActiveDate('All')}
-            aria-pressed={activeDate === 'All'}
+            className={`gallery-filter${activeLabel === 'All' ? ' active' : ''}`}
+            onClick={() => setActiveLabel('All')}
+            aria-pressed={activeLabel === 'All'}
           >
             All
           </button>
-          {dates.map((date) => (
+          {labels.map((label) => (
             <button
-              key={date}
+              key={label}
               type="button"
-              className={`gallery-filter${activeDate === date ? ' active' : ''}`}
-              onClick={() => setActiveDate(date)}
-              aria-pressed={activeDate === date}
+              className={`gallery-filter${activeLabel === label ? ' active' : ''}`}
+              onClick={() => setActiveLabel(label)}
+              aria-pressed={activeLabel === label}
             >
-              {date}
+              {label}
             </button>
           ))}
         </div>
@@ -142,7 +137,6 @@ export default function CareerPhotos({
         ))}
       </div>
 
-      {/* Lightbox overlay */}
       <AnimatePresence>
         {open && (
           <motion.div

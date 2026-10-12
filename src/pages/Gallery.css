@@ -20,15 +20,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 0;
+  gap: 0.65rem;
+  padding: 1rem 0;
   border-bottom: 1px solid var(--border);
 }
 
 .gallery-filter {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  padding: 0.45rem 0.9rem;
+  padding: 0.55rem 1.25rem;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: rgb(26 36 54 / 0.5);
