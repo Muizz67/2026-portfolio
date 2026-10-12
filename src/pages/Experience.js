@@ -105,8 +105,8 @@ const Experience = () => {
             <CareerPhotos
               photos={careerPhotos}
               lightbox={false}
-              gridOnly
-              title="Career photos"
+              showFilters={false}
+              title="Gallery"
             />
 
             <motion.div variants={itemVariants} className="exp-footer">

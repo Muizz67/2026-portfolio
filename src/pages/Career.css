@@ -1,201 +1,137 @@
-.career-page {
+.gallery-page {
+  display: flex;
   min-height: 100vh;
   padding-top: 6rem;
   background: var(--bg-primary);
 }
 
-.career-section {
-  padding: 0;
-}
-
-.career-hero {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem 2.5rem;
-  text-align: center;
-}
-
-.career-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.86rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-decoration: none;
-  margin-bottom: 1.25rem;
-  transition: var(--transition);
-}
-
-.career-back:hover {
-  color: var(--accent);
-}
-
-.career-hero-title {
+.gallery-section {
+  flex: 1 1 auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  font-size: 1.9rem;
+  flex-direction: column;
+  min-height: calc(100vh - 6rem);
+  overflow-y: auto;
+  padding: 0 0 3rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex: 1 1 auto;
+}
+
+.gallery-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 800;
   color: var(--text-primary);
-  margin: 0 0 1rem;
+  text-align: center;
+  margin: 0;
 }
 
-.career-hero-sub {
-  max-width: 580px;
-  margin: 0 auto 2rem;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-}
-
-.career-hero-meta {
+/* ---- Filter bar ---- */
+.gallery-filter-bar {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
 }
 
-.career-hero-count {
-  font-size: 0.86rem;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.career-grid-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.6rem 1.1rem;
-  font-family: inherit;
-  font-size: 0.86rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  background: rgb(26 36 54 / 0.55);
+.gallery-filter {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  background: rgb(26 36 54 / 0.5);
+  color: var(--text-secondary);
   cursor: pointer;
   transition: var(--transition);
 }
 
-.career-grid-toggle:hover {
+.gallery-filter:hover {
   color: var(--text-primary);
   border-color: var(--accent);
-  background: rgb(26 36 54 / 0.75);
 }
 
-.career-grid-toggle.on {
-  color: var(--bg-primary);
+.gallery-filter.active {
   background: var(--accent);
   border-color: var(--accent);
-}
-
-.career-grid-toggle.on:hover {
-  color: var(--text-primary);
-}
-
-.career-photo-wrap {
-  max-width: 1120px;
-  margin: 1.5rem auto 0;
-}
-
-/* ---- Section heading ---- */
-.career-photo-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  margin: 0 0 1.5rem;
-  text-align: center;
-}
-
-.career-photo-empty {
-  color: var(--text-muted);
-  text-align: center;
-  margin-top: 1rem;
+  color: var(--bg-primary);
 }
 
 /* ---- Grid ---- */
-.career-photo-grid {
+.gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
-  gap: 1.25rem;
+  gap: 1.5rem;
+  align-content: start;
 }
 
-.career-photo-card {
+.gallery-card {
   position: relative;
   overflow: hidden;
   border-radius: 12px;
-  background: rgb(26 36 54 / 0.55);
+  background: rgb(26 36 54 / 0.5);
   border: 1px solid var(--border);
   cursor: pointer;
-  transition: var(--transition);
-  aspect-ratio: 4 / 3;
   display: flex;
   flex-direction: column;
+  aspect-ratio: 4 / 3;
+  transition: var(--transition);
 }
 
-.career-photo-card:hover {
+.gallery-card:hover {
   border-color: color-mix(in srgb, var(--accent) 40%, transparent);
   transform: translateY(-3px);
 }
 
-.career-photo-img {
+.gallery-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  /* Placeholder so the grid never collapses while photos load. */
   background: var(--bg-tertiary);
 }
 
-/* Caption overlaid on the bottom of the thumbnail */
-.career-photo-caption {
+/* Caption revealed on hover (date removed from the cards) */
+.gallery-caption {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 0.75rem 1rem;
-  background: linear-gradient(to top, rgba(6, 12, 20, 0.92), rgba(6, 12, 20, 0.15));
+  padding: 0.85rem 1rem;
+  background: linear-gradient(to top, rgba(6, 12, 20, 0.92), rgba(6, 12, 20, 0.12));
   color: var(--text-primary);
-  font-size: 0.86rem;
+  font-size: 0.9rem;
   line-height: 1.4;
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
-.career-photo-date {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent-light);
-  margin-bottom: 0.15rem;
+.gallery-card:hover .gallery-caption,
+.gallery-card:focus-within .gallery-caption {
+  opacity: 1;
 }
 
-.career-photo-caption-text {
-  color: var(--text-primary);
+.gallery-card:focus-within {
+  border-color: var(--accent);
+  transform: translateY(-3px);
 }
 
-.career-photo-date-label {
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  padding: 0.3rem 0.6rem;
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--bg-primary);
-  background: var(--accent);
-  border-radius: 999px;
+/* Touch devices get the caption always visible */
+@media (pointer: coarse) {
+  .gallery-card .gallery-caption { opacity: 1; }
 }
 
 /* ---- Lightbox ---- */
-.career-photo-overlay {
+.gallery-overlay {
   position: fixed;
   inset: 0;
   z-index: 1000;
@@ -209,7 +145,7 @@
   overflow-y: auto;
 }
 
-.career-photo-lightbox {
+.gallery-lightbox {
   width: 100%;
   max-width: 960px;
   max-height: 90vh;
@@ -224,7 +160,7 @@
   padding: 1.25rem 1.25rem 0.75rem;
 }
 
-.career-photo-lightbox-close {
+.gallery-lightbox-close {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
@@ -241,13 +177,13 @@
   transition: var(--transition);
 }
 
-.career-photo-lightbox-close:hover {
+.gallery-lightbox-close:hover {
   color: var(--text-primary);
   border-color: var(--accent);
   background: rgb(26 36 54 / 0.95);
 }
 
-.career-photo-lightbox-nav {
+.gallery-lightbox-nav {
   position: relative;
   flex: 1;
   display: flex;
@@ -256,7 +192,7 @@
   min-height: 52vh;
 }
 
-.career-photo-lightbox-nav-btn {
+.gallery-lightbox-nav-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -270,12 +206,12 @@
   transition: var(--transition);
 }
 
-.career-photo-lightbox-nav-btn:hover {
+.gallery-lightbox-nav-btn:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
 
-.career-photo-lightbox-viewport {
+.gallery-lightbox-viewport {
   flex: 1;
   display: flex;
   align-items: center;
@@ -285,14 +221,14 @@
   max-height: 62vh;
 }
 
-.career-photo-lightbox-img {
+.gallery-lightbox-img {
   max-width: 100%;
   max-height: 62vh;
   object-fit: contain;
   display: block;
 }
 
-.career-photo-lightbox-caption {
+.gallery-lightbox-caption {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
@@ -307,40 +243,14 @@
   width: 100%;
 }
 
-.career-photo-lightbox-date {
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent-light);
-}
-
-.career-photo-lightbox-caption-text {
+.gallery-lightbox-caption-text {
   font-size: 1rem;
   color: var(--text-primary);
 }
 
-.career-photo-lightbox-counter {
+.gallery-lightbox-counter {
   margin-top: 0.75rem;
   font-size: 0.85rem;
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
-}
-
-/* ---- Grid-only variant ---- */
-.career-photo-grid.grid-only {
-  cursor: default;
-}
-
-.career-photo-grid.grid-only .career-photo-card {
-  cursor: default;
-  pointer-events: none;
-}
-
-.career-photo-grid.grid-only .career-photo-card:hover {
-  transform: none;
-}
-
-.career-photo-grid.grid-only .career-photo-card {
-  border-color: var(--border);
 }
