@@ -2,14 +2,14 @@
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0a0e17,50:f0b429,100:101828&height=200&section=header&text=Muizz%20Rusdi&fontSize=40&fontColor=f0b429&animation=fadeIn&fontAlignY=36&desc=AI%20Engineer%20%7C%20Full-Stack%20Developer%20%7C%20UiTM%20Shah%20Alam%20Graduate&descAlignY=58&descSize=15&descColor=e5e7eb" alt="header banner" width="100%" />
 </p>
 
-# Hi 👋, I'm Muhammad Mu'izz
+# Hi 👋, I'm Muizz Rusdi
 
 **Aspiring AI Engineer & Full-Stack Developer** — turning messy, real-world
 data into clean, shippable models and polished web products.
 
 - 🌱 Currently learning Web Development, and Agentic AI workflows
 - 💼 Open to: AI Engineering, QA Automation, Full-Stack roles
-- 📫 Reach me: **muizzrusdi@yahoo.com** · [LinkedIn](https://linkedin.com/in/muizz-rusdi)
+- 📫 Reach me: **muizzrusdi@yahoo.com** · [LinkedIn](https://linkedin.com/in/muizzrusdi)
 - ⚡ Fun fact: I love connecting AI agents and to solve repeating task on my daily life
 
 ### 🛠️ Languages & Tools
@@ -85,7 +85,3 @@ npm start      # http://localhost:3000
 npm run build  # production bundle into build/
 npx serve -s build   # preview production with SPA fallback
 ```
-
-The `build` script (via `scripts/build.js`) retries with `--openssl-legacy-provider`
-when webpack's `error:0308010C:digital envelope routines::unsupported` shows up on
-Node 17+ — safely on Vercel's Node 24 runtime.
