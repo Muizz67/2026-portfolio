@@ -1,14 +1,5 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0a0e17,50:f0b429,100:101828&height=200&section=header&text=Muhammad%20Mu'izz%20bin%20Rusdi&fontSize=40&fontColor=f0b429&animation=fadeIn&fontAlignY=36&desc=AI%20Engineer%20%7C%20Full-Stack%20Developer%20%7C%20UiTM%20Shah%20Alam%20Graduate&descAlignY=58&descSize=15&descColor=e5e7eb" alt="header banner" width="100%" />
-</p>
-
-<p align="center">
-  <img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" alt="coding animation" width="360" />
-</p>
-
-<p align="center">
-  <a href="https://github.com/Muizz67"><img src="https://komarev.com/ghpvc/?username=Muizz67&label=Profile%20views&color=f0b429&style=flat" alt="profile views" /></a>
-  <a href="https://github.com/Muizz67?tab=repositories"><img src="https://img.shields.io/github/followers/Muizz67?label=Followers&style=flat&color=f0b429" alt="followers" /></a>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0a0e17,50:f0b429,100:101828&height=200&section=header&text=Muizz%20Rusdi&fontSize=40&fontColor=f0b429&animation=fadeIn&fontAlignY=36&desc=AI%20Engineer%20%7C%20Full-Stack%20Developer%20%7C%20UiTM%20Shah%20Alam%20Graduate&descAlignY=58&descSize=15&descColor=e5e7eb" alt="header banner" width="100%" />
 </p>
 
 # Hi 👋, I'm Muhammad Mu'izz
@@ -16,12 +7,10 @@
 **Aspiring AI Engineer & Full-Stack Developer** — turning messy, real-world
 data into clean, shippable models and polished web products.
 
-- 🔭 Currently working on my Final Year Project: *Customer Emotion Recognition
-  System* (CNN-based)
-- 🌱 Currently learning Web Development, CNNs, and Agentic AI workflows
-- 💼 Open to: AI Engineering, Data Annotation/QA, Full-Stack roles
+- 🌱 Currently learning Web Development, and Agentic AI workflows
+- 💼 Open to: AI Engineering, QA Automation, Full-Stack roles
 - 📫 Reach me: **muizzrusdi@yahoo.com** · [LinkedIn](https://linkedin.com/in/muizz-rusdi)
-- ⚡ Fun fact: I love making noisy datasets behave
+- ⚡ Fun fact: I love connecting AI agents and to solve repeating task on my daily life
 
 ### 🛠️ Languages & Tools
 
@@ -36,15 +25,8 @@ data into clean, shippable models and polished web products.
   <a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/MySQL-0a0e17?style=for-the-badge&logo=mysql&logoColor=f0b429" alt="MySQL" /></a>
 </p>
 
-### 📊 GitHub Analytics
-
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Muizz67&show_icons=true&locale=en&theme=dark&title_color=f0b429&text_color=e5e7eb&icon_color=f0b429&border_color=f0b429&bg_color=0a0e17&hide_border=false" alt="Muizz67 stats" height="160" />
   <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Muizz67&show_icons=true&locale=en&layout=compact&theme=dark&title_color=f0b429&text_color=e5e7eb&icon_color=f0b429&border_color=f0b429&bg_color=0a0e17" alt="Muizz67 top languages" height="160" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Muizz67&theme=dark&background=0a0e17&ring=f0b429&fire=f0b429&currStreakLabel=e5e7eb&sideLabels=e5e7eb&dates=9ca3af&border=f0b429" alt="Muizz67 streak" />
 </p>
 
 ---
@@ -75,9 +57,7 @@ A six-route React single-page app showcasing my work:
 ### Design system
 
 Navy-slate surfaces (`#0a0e17` / `#101828` / `#1a2436`) with an amber accent (`#f0b429`).
-Because amber is *light*, every filled accent surface uses near-black text (`#0a0e17`):
-white on `#f0b429` is only 1.86:1 (failing contrast), while near-black gives 10.35:1.
-Adding a new filled accent surface means re-checking this.
+
 
 ### Project structure
 
@@ -109,19 +89,3 @@ npx serve -s build   # preview production with SPA fallback
 The `build` script (via `scripts/build.js`) retries with `--openssl-legacy-provider`
 when webpack's `error:0308010C:digital envelope routines::unsupported` shows up on
 Node 17+ — safely on Vercel's Node 24 runtime.
-
-### Accessibility notes
-
-- `prefers-reduced-motion` respected sitewide (typed hero renders finished, tech
-  marquee hidden, transitions stop)
-- Hero headline carries full text in `aria-label`; animating text is `aria-hidden`
-- Filled amber elements use near-black text for contrast
-- Project modal supports Escape-to-close and restores body scroll on exit
-- Lightbox supports arrow keys + Escape
-
-### License & borrowing
-
-Code is mine, but **fork it, borrow, learn** — a star ⭐ would make my day.
-No vendored snippets except standard Create React App boilerplate.
-
-Made with care (and caffeine) ☕ — see you in the **Contact** tab.
