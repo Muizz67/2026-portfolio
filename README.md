@@ -1,105 +1,127 @@
-# Portfolio — Muhammad Mu'izz bin Rusdi
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0a0e17,50:f0b429,100:101828&height=200&section=header&text=Muhammad%20Mu'izz%20bin%20Rusdi&fontSize=40&fontColor=f0b429&animation=fadeIn&fontAlignY=36&desc=AI%20Engineer%20%7C%20Full-Stack%20Developer%20%7C%20UiTM%20Shah%20Alam%20Graduate&descAlignY=58&descSize=15&descColor=e5e7eb" alt="header banner" width="100%" />
+</p>
 
-Personal portfolio and case-study site for an AI engineer working across data
-annotation, machine learning, automation, and full-stack development.
+<p align="center">
+  <img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" alt="coding animation" width="360" />
+</p>
 
-Built as a static React single-page app, deployed to **Vercel**.
+<p align="center">
+  <a href="https://github.com/Muizz67"><img src="https://komarev.com/ghpvc/?username=Muizz67&label=Profile%20views&color=f0b429&style=flat" alt="profile views" /></a>
+  <a href="https://github.com/Muizz67?tab=repositories"><img src="https://img.shields.io/github/followers/Muizz67?label=Followers&style=flat&color=f0b429" alt="followers" /></a>
+</p>
+
+# Hi 👋, I'm Muhammad Mu'izz
+
+**Aspiring AI Engineer & Full-Stack Developer** — turning messy, real-world
+data into clean, shippable models and polished web products.
+
+- 🔭 Currently working on my Final Year Project: *Customer Emotion Recognition
+  System* (CNN-based)
+- 🌱 Currently learning Web Development, CNNs, and Agentic AI workflows
+- 💼 Open to: AI Engineering, Data Annotation/QA, Full-Stack roles
+- 📫 Reach me: **muizzrusdi@yahoo.com** · [LinkedIn](https://linkedin.com/in/muizz-rusdi)
+- ⚡ Fun fact: I love making noisy datasets behave
+
+### 🛠️ Languages & Tools
+
+<p align="center">
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-0a0e17?style=for-the-badge&logo=python&logoColor=f0b429" alt="Python" /></a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/JavaScript-0a0e17?style=for-the-badge&logo=javascript&logoColor=f0b429" alt="JavaScript" /></a>
+  <a href="https://reactjs.org/"><img src="https://img.shields.io/badge/React-0a0e17?style=for-the-badge&logo=react&logoColor=f0b429" alt="React" /></a>
+  <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-0a0e17?style=for-the-badge&logo=vite&logoColor=f0b429" alt="Vite" /></a>
+  <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js-0a0e17?style=for-the-badge&logo=node.js&logoColor=f0b429" alt="Node.js" /></a>
+  <a href="https://git-scm.com/"><img src="https://img.shields.io/badge/Git-0a0e17?style=for-the-badge&logo=git&logoColor=f0b429" alt="Git" /></a>
+  <a href="https://www.tensorflow.org/"><img src="https://img.shields.io/badge/TensorFlow-0a0e17?style=for-the-badge&logo=tensorflow&logoColor=f0b429" alt="TensorFlow" /></a>
+  <a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/MySQL-0a0e17?style=for-the-badge&logo=mysql&logoColor=f0b429" alt="MySQL" /></a>
+</p>
+
+### 📊 GitHub Analytics
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=Muizz67&show_icons=true&locale=en&theme=dark&title_color=f0b429&text_color=e5e7eb&icon_color=f0b429&border_color=f0b429&bg_color=0a0e17&hide_border=false" alt="Muizz67 stats" height="160" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Muizz67&show_icons=true&locale=en&layout=compact&theme=dark&title_color=f0b429&text_color=e5e7eb&icon_color=f0b429&border_color=f0b429&bg_color=0a0e17" alt="Muizz67 top languages" height="160" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Muizz67&theme=dark&background=0a0e17&ring=f0b429&fire=f0b429&currStreakLabel=e5e7eb&sideLabels=e5e7eb&dates=9ca3af&border=f0b429" alt="Muizz67 streak" />
+</p>
 
 ---
 
-## What it is
+## About this portfolio
 
-Six routes, each doing one job:
+A six-route React single-page app showcasing my work:
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Hero with a typed headline, focus areas, featured work, headline stats, closing CTA |
-| `/about` | Identity card, first-person bio, passions, education, certifications, filterable tech stack |
+| `/` | Hero with typed headline, focus areas, featured work, stats, closing CTA |
+| `/about` | Identity card, bio, education, certifications, tech stack |
 | `/experience` | Role-by-role work history as a single reading rail |
-| `/gallery` | Full photo gallery of degree years, internships, and work snapshots (lightbox on tap) |
-| `/projects` | Five projects as cards; each opens a case-study modal covering role, impact, and engineering context |
-| `/contact` | Five real contact channels — email, phone, WhatsApp, GitHub, LinkedIn |
-| `/resume` | Embedded PDF resume with download and open-in-new-tab |
+| `/projects` | Project case-study cards with modal details |
+| `/gallery` | Photo timeline with lightbox (newest-first, filterable by activity) |
+| `/contact` | Five real contact channels |
+| `/resume` | Embedded PDF resume with download + open |
 
-A site-wide footer carries navigation, contact details, and back-to-top.
+### Tech stack
 
-Content is real throughout: quantified results (97% annotation accuracy against
-a 95% KPI, roughly 70% less manual data handling, 20+ unit tests), full UiTM
-education with CGPA, and six verified certifications.
-
-## Design
-
-Navy-slate surfaces (`#0a0e17` / `#101828` / `#1a2436`) with an amber accent
-(`#f0b429`), applied sitewide through CSS custom properties in
-`src/index.css`. Cards are translucent, so stacked panels read as layers
-rather than opaque blocks.
-
-Because amber is a light accent, any filled element using it takes near-black
-text: white on `#f0b429` measures 1.86:1 and fails contrast, while `#0a0e17`
-gives 10.35:1. This applies to primary buttons, the active stack tab, and the
-availability dot. Adding a new filled accent surface means re-checking this.
-
-Tech logos render in their official brand colours through `react-icons`, lifted
-where a brand's own colour is too dark to read against the card background.
-
-## Tech stack
-
-- **React 19** with **React Router 7**
-- **react-scripts** (Create React App)
-- **Framer Motion** — page reveals, the typed hero headline, stack-filter transitions
+- **React 19** with **React Router 7** (`react-router-dom`)
+- **react-scripts** (Create React App) + `scripts/build.js` (npm's OpenSSL legacy-provider retry)
+- **Framer Motion** — page reveals, typed hero headline, stack-filter transitions, lightbox
 - **lucide-react** — interface icons
-- **react-icons** — brand marks for the tech stack and social links
+- **react-icons** — brand marks for tech stack and social links
+- **Plain CSS** with CSS custom properties (`src/index.css`) for theming
+
+### Design system
+
+Navy-slate surfaces (`#0a0e17` / `#101828` / `#1a2436`) with an amber accent (`#f0b429`).
+Because amber is *light*, every filled accent surface uses near-black text (`#0a0e17`):
+white on `#f0b429` is only 1.86:1 (failing contrast), while near-black gives 10.35:1.
+Adding a new filled accent surface means re-checking this.
 
 ### Project structure
 
 ```
 src/
-  components/
-    BrandIcons.js   GitHub and LinkedIn marks (lucide v1 dropped brand icons)
-    Footer.js/.css  Site-wide footer
-    Navbar.js/.css  Navigation with mobile menu
-  data/
-    profile.js      Personal details, bio, experience, education, certs, stack
-    projects.js     Project records shared by Home and Projects
-    techIcons.js    Brand logo registry with official brand colours
-    icon.js         String-to-icon mapping for the data files
-  hooks/
-    useTypewriter.js  Typed hero headline; respects reduced-motion
-  pages/
-    About, Contact, Experience, Home, Projects, Resume
+ ├── components/        # Navbar, Footer, PageVariants, CareerPhotos (lightbox)
+ ├── pages/             # Home, About, Projects, Experience, Gallery, Contact, Resume
+ ├── data/              # careerPhotos, projects, profile, techIcons — single source of truth
+ ├── hooks/             # useTypewriter (respects reduced-motion)
+ ├── index.css          # design tokens + buttons
+ └── App.js             # routing + scroll-to-top on navigation
+public/
+ └── assets/            # photos + resume.pdf
 ```
 
-**All content lives in `src/data/`.** Editing `profile.js` or `projects.js`
-updates every page that reads from it — navigation, footer, stack counts, and
-hero stats included. Nothing is duplicated between components.
+Content lives **only** in `src/data/`. Editing `profile.js` or `projects.js` updates
+every page that reads from it (navigation, footer, stack counts, hero stats). Nothing
+is duplicated between components.
 
-## Running it locally
+### Running it locally
 
 ```bash
 npm install
 npm start      # http://localhost:3000
 npm run build  # production bundle into build/
+npx serve -s build   # preview production with SPA fallback
 ```
 
-The `build` script runs `scripts/build.js`, a wrapper around `react-scripts
-build`. Create React App (webpack 4) hashes with md4, which breaks under
-OpenSSL 3 (Node 17+) with `error:0308010C:digital envelope routines::unsupported`.
-The wrapper retries the first build with `--openssl-legacy-provider` when it
-sees that exact error — safely on Node 24+ (Vercel's current runtime), where
-the flag is supported.
+The `build` script (via `scripts/build.js`) retries with `--openssl-legacy-provider`
+when webpack's `error:0308010C:digital envelope routines::unsupported` shows up on
+Node 17+ — safely on Vercel's Node 24 runtime.
 
-To preview the production build with SPA fallback:
+### Accessibility notes
 
-```bash
-npx serve -s build
-```
-
-## Accessibility notes
-
-- `prefers-reduced-motion` is respected sitewide: the typed hero renders
-  finished, the tech marquee is hidden, and all pulses and transitions stop
-- The hero headline carries its full text in `aria-label` with the animating
-  text `aria-hidden`, so screen readers announce a complete heading rather than
-  a half-typed fragment
+- `prefers-reduced-motion` respected sitewide (typed hero renders finished, tech
+  marquee hidden, transitions stop)
+- Hero headline carries full text in `aria-label`; animating text is `aria-hidden`
 - Filled amber elements use near-black text for contrast
-- The project modal supports Escape to close and restores body scroll on exit
+- Project modal supports Escape-to-close and restores body scroll on exit
+- Lightbox supports arrow keys + Escape
+
+### License & borrowing
+
+Code is mine, but **fork it, borrow, learn** — a star ⭐ would make my day.
+No vendored snippets except standard Create React App boilerplate.
+
+Made with care (and caffeine) ☕ — see you in the **Contact** tab.
